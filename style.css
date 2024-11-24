@@ -207,6 +207,13 @@ body.sidebar-hidden .main-layout .sidebar {
   background: var(--light-gray-color);
 }
 
+.config_field {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
 .main-layout .content-wrapper {
   padding: 0 1rem;
   overflow-x: hidden;
