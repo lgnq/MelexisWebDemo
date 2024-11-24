@@ -63,52 +63,38 @@
   
         <div class="links-container">
           <div class="section-separator"></div>
-          
-          <h4>Sreial Config</h4>
-          <div class="link-section">
-            <select id="baudRate"></select>
-            <button id="butConnect" type="button">Connect</button>
-          </div>
 
-          <div class="link-section">
-            <label for="myInput">Input:</label>
-            <input type="text" id="myInput">
-            <button id="butClear" type="button">Clear</button>
-          </div>
-          
-          <div class="link-section">
-            <input type="checkbox" id="autoscroll"> Autoscroll
-            <input type="checkbox" id="showTimestamp"> Show Timestamp
-          </div>
+          <fieldset class="config_field">
+            <legend>Sreial Config</legend>
+
+            <div class="link-section">
+              <select id="baudRate"></select>
+              <button id="butConnect" type="button">Connect</button>
+            </div>
+  
+            <div class="link-section">
+              <label for="myInput">Input:</label>
+              <input type="text" id="myInput">
+              <button id="butClear" type="button">Clear</button>
+            </div>
+            
+            <div class="link-section">
+              <input type="checkbox" id="autoscroll"> Autoscroll
+              <input type="checkbox" id="showTimestamp"> Show Timestamp
+            </div>
+          </fieldset>
 
           <div class="section-separator"></div>
+          
+          <fieldset class="config_field">
+            <legend>Message Config</legend>
 
-          <h4>Message Config</h4>
-          <div class="link-section">
             <label for="messageprefixid">Prefix:</label>
             <input type="text" id="messageprefixid" value="pwm:" size="10">
 
             <label for="messageseparatorid">Separator:</label>
             <input type="text" id="messageseparatorid" value="," size="10">
-          </div>
-
-          <div class="section-separator"></div>
-  
-          <h4>Sampling Config</h4>
-
-          <!-- <div class="link-section">
-            <label for="sampleSize">Sample size:</label>
-            <input type="text" id="sampleSize" value="300" size="10">
-    
-            <label for="sampleFreq">Sample freq:</label>
-            <select name="sampleFreq" id="sampleFreq">
-              <option value="1">1 Hz</option>
-              <option value="5">5 Hz</option>
-              <option value="8">8 Hz</option>
-              <option selected value="10">10 Hz</option>
-              <option value="20">20 Hz</option>
-            </select>        
-          </div> -->
+          </fieldset>
 
           <div class="section-separator"></div>
           
