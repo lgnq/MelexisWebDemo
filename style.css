@@ -209,7 +209,7 @@ body.sidebar-hidden .main-layout .sidebar {
 
 .config_field {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
 
   padding-left: 10px;
   padding-right: 10px;
