@@ -62,26 +62,19 @@
         </div>
   
         <div class="links-container">
-          <div class="section-separator"></div>
-
           <fieldset class="config_field">
             <legend>Sreial Config</legend>
 
-            <div class="link-section">
-              <select id="baudRate"></select>
-              <button id="butConnect" type="button">Connect</button>
-            </div>
-  
-            <div class="link-section">
-              <label for="myInput">Input:</label>
-              <input type="text" id="myInput">
-              <button id="butClear" type="button">Clear</button>
-            </div>
-            
-            <div class="link-section">
-              <input type="checkbox" id="autoscroll"> Autoscroll
-              <input type="checkbox" id="showTimestamp"> Show Timestamp
-            </div>
+            <select id="baudRate"></select>
+            <button id="butConnect" type="button">Connect</button>
+
+            <label for="myInput">Input:</label>
+            <input type="text" id="myInput">
+
+            <button id="butClear" type="button">Clear</button>
+          
+            <input type="checkbox" id="autoscroll"> Autoscroll
+            <input type="checkbox" id="showTimestamp"> Show Timestamp
           </fieldset>
 
           <fieldset class="config_field">
@@ -94,8 +87,6 @@
             <input type="text" id="messageseparatorid" value="," size="10">
           </fieldset>
 
-          <div class="section-separator"></div>
-          
           <fieldset class="config_field">
             <legend>Sampling Config</legend>
             <label for="sampleSize">Sample size:</label>
@@ -110,8 +101,6 @@
               <option value="20">20 Hz</option>
             </select>        
           </fieldset>
-
-          <div class="section-separator"></div>
 
           <fieldset class="config_field">
             <legend>Chip Config</legend>
