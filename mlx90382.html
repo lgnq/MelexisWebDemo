@@ -96,7 +96,7 @@
   
           <h4>Sampling Config</h4>
 
-          <div class="link-section">
+          <!-- <div class="link-section">
             <label for="sampleSize">Sample size:</label>
             <input type="text" id="sampleSize" value="300" size="10">
     
@@ -108,18 +108,32 @@
               <option selected value="10">10 Hz</option>
               <option value="20">20 Hz</option>
             </select>        
-          </div>
+          </div> -->
 
           <div class="section-separator"></div>
-
-          <h4>Chip Config</h4>
           
-          <div class="section-separator"></div>
+          <fieldset>
+            <legend>Sampling Config</legend>
+            <label for="sampleSize">Sample size:</label>
+            <input type="text" id="sampleSize" value="300" size="10">
+    
+            <label for="sampleFreq">Sample freq:</label>
+            <select name="sampleFreq" id="sampleFreq">
+              <option value="1">1 Hz</option>
+              <option value="5">5 Hz</option>
+              <option value="8">8 Hz</option>
+              <option selected value="10">10 Hz</option>
+              <option value="20">20 Hz</option>
+            </select>        
+          </fieldset>
 
           <fieldset>
             <legend>Chip Config</legend>
             <button>Start</button>
           </fieldset>
+
+          <div class="section-separator"></div>
+
           <div class="link-section">
             <a href="index.html" class="link-item">
               <i class="uil uil-exclamation-triangle"></i> Homepage
