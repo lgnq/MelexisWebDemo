@@ -373,7 +373,7 @@ function loadAllSettings() {
   autoscroll.checked    = loadSetting('autoscroll', true);
   showTimestamp.checked = loadSetting('timestamp', false);
   // kalmanFilter.checked  = loadSetting('kalmanfilter', false);
-  baudRate.value        = loadSetting('baudrate', 9600);
+  baudRate.value        = loadSetting('baudrate', 115200);
   // darkMode.checked      = loadSetting('darkmode', false);
 }
 
