@@ -211,6 +211,8 @@ body.sidebar-hidden .main-layout .sidebar {
   display: grid;
   grid-template-columns: 1fr 1fr;
 
+  gap: 5px;
+
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 5px;
