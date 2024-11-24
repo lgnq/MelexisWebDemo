@@ -134,10 +134,6 @@ body {
   border-left: 0;
 }
 
-.navbar .nav-center .mic-button {
-  background: var(--light-white-color);
-}
-
 .navbar .nav-right .search-button {
   display: none;
 }
