@@ -20,7 +20,7 @@
           </button>
           <a href="#" class="nav-logo">
             <img src="images/logo.png" alt="Logo" class="logo-image">
-            <h2 class="logo-text">Melexis</h2>
+            <h2 class="logo-text">MLX90394</h2>
           </a>
         </div>
         
@@ -62,30 +62,38 @@
         </div>
   
         <div class="links-container">
-          <div class="section-separator"></div>
-          
-          <h4>Sreial Config</h4>
-          <div class="link-section">
-            <select id="baudRate"></select>
-            <button id="butConnect" type="button">Connect</button>
-          </div>
+          <fieldset class="config_field">
+            <legend>Sreial Config</legend>
 
-          <div class="link-section">
+            <select id="baudRate"></select>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+              <button id="butConnect" type="button">Connect</button>
+              <button id="butClear" type="button">Clear</button>
+            </div>
+
             <label for="myInput">Input:</label>
             <input type="text" id="myInput">
-            <button id="butClear" type="button">Clear</button>
-          </div>
-          
-          <div class="link-section">
-            <input type="checkbox" id="autoscroll"> Autoscroll
-            <input type="checkbox" id="showTimestamp"> Show Timestamp
-          </div>
 
-          <div class="section-separator"></div>
-  
-          <h4>Sampling Config</h4>
+            <div>
+              <input type="checkbox" id="autoscroll"> Autoscroll
+            </div>
+            <div>
+              <input type="checkbox" id="showTimestamp"> Show Timestamp
+            </div>
+          </fieldset>
 
-          <div class="link-section">
+          <fieldset class="config_field">
+            <legend>Message Config</legend>
+
+            <label for="messageprefixid">Prefix:</label>
+            <input type="text" id="messageprefixid" value="pwm:" size="10">
+
+            <label for="messageseparatorid">Separator:</label>
+            <input type="text" id="messageseparatorid" value="," size="10">
+          </fieldset>
+
+          <fieldset class="config_field">
+            <legend>Sampling Config</legend>
             <label for="sampleSize">Sample size:</label>
             <input type="text" id="sampleSize" value="300" size="10">
     
@@ -97,26 +105,21 @@
               <option selected value="10">10 Hz</option>
               <option value="20">20 Hz</option>
             </select>        
-          </div>
-
-          <div class="section-separator"></div>
+          </fieldset>
 
           <fieldset class="config_field">
-            <legend>About</legend>
-
-            <p>Author: Eamon Fang</p>
-            <p>Email: eaf@melexis.com</p>
-            <p>Version: 2024.11.23</p>
+            <legend>Chip Config</legend>
+            <button>Start</button>
           </fieldset>
 
           <div class="section-separator"></div>
 
           <div class="link-section">
-            <a href="#" class="link-item">
-              <i class="uil uil-question-circle"></i> Help
+            <a href="index.html" class="link-item">
+              <i class="uil uil-exclamation-triangle"></i> Homepage
             </a>
             <a href="#" class="link-item">
-              <i class="uil uil-exclamation-triangle"></i> Feedback
+              <i class="uil uil-question-circle"></i> Help
             </a>
           </div>
         </div>
@@ -125,62 +128,51 @@
       <div class="content-wrapper">        
         <!-- Video List -->
         <div class="video-list">
-          <a href="mlx90394.html" class="video-card">
+          <div class="video-card">
+            <div id="log" class="log"></div>
+          </div>
+
+          <div class="video-card">
+            <div id="plot" class="plot"></div>
+          </div>
+          
+          <div class="video-card">
+            <div id="joystick"></div>     
+          </div>
+          
+          <a href="#" class="video-card">
             <div class="thumbnail-container">
               <img src="images/MelexisLogoBlue2023.png" alt="Video Thumbnail" class="thumbnail">
-              <p class="duration">MLX90394</p>
+              <p class="duration">v1.0</p>
+            </div>
+          </a>
+          
+          <a href="#" class="video-card">
+            <div class="thumbnail-container">
+              <img src="https://i.ytimg.com/vi/coj-l7IrwGU/maxresdefault.jpg" alt="Video Thumbnail" class="thumbnail">
+              <p class="duration">19:27</p>
             </div>
             <div class="video-info">
-              <img src="images/logo.png" alt="Channel Logo" class="icon">
+              <img src="https://yt3.googleusercontent.com/DRtVBjk2Noax94hHqr8yCcEjhNUhHRvyzBE3qS9WWilnE1-uQQNVnQd8mdG9h_IvNZCRApZSQw=s176-c-k-c0x00ffffff-no-rj" alt="Channel Logo" class="icon">
               <div class="video-details">
-                <h2 class="title">MLX90394</h2>
-                <p class="channel-name">Magnetometer</p>
-                <p class="views">2024.05</p>
+                <h2 class="title">How to Make Chrome Extension in HTML CSS & JavaScript</h2>
+                <p class="channel-name">CodingNepal</p>
+                <p class="views">24K Views • 1 year ago</p>
               </div>
             </div>
           </a>
           
-          <a href="mlx90382.html" class="video-card">
+          <a href="#" class="video-card">
             <div class="thumbnail-container">
-              <img src="images/MelexisLogoBlue2023.png" alt="Video Thumbnail" class="thumbnail">
-              <p class="duration">MLX90382</p>
+              <img src="https://i.ytimg.com/vi/6QE8dXq9SOE/maxresdefault.jpg" alt="Video Thumbnail" class="thumbnail">
+              <p class="duration">16:24</p>
             </div>
             <div class="video-info">
-              <img src="images/logo.png" alt="Channel Logo" class="icon">
+              <img src="https://yt3.googleusercontent.com/DRtVBjk2Noax94hHqr8yCcEjhNUhHRvyzBE3qS9WWilnE1-uQQNVnQd8mdG9h_IvNZCRApZSQw=s176-c-k-c0x00ffffff-no-rj" alt="Channel Logo" class="icon">
               <div class="video-details">
-                <h2 class="title">MLX90382</h2>
-                <p class="channel-name">Encoder</p>
-                <p class="views">2024.12</p>
-              </div>
-            </div>
-          </a>
-
-          <a href="https://www.melexis.com/en/product/DVKMagnetic/Development-Kit-Magnetic-Sensors" class="video-card">
-            <div class="thumbnail-container">
-              <img src="images/EVK.jpg" alt="Video Thumbnail" class="thumbnail">
-              <p class="duration">DVKMagnetic</p>
-            </div>
-            <div class="video-info">
-              <img src="images/logo.png" alt="Channel Logo" class="icon">
-              <div class="video-details">
-                <h2 class="title">Development kit for magnetic sensors</h2>
-                <p class="channel-name">DVKMagnetic</p>
-                <p class="views">2024.12</p>
-              </div>
-            </div>
-          </a>
-
-          <a href="https://www.melexis.com/" class="video-card">
-            <div class="thumbnail-container">
-              <img src="images/MelexisLogoBlue2023.png" alt="Video Thumbnail" class="thumbnail">
-              <p class="duration">www.melexis.com</p>
-            </div>
-            <div class="video-info">
-              <img src="images/logo.png" alt="Channel Logo" class="icon">
-              <div class="video-details">
-                <h2 class="title">Melexis Website</h2>
-                <p class="channel-name">LOGO</p>
-                <p class="views">2024.12</p>
+                <h2 class="title">Create A Draggable Card Slider in HTML CSS and Vanilla JavaScript</h2>
+                <p class="channel-name">CodingNepal</p>
+                <p class="views">14.2K Views • 4 days ago</p>
               </div>
             </div>
           </a>
