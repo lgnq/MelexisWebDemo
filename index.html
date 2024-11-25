@@ -64,28 +64,38 @@
         <div class="links-container">
           <div class="section-separator"></div>
           
-          <h4>Sreial Config</h4>
-          <div class="link-section">
-            <select id="baudRate"></select>
-            <button id="butConnect" type="button">Connect</button>
-          </div>
+          <fieldset class="config_field">
+            <legend>Sreial Config</legend>
 
-          <div class="link-section">
+            <select id="baudRate"></select>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+              <button id="butConnect" type="button">Connect</button>
+              <button id="butClear" type="button">Clear</button>
+            </div>
+
             <label for="myInput">Input:</label>
             <input type="text" id="myInput">
-            <button id="butClear" type="button">Clear</button>
-          </div>
-          
-          <div class="link-section">
-            <input type="checkbox" id="autoscroll"> Autoscroll
-            <input type="checkbox" id="showTimestamp"> Show Timestamp
-          </div>
 
-          <div class="section-separator"></div>
-  
-          <h4>Sampling Config</h4>
+            <div>
+              <input type="checkbox" id="autoscroll"> Autoscroll
+            </div>
+            <div>
+              <input type="checkbox" id="showTimestamp"> Show Timestamp
+            </div>
+          </fieldset>
 
-          <div class="link-section">
+          <fieldset class="config_field">
+            <legend>Message Config</legend>
+
+            <label for="messageprefixid">Prefix:</label>
+            <input type="text" id="messageprefixid" value="pwm:" size="10">
+
+            <label for="messageseparatorid">Separator:</label>
+            <input type="text" id="messageseparatorid" value="," size="10">
+          </fieldset>
+
+          <fieldset class="config_field">
+            <legend>Sampling Config</legend>
             <label for="sampleSize">Sample size:</label>
             <input type="text" id="sampleSize" value="300" size="10">
     
@@ -97,9 +107,7 @@
               <option selected value="10">10 Hz</option>
               <option value="20">20 Hz</option>
             </select>        
-          </div>
-
-          <div class="section-separator"></div>
+          </fieldset>
 
           <fieldset class="config_field">
             <legend>About</legend>
@@ -157,7 +165,7 @@
 
           <a href="https://www.melexis.com/en/product/DVKMagnetic/Development-Kit-Magnetic-Sensors" class="video-card">
             <div class="thumbnail-container">
-              <img src="images/EVK.jpg" alt="Video Thumbnail" class="thumbnail">
+              <img src="images/EVK.png" alt="Video Thumbnail" class="thumbnail">
               <p class="duration">DVKMagnetic</p>
             </div>
             <div class="video-info">
