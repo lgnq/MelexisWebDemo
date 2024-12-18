@@ -457,3 +457,74 @@ var j = function(p)
 }
 
 var myp5 = new p5(j, 'joystick');
+
+var meter = function(p)
+{
+  let width = 400;
+
+  /** The maximum stick deflection angle, in radians */
+  const MAX_DEFLECT = Math.PI / 8;
+
+  p.setup = function() 
+  {
+    // p.createCanvas((joystick_card.offsetWidth), (joystick_card.offsetHeight), p.WEBGL);
+    p.createCanvas((log.offsetWidth), (log.offsetHeight), p.WEBGL);
+
+    p.angleMode(DEGREES);
+  }
+
+  p.draw = function() 
+  {
+    p.background("#FDFD96");
+    p.translate(200, 200);
+    p.rotate(-90);
+    
+    let hr = hour();
+    let mn = minute();
+    let sc = second();
+    
+    //donut
+    p.noStroke();
+    p.fill("#9A5E1F");
+    p.ellipse(0, 0, 275, 275);
+    //frosting changes color every second
+    let r = map(sc, 0, 60, 100, 200);
+    let b = map(sc, 0, 60, 255, 0);
+    p.fill(r, 50, b);
+    p.ellipse(0, 0, 250, 250);
+    p.fill("#9A5E1F");
+    p.ellipse(0, 0, 100, 100);
+    p.strokeWeight(8);
+    p.noFill();
+    let secondAngle = map(sc, 0, 60, 0, 360);
+    let minuteAngle = map(mn, 0, 60, 0, 360);
+    let hourAngle = map(hr % 12, 0, 12, 0, 360);
+    p.push();
+    p.rotate(secondAngle);
+    let r2 = map(sc, 0, 60, 0, 255) //change color every sec
+    let b2 = map(sc, 0, 60, 255, 0)
+    p.stroke(r2, 100, b2);
+    p.line(0, 0, 100, 0);
+    p.pop();
+    p.push();
+    p.rotate(minuteAngle);
+    p.stroke("#F99F0D");
+    p.line(0, 0, 75, 0);
+    p.pop();
+    p.push();
+    p.rotate(hourAngle);
+    p.stroke("#0994E3");
+    p.line(0, 0, 50, 0);
+    p.pop();
+    p.stroke("#06B583");
+    p.point(0, 0);
+  }
+
+  p.windowResized = function() 
+  {
+      // p.resizeCanvas((joystick_card.offsetWidth, joystick_card.offsetHeight));
+      p.setup();
+  }
+}
+
+var meter_obj = new p5(meter, 'meter');
