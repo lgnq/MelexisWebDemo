@@ -470,7 +470,7 @@ var meter = function(p)
     // p.createCanvas((joystick_card.offsetWidth), (joystick_card.offsetHeight), p.WEBGL);
     p.createCanvas((log.offsetWidth), (log.offsetHeight), p.WEBGL);
 
-    p.angleMode(DEGREES);
+    p.angleMode(p.DEGREES);
   }
 
   p.draw = function() 
