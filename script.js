@@ -468,7 +468,6 @@ var meter = function(p)
 
   p.draw = function() 
   {
-    // p.background(0);
     p.background('rgba(255, 255, 255, 0.2)')
     p.translate(p.width/2, p.height/2);
     p.rotate(-90);
@@ -481,33 +480,35 @@ var meter = function(p)
     p.stroke(255, 100, 150);
     p.noFill();
     // let secondAngle = p.map(sc, 0, 60, 0, 360);
-    p.arc(0, 0, 300, 300, 0, degree);  //degree
-  
+    // p.arc(0, 0, 300, 300, 0, degree);  //degree
+    p.arc(0, 0, 300, 300, 0, x); 
+
     p.stroke(150, 100, 255);
-    let minuteAngle = p.map(mn, 0, 60, 0, 360);
-    p.arc(0, 0, 280, 280, 0, minuteAngle);
+    // let minuteAngle = p.map(mn, 0, 60, 0, 360);
+    // p.arc(0, 0, 280, 280, 0, minuteAngle);
+    p.arc(0, 0, 280, 280, 0, y);
   
-    p.stroke(150, 255, 100);
-    let secondAngle = p.map(sc, 0, 60, 0, 360);
-    p.arc(0, 0, 260, 260, 0, secondAngle);
+    // p.stroke(150, 255, 100);
+    // let secondAngle = p.map(sc, 0, 60, 0, 360);
+    // p.arc(0, 0, 260, 260, 0, secondAngle);
   
     p.push();
-    p.rotate(degree);
+    p.rotate(x);
     p.stroke(255, 100, 150);
     p.line(0, 0, 100, 0);
     p.pop();
   
     p.push();
-    p.rotate(minuteAngle);
+    p.rotate(y);
     p.stroke(150, 100, 255);
     p.line(0, 0, 75, 0);
     p.pop();
   
-    p.push();
-    p.rotate(secondAngle);
-    p.stroke(150, 255, 100);
-    p.line(0, 0, 50, 0);
-    p.pop();
+    // p.push();
+    // p.rotate(secondAngle);
+    // p.stroke(150, 255, 100);
+    // p.line(0, 0, 50, 0);
+    // p.pop();
   
     p.stroke(255);
   }
