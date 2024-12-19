@@ -469,49 +469,19 @@ var meter = function(p)
 
   p.draw = function() 
   {
-    p.background("#FDFD96");
-    p.translate(200, 200);
-    p.rotate(-90);
-    
-    let hr = p.hour();
-    let mn = p.minute();
-    let sc = p.second();
-    
-    //donut
-    p.noStroke();
-    p.fill("#9A5E1F");
-    p.ellipse(0, 0, 275, 275);
-    //frosting changes color every second
-    let r = p.map(sc, 0, 60, 100, 200);
-    let b = p.map(sc, 0, 60, 255, 0);
-    p.fill(r, 50, b);
-    p.ellipse(0, 0, 250, 250);
-    p.fill("#9A5E1F");
-    p.ellipse(0, 0, 100, 100);
-    p.strokeWeight(8);
-    p.noFill();
-    let secondAngle = p.map(sc, 0, 60, 0, 360);
-    let minuteAngle = p.map(mn, 0, 60, 0, 360);
-    let hourAngle = p.map(hr % 12, 0, 12, 0, 360);
-    p.push();
-    p.rotate(secondAngle);
-    let r2 = p.map(sc, 0, 60, 0, 255) //change color every sec
-    let b2 = p.map(sc, 0, 60, 255, 0)
-    p.stroke(r2, 100, b2);
-    p.line(0, 0, 100, 0);
-    p.pop();
-    p.push();
-    p.rotate(minuteAngle);
-    p.stroke("#F99F0D");
-    p.line(0, 0, 75, 0);
-    p.pop();
-    p.push();
-    p.rotate(hourAngle);
-    p.stroke("#0994E3");
-    p.line(0, 0, 50, 0);
-    p.pop();
-    p.stroke("#06B583");
-    p.point(0, 0);
+    p.background(255);
+    p.setCenter(p.width / 2, p.height);
+    p.stroke("#000");
+    p.strokeWeight(2);
+    p.fill(230);
+    //fill(252, 248, 200, 120);
+    p.polarEllipse(0, 190, 190, 0);
+    p.polarLines(12, 10, 180);
+    p.polarLines(60, 5, 180);
+    p.polarLine( 90, 180, 10)
+    p.rotate(p.map(slider.value(), 0, 100, 0, PI));
+    p.strokeWeight(2);
+    p.line(0, 0, -175, 0);
   }
 
   p.windowResized = function() 
