@@ -488,21 +488,21 @@ var meter = function(p)
     p.fill("#9A5E1F");
     p.ellipse(0, 0, 275, 275);
     //frosting changes color every second
-    let r = map(sc, 0, 60, 100, 200);
-    let b = map(sc, 0, 60, 255, 0);
+    let r = p.map(sc, 0, 60, 100, 200);
+    let b = p.map(sc, 0, 60, 255, 0);
     p.fill(r, 50, b);
     p.ellipse(0, 0, 250, 250);
     p.fill("#9A5E1F");
     p.ellipse(0, 0, 100, 100);
     p.strokeWeight(8);
     p.noFill();
-    let secondAngle = map(sc, 0, 60, 0, 360);
-    let minuteAngle = map(mn, 0, 60, 0, 360);
-    let hourAngle = map(hr % 12, 0, 12, 0, 360);
+    let secondAngle = p.map(sc, 0, 60, 0, 360);
+    let minuteAngle = p.map(mn, 0, 60, 0, 360);
+    let hourAngle = p.map(hr % 12, 0, 12, 0, 360);
     p.push();
     p.rotate(secondAngle);
-    let r2 = map(sc, 0, 60, 0, 255) //change color every sec
-    let b2 = map(sc, 0, 60, 255, 0)
+    let r2 = p.map(sc, 0, 60, 0, 255) //change color every sec
+    let b2 = p.map(sc, 0, 60, 255, 0)
     p.stroke(r2, 100, b2);
     p.line(0, 0, 100, 0);
     p.pop();
