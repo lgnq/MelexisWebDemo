@@ -462,7 +462,8 @@ var meter = function(p)
 {
   p.setup = function() 
   {
-    p.createCanvas((log.offsetWidth), (log.offsetHeight), p.WEBGL);
+    // p.createCanvas((log.offsetWidth), (log.offsetHeight), p.WEBGL);
+    p.createCanvas(400, 400);
 
     p.angleMode(p.DEGREES);
   }
