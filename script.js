@@ -463,14 +463,13 @@ var meter = function(p)
   p.setup = function() 
   {
     p.createCanvas((log.offsetWidth), (log.offsetHeight));
-    // p.createCanvas((log.offsetWidth), (log.offsetHeight), p.WEBGL);
-
     p.angleMode(p.DEGREES);
   }
 
   p.draw = function() 
   {
-    p.background(0);
+    // p.background(0);
+    p.background('rgba(255, 255, 255, 0.2)')
     p.translate(p.width/2, p.height/2);
     p.rotate(-90);
   
