@@ -481,7 +481,7 @@ var meter = function(p)
     p.stroke(255, 100, 150);
     p.noFill();
     let secondAngle = p.map(sc, 0, 60, 0, 360);
-    p.arc(0, 0, 300, 300, 0, secondAngle);
+    p.arc(0, 0, 300, 300, 0, x);
   
     p.stroke(150, 100, 255);
     let minuteAngle = p.map(mn, 0, 60, 0, 360);
