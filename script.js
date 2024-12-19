@@ -470,7 +470,7 @@ var meter = function(p)
   p.draw = function() 
   {
     p.background(0);
-    p.translate(p.width/2, 100);
+    p.translate(p.width/2, p.height/2);
     p.rotate(-90);
   
     let hr = p.hour();
