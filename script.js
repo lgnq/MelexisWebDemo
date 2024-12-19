@@ -479,9 +479,9 @@ var meter = function(p)
     p.translate(200, 200);
     p.rotate(-90);
     
-    let hr = hour();
-    let mn = minute();
-    let sc = second();
+    let hr = p.hour();
+    let mn = p.minute();
+    let sc = p.second();
     
     //donut
     p.noStroke();
