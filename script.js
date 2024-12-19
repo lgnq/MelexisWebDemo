@@ -460,14 +460,8 @@ var myp5 = new p5(j, 'joystick');
 
 var meter = function(p)
 {
-  let width = 400;
-
-  /** The maximum stick deflection angle, in radians */
-  const MAX_DEFLECT = Math.PI / 8;
-
   p.setup = function() 
   {
-    // p.createCanvas((joystick_card.offsetWidth), (joystick_card.offsetHeight), p.WEBGL);
     p.createCanvas((log.offsetWidth), (log.offsetHeight), p.WEBGL);
 
     p.angleMode(p.DEGREES);
@@ -522,7 +516,6 @@ var meter = function(p)
 
   p.windowResized = function() 
   {
-      // p.resizeCanvas((joystick_card.offsetWidth, joystick_card.offsetHeight));
       p.setup();
   }
 }
