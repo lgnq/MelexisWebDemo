@@ -470,11 +470,10 @@ var meter = function(p)
   p.draw = function() 
   {
     p.background(255);
-    p.setCenter(p.width / 2, p.height);
+    // p.setCenter(p.width / 2, p.height);
     p.stroke("#000");
     p.strokeWeight(2);
     p.fill(230);
-    //fill(252, 248, 200, 120);
     p.polarEllipse(0, 190, 190, 0);
     p.polarLines(12, 10, 180);
     p.polarLines(60, 5, 180);
