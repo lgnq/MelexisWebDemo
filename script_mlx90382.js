@@ -53,6 +53,7 @@ let plots = [];
 let x = 0;
 let y = 0;
 let z = 0;
+let t = 0;
 
 let alpha = 0;
 let beta  = 0;
@@ -244,6 +245,7 @@ async function readLoop() {
     x = data[0];
     y = data[1];
     z = data[2];
+    t = data[3];
 
     for (let i = 0; i < plots.length; i++)
     {
@@ -341,11 +343,6 @@ function writeCmd(event) {
     myInput.value = ''
   }
 
-  // Ignores sending carriage return if sending Ctrl+C
-  // if (cmd !== "\x03") {
-    // writer.write("\r"); // Important to send a carriage return after a command
-  // }
-  
   writer.releaseLock();
 }
 
@@ -399,64 +396,39 @@ document.addEventListener('DOMContentLoaded', async () => {
   loadAllSettings();
 });  
 
-var j = function(p)
+var temperature = function(p)
 {
-  let width = 400;
-
-  /** The maximum stick deflection angle, in radians */
-  const MAX_DEFLECT = Math.PI / 8;
+  var h = 0;
+  var t0 = 0;
+  var celsius;
+  var celsiusP;
 
   p.setup = function() 
   {
-    // p.createCanvas((joystick_card.offsetWidth), (joystick_card.offsetHeight), p.WEBGL);
-    p.createCanvas((log.offsetWidth), (log.offsetHeight), p.WEBGL);
+    p.createCanvas((log.offsetWidth), (log.offsetHeight));
+
+    celsiusP = createP(celsius + '&#x2103;');
+    celsiusP.position(240, 290);
   }
 
   p.draw = function() 
   {
-    const stickLen = width * 0.3;
-
-    // p.background(0xFF, 0xFF, 0xFF);
-    p.background('rgba(255, 255, 255, 0.2)')
-
-    p.ambientLight(128);
-    p.directionalLight(200, 200, 200, 100, 150, -1);  // A white light from behind the viewer
-    p.ambientMaterial(192);
-
-    p.sphere(60);
-
-    p.rotateX(-Math.PI / 2);
-
-    p.rotateX(p.map(beta-90, -25, 25, -MAX_DEFLECT, MAX_DEFLECT));
-    p.rotateZ(p.map(alpha-90, -25, 25, -MAX_DEFLECT, MAX_DEFLECT));
-
-    // rotateY(map(mouseXRatio(), -1, 1, -MAX_DEFLECT, MAX_DEFLECT));
-
-    p.translate(0, -stickLen / 2, 0);
+    h = p.map(t, -10, 100, 60, 300);
+    p.fill('#ff6000');
     p.noStroke();
-
-    p.cylinder(stickLen / 7, stickLen);
+    p.rect(192, 300, 16, t0);
+    if (t0 >= -h) {
+      t0--;
+    }
+    celsiusP.position(240, 290+t0);
   }
 
   p.windowResized = function() 
   {
-      // p.resizeCanvas((joystick_card.offsetWidth, joystick_card.offsetHeight));
-      p.setup();
 
-    // if (grid.offsetWidth + 20 > 768)
-    // {
-    //   p.resizeCanvas((grid.offsetWidth-10)/2, (grid.offsetHeight-30)/2);
-    // }
-    // else
-    // {
-    //   console.log(grid.offsetWidth);
-    //   console.log(grid.offsetHeight/3);
-    //   p.resizeCanvas((grid.offsetWidth, grid.offsetHeight/3));
-    // }
   }
 }
-
-var myp5 = new p5(j, 'joystick');
+var mytemperature = new p5(temperature, 'temperature');
 
 var meter = function(p)
 {
@@ -518,5 +490,4 @@ var meter = function(p)
       p.setup();
   }
 }
-
 var meter_obj = new p5(meter, 'meter');
