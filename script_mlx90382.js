@@ -486,10 +486,10 @@ var meter = function(p)
     // Tick markers around perimeter of clock
     p.push();
     p.stroke(255, 255, 255);
-    p.strokeWeight(2);
+    p.strokeWeight(4);
     for (let ticks = 0; ticks < 60; ticks += 1) 
     {
-      p.point(0, 60);
+      p.point(0, 310);
       p.rotate(6);
     }
     p.pop();
