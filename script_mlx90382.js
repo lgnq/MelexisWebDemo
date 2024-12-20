@@ -482,6 +482,17 @@ var meter = function(p)
     p.stroke(150, 255, 100);
     p.line(0, 0, 50, 0);
     p.pop();
+
+    // Tick markers around perimeter of clock
+    push();
+    p.stroke(255, 255, 255);
+    strokeWeight(2);
+    for (let ticks = 0; ticks < 60; ticks += 1) 
+    {
+      p.point(0, 50);
+      p.rotate(6);
+    }
+    pop();
   
     p.stroke(255);
   }
