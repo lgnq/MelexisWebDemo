@@ -408,7 +408,7 @@ var temperature = function(p)
     p.createCanvas((log.offsetWidth), (log.offsetHeight));
 
     // celsiusP = p.createP(celsius + '&#x2103;');
-    celsiusP = p.createP("temp");
+    celsiusP = p.createP("temperature");
     celsiusP.position(240, 290);
   }
 
