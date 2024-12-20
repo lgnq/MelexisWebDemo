@@ -444,9 +444,9 @@ var meter = function(p)
     p.translate(p.width/2, p.height/2);
     p.rotate(-90);
   
-    let degree = parseInt(x);
-    let mn = parseInt((x-degree)*60);
-    let sc = ((x-degree)*60 - parseInt((x-degree)*60))*60;
+    // let degree = parseInt(x);
+    // let mn = parseInt((x-degree)*60);
+    // let sc = ((x-degree)*60 - parseInt((x-degree)*60))*60;
   
     p.strokeWeight(8);
     p.stroke(255, 100, 150);
@@ -460,9 +460,10 @@ var meter = function(p)
     // p.arc(0, 0, 280, 280, 0, minuteAngle);
     p.arc(0, 0, 280, 280, 0, y);
   
-    // p.stroke(150, 255, 100);
+    p.stroke(150, 255, 100);
     // let secondAngle = p.map(sc, 0, 60, 0, 360);
     // p.arc(0, 0, 260, 260, 0, secondAngle);
+    p.arc(0, 0, 260, 260, 0, z);
   
     p.push();
     p.rotate(x);
@@ -476,11 +477,11 @@ var meter = function(p)
     p.line(0, 0, 75, 0);
     p.pop();
   
-    // p.push();
-    // p.rotate(secondAngle);
-    // p.stroke(150, 255, 100);
-    // p.line(0, 0, 50, 0);
-    // p.pop();
+    p.push();
+    p.rotate(z);
+    p.stroke(150, 255, 100);
+    p.line(0, 0, 50, 0);
+    p.pop();
   
     p.stroke(255);
   }
