@@ -407,8 +407,8 @@ var temperature = function(p)
   {
     p.createCanvas((log.offsetWidth), (log.offsetHeight));
 
-    celsiusP = p.createP(celsius + '&#x2103;');
-    celsiusP.position(240, 290);
+    // celsiusP = p.createP(celsius + '&#x2103;');
+    // celsiusP.position(240, 290);
   }
 
   p.draw = function() 
@@ -417,10 +417,10 @@ var temperature = function(p)
     p.fill('#ff6000');
     p.noStroke();
     p.rect(192, 300, 16, t0);
-    if (t0 >= -h) {
-      t0--;
-    }
-    celsiusP.position(240, 290+t0);
+    // if (t0 >= -h) {
+    //   t0--;
+    // }
+    // celsiusP.position(240, 290+t0);
   }
 
   p.windowResized = function() 
