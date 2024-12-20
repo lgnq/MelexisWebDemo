@@ -489,7 +489,7 @@ var meter = function(p)
     p.strokeWeight(2);
     for (let ticks = 0; ticks < 60; ticks += 1) 
     {
-      p.point(0, 50);
+      p.point(0, 60);
       p.rotate(6);
     }
     p.pop();
