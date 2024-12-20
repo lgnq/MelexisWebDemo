@@ -425,7 +425,7 @@ var temperature = function(p)
 
   p.windowResized = function() 
   {
-
+    p.setup();
   }
 }
 var mytemperature = new p5(temperature, 'temperature');
