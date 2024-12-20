@@ -440,7 +440,7 @@ var meter = function(p)
 
   p.draw = function() 
   {
-    p.background('rgba(255, 255, 255, 0.2)')
+    // p.background('rgba(255, 255, 255, 0.2)')
     p.translate(p.width/2, p.height/2);
     p.rotate(-90);
   
