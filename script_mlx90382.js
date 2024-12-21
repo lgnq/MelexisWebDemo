@@ -421,7 +421,7 @@ var temperature = function(p)
       t0--;
     }
     // celsiusP.position(240, 290+t0);
-    p.text("temperature", 50, 50);
+    p.text("temperature is " + t + " °", 50, 50);
   }
 
   p.windowResized = function() 
