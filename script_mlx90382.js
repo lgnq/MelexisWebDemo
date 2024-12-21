@@ -422,7 +422,7 @@ var temperature = function(p)
       t0--;
     }
 
-    fill('limegreen');
+    p.fill('limegreen');
     p.text("temperature is " + t + " °", 50, 50);
   }
 
