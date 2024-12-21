@@ -412,6 +412,8 @@ var temperature = function(p)
 
   p.draw = function() 
   {
+    p.background(0xF0, 0xF0, 0xF0)
+
     h = p.map(t, -10, 100, 60, 300);
     p.fill('#ff6000');
     p.noStroke();
