@@ -400,8 +400,6 @@ var temperature = function(p)
 {
   var h = 0;
   var t0 = 0;
-  // var celsius;
-  // var celsiusP;
 
   p.setup = function() 
   {
