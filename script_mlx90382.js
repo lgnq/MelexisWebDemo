@@ -501,10 +501,10 @@ var meter = function(p)
     p.translate(0, 0);
     p.rotate(90);
     p.fill(255, 100, 150);
-    p.text("angle is " + x, 50, 50, 200, 200);
+    p.text("angle is " + x, 140, 120, 200, 200);
     
     p.fill('limegreen');
-    p.text("temperature is " + t + " °", 50, 100, 200, 200);
+    p.text("temperature is " + t + " °", 140, 150, 250, 200);
     p.pop();
 
     // p.stroke(255);
