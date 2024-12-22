@@ -437,6 +437,8 @@ var meter = function(p)
   {
     p.createCanvas((log.offsetWidth), (log.offsetHeight));
     p.angleMode(p.DEGREES);
+
+    p.textSize(32);
   }
 
   p.draw = function() 
@@ -495,6 +497,10 @@ var meter = function(p)
     }
     p.pop();
   
+    p.fill('limegreen');
+    p.text("angle is " + x, 50, 50);
+    p.text("temperature is " + t + " °", 50, 100);
+
     p.stroke(255);
   }
 
