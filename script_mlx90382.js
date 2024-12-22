@@ -500,8 +500,8 @@ var meter = function(p)
     p.translate(0, 0);
     p.rotate(90);
     p.fill('limegreen');
-    p.text("angle is " + x, 50, 50, 50, 100);
-    p.text("temperature is " + t + " °", 50, 100, 50, 100);
+    p.text("angle is " + x, 50, 50, 50, 200);
+    p.text("temperature is " + t + " °", 50, 100, 50, 200);
 
     p.stroke(255);
   }
