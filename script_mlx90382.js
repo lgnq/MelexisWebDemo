@@ -260,8 +260,8 @@ async function readLoop() {
 
       if (value.substr(0, "chipversion:".length) == "chipversion:") {
         data = value.substr("chipversion:".length).trim().split(separator);
-        document.getElementById("analog_version").innerHTML=data[0].toString(16);
-        document.getElementById("digital_version").innerHTML=data[1].toString(16);
+        document.getElementById("analog_version").innerHTML="0x" + data[0].toString(16).toUpperCase();
+        document.getElementById("digital_version").innerHTML="0x" + data[1].toString(16).toUpperCase();
       }
     }
 
@@ -402,40 +402,40 @@ document.addEventListener('DOMContentLoaded', async () => {
   loadAllSettings();
 });  
 
-var temperature = function(p)
-{
-  var h = 0;
-  var t0 = 0;
+// var temperature = function(p)
+// {
+//   var h = 0;
+//   var t0 = 0;
 
-  p.setup = function() 
-  {
-    p.createCanvas((log.offsetWidth), (log.offsetHeight));
+//   p.setup = function() 
+//   {
+//     p.createCanvas((log.offsetWidth), (log.offsetHeight));
 
-    p.textSize(20);
-  }
+//     p.textSize(20);
+//   }
 
-  p.draw = function() 
-  {
-    p.background(0xF0, 0xF0, 0xF0)
+//   p.draw = function() 
+//   {
+//     p.background(0xF0, 0xF0, 0xF0)
 
-    h = p.map(t, -10, 100, 60, 300);
-    p.fill('#ff6000');
-    p.noStroke();
-    p.rect(192, 300, 16, t0);
-    if (t0 >= -h) {
-      t0--;
-    }
+//     h = p.map(t, -10, 100, 60, 300);
+//     p.fill('#ff6000');
+//     p.noStroke();
+//     p.rect(192, 300, 16, t0);
+//     if (t0 >= -h) {
+//       t0--;
+//     }
 
-    p.fill('limegreen');
-    p.text("temperature is " + t + " °", 50, 50);
-  }
+//     p.fill('limegreen');
+//     p.text("temperature is " + t + " °", 50, 50);
+//   }
 
-  p.windowResized = function() 
-  {
-    p.setup();
-  }
-}
-var mytemperature = new p5(temperature, 'temperature');
+//   p.windowResized = function() 
+//   {
+//     p.setup();
+//   }
+// }
+// var mytemperature = new p5(temperature, 'temperature');
 
 var meter = function(p)
 {
