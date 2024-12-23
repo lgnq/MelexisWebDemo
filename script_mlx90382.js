@@ -257,6 +257,11 @@ async function readLoop() {
         if (trace_z.y.length > size)
           trace_z.y.pop();
       }
+
+      if (value.substr(0, "analogversion:".length) == "analogversion:") {
+        data = value.substr("analogversion:".length).trim().split(separator).map(x=>+x);
+          document.getElementById("analog_version").innerHTML=data[0];
+      }
     }
 
     if (done) {
