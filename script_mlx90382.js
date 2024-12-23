@@ -259,8 +259,8 @@ async function readLoop() {
       }
 
       if (value.substr(0, "analogversion:".length) == "analogversion:") {
-        data = value.substr("analogversion:".length).trim().split(separator).map(x=>+x);
-          document.getElementById("analog_version").innerHTML=data[0];
+        data = value.substr("analogversion:".length).trim().split(separator);
+        document.getElementById("analog_version").innerHTML=data[0].toString(16);
       }
     }
 
