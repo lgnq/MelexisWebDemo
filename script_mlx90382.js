@@ -258,9 +258,10 @@ async function readLoop() {
           trace_z.y.pop();
       }
 
-      if (value.substr(0, "analogversion:".length) == "analogversion:") {
+      if (value.substr(0, "chipversion:".length) == "chipversion:") {
         data = value.substr("analogversion:".length).trim().split(separator);
         document.getElementById("analog_version").innerHTML=data[0].toString(16);
+        document.getElementById("digital_version").innerHTML=data[1].toString(16);
       }
     }
 
