@@ -54,6 +54,7 @@ let x = 0;
 let y = 0;
 let z = 0;
 let t = 0;
+let speed = 0;
 
 let alpha = 0;
 let beta  = 0;
@@ -244,6 +245,7 @@ async function readLoop() {
         y = data[1];
         z = data[2];
         t = data[3];
+        speed = data[4]
     
         for (let i = 0; i < plots.length; i++)
         {
@@ -474,6 +476,8 @@ var meter = function(p)
     // let secondAngle = p.map(sc, 0, 60, 0, 360);
     // p.arc(0, 0, 260, 260, 0, secondAngle);
     p.arc(0, 0, 260, 260, 0, z);
+
+    p.arc(0, 0, 240, 240, 0, speed);
   
     p.push();
     p.rotate(x);
@@ -491,6 +495,12 @@ var meter = function(p)
     p.rotate(z);
     p.stroke(150, 255, 100);
     p.line(0, 0, 50, 0);
+    p.pop();
+
+    p.push();
+    p.rotate(speed);
+    p.stroke(150, 255, 100);
+    p.line(0, 0, 25, 0);
     p.pop();
 
     // Tick markers around perimeter of clock
