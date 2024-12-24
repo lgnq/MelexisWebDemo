@@ -229,7 +229,7 @@ body.sidebar-hidden .main-layout .sidebar {
   display: grid; 
   gap: 1rem;
   padding: 1.25rem 0 4rem;
-  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
 }
 
 .video-list .video-card {
