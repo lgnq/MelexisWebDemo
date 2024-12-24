@@ -258,10 +258,11 @@ async function readLoop() {
           trace_z.y.pop();
       }
 
-      if (value.substr(0, "chipversion:".length) == "chipversion:") {
-        data = value.substr("chipversion:".length).trim().split(separator);
+      if (value.substr(0, "config:".length) == "config:") {
+        data = value.substr("config:".length).trim().split(separator);
         document.getElementById("analog_version").innerHTML="0x" + data[0].toString(16).toUpperCase();
         document.getElementById("digital_version").innerHTML="0x" + data[1].toString(16).toUpperCase();
+        document.getElementById("zero_position").value="0x" + data[2].toString(16).toUpperCase();
       }
     }
 
