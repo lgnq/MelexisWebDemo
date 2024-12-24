@@ -119,9 +119,23 @@
             <label for="zero_position">Zero Position:</label>
             <input type="text" id="zero_position" value="" size="10">
 
+            <label for="sensingMode">Sensing Mode:</label>
+            <select name="sensingMode" id="sensingMode">
+              <option value="0">000 - 0 - X-Y</option>
+              <option value="1">000 - 1 - X-Zy</option>
+              <option value="2">000 - 2 - Y-Zx</option>
+              <option value="3">100 - 0 - X-Y</option>
+              <option value="4">100 - 1 - X-Zy</option>
+              <option value="5">100 - 2 - Y-Zx</option>              
+              <option value="6">010 - 1 - X-Zy</option>
+              <option value="7">010 - 2 - Y-Zx</option>
+              <option value="8">600 - 0 - X-Y</option>
+            </select>        
+
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
               <button id="butStart" type="button">Start</button>
               <button id="butInfo" type="button">Info</button>
+              <button id="butReset" type="button">Soft Reset</button>
             </div>
           </fieldset>
 
