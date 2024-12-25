@@ -132,9 +132,49 @@
               <option value="8">600 - 0 - X-Y</option>
             </select>        
 
+            <label for="gpioProtocol">GPIO Protocol:</label>
+            <select name="gpioProtocol" id="gpioProtocol">
+              <option value="0">0 - PWM/Differential ABI/UVW</option>
+              <option value="1">1 - SSI</option>
+              <option value="2">2 - SPI mode</option>
+            </select>        
+
+            <label for="gpioConfig">GPIO Config:</label>
+            <select name="gpioConfig" id="gpioConfig">
+              <option value="0">0 - OFF</option>
+              <option value="1">1 - Open Drain P-MOS</option>
+              <option value="2">2 - Open Drain N-MOS</option>
+              <option value="3">3 - Push Pull</option>
+            </select>        
+
+            <label for="spiMode">SPI Mode:</label>
+            <select name="spiMode" id="spiMode">
+              <option value="0">MODE 0 - CPOL=0/CPHA=0</option>
+              <option value="1">MODE 1 - CPOL=0/CPHA=1</option>
+              <option value="2">MODE 2 - CPOL=1/CPHA=0</option>
+              <option value="3">MODE 3 - CPOL=1/CPHA=1</option>
+            </select>        
+
+            <label for="abiProtocol">ABI Protocol:</label>
+            <select name="abiProtocol" id="abiProtocol">
+              <option value="0">0 - UVW</option>
+              <option value="1">1 - ABI</option>
+            </select>        
+
+            <label for="abiConfig">ABI Config:</label>
+            <select name="abiConfig" id="abiConfig">
+              <option value="0">0 - OFF</option>
+              <option value="1">1 - Open Drain P-MOS</option>
+              <option value="2">2 - Open Drain N-MOS</option>
+              <option value="3">3 - Push Pull</option>
+            </select>        
+
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
               <button id="butStart" type="button">Start</button>
               <button id="butInfo" type="button">Info</button>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
               <button id="butReset" type="button">Soft Reset</button>
             </div>
           </fieldset>
