@@ -262,9 +262,16 @@ async function readLoop() {
 
       if (value.substr(0, "config:".length) == "config:") {
         data = value.substr("config:".length).trim().split(separator);
-        document.getElementById("analog_version").innerHTML="0x" + data[0].toString(16).toUpperCase();
-        document.getElementById("digital_version").innerHTML="0x" + data[1].toString(16).toUpperCase();
-        document.getElementById("zero_position").value="0x" + data[2].toString(16).toUpperCase();
+
+        let config = data[0];
+        document.getElementById("gpioProtocol").value = (parseInt(config, 16) >>3 ) & 0x3;
+        document.getElementById("gpioConfig").value   = (parseInt(config, 16) >>9 ) & 0x3;
+        document.getElementById("abiProtocol").value  = (parseInt(config, 16) >>5 ) & 0x1;
+        document.getElementById("abiConfig").value    = (parseInt(config, 16) >>14 ) & 0x3;
+
+        document.getElementById("analog_version").innerHTML="0x" + data[1].toString(16).toUpperCase();
+        document.getElementById("digital_version").innerHTML="0x" + data[2].toString(16).toUpperCase();
+        document.getElementById("zero_position").value="0x" + data[3].toString(16).toUpperCase();
       }
     }
 
