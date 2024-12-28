@@ -120,7 +120,55 @@
               <div id="deviceid"></div>
             </div>
 
-            <label for="application_mode">Application Mode:</label>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+            <div class="checkbox1">
+              <input type="checkbox" id="mlx90394_x_check" onclick="checkbox_fun(this)">
+              <label for="mlx90394_x_check">X_EN</label>
+            </div>
+  
+            <div class="checkbox2">
+              <input type="checkbox" id="mlx90394_y_check" onclick="checkbox_fun(this)">
+              <label for="mlx90394_y_check">Y_EN</label>
+            </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+            <div class="checkbox3">
+              <input type="checkbox" id="mlx90394_z_check" onclick="checkbox_fun(this)">          
+              <label for="mlx90394_z_check">Z_EN</label>
+            </div>
+  
+            <div class="checkbox4">
+              <input type="checkbox" id="mlx90394_t_check" onclick="checkbox_fun(this)">          
+              <label for="mlx90394_t_check">T_EN</label>          
+            </div>
+            </div>
+
+            <!-- <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px"> -->
+              <div class="item_radio_0">
+              <input type="radio" id="mlx90394_osr_hall_0" name="mlx90394_osr_hall" onclick="send_cmd(this)" value="0" />
+              <label for="mlx90394_osr_hall_0">OSR_HALL=0</label>
+              </div>
+    
+              <div class="item_radio_1">
+              <input type="radio" id="mlx90394_osr_hall_1" name="mlx90394_osr_hall" onclick="send_cmd(this)" value="1" />
+              <label for="mlx90394_osr_hall_1">OSR_HALL=1</label>
+              </div>
+            <!-- </div> -->
+
+            <!-- <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px"> -->
+              <div class="item_radio_0">
+              <input type="radio" id="mlx90394_osr_temp_0" name="mlx90394_osr_temp" onclick="send_cmd(this)" value="0" />
+              <label for="mlx90394_osr_temp_0">OSR_TEMP=0</label>
+              </div>
+    
+              <div class="item_radio_1">
+              <input type="radio" id="mlx90394_osr_temp_1" name="mlx90394_osr_temp" onclick="send_cmd(this)" value="1" />
+              <label for="mlx90394_osr_temp_1">OSR_TEMP=1</label>        
+              </div>
+            <!-- </div> -->
+
+            <label for="application_mode">App Mode:</label>
             <select name="application_mode" id="application_mode">
               <option value="0">0 Power-down mode</option>
               <option value="1">1 Single Measurement</option>
@@ -138,7 +186,64 @@
               <option value="5">13 Continuous mode 1KHz</option>              
               <option value="6">14 Continuous mode 1.4KHz</option>
               <option value="9">15 Power-down mode</option>
-            </select>        
+            </select>   
+            
+            <label for="range_config">Range Config:</label>
+            <select name="range_config" id="range_config">
+              <option value="0">0 50mT(L Current H Range)</option>
+              <option value="1">1 50mT(L Noise H Range)</option>
+              <option value="2">2 5mT (L Noise H Sensitivity)</option>
+              <option value="3">0 50mT(L Current H Range)</option>
+            </select>   
+
+            <label for="dig_filt_xy">DIG_FILT_XY:</label>
+            <select name="dig_filt_xy" id="dig_filt_xy">
+              <option value="0">0 0.113/0.220ms@OSR_H</option>
+              <option value="1">1 0.167/0.327ms@OSR_H</option>
+              <option value="2">2 0.273/0.540ms@OSR_H</option>
+              <option value="3">3 0.487/0.967ms@OSR_H</option>
+              <option value="4">4 0.913/1.820ms@OSR_H</option>
+              <option value="5">5 1.767/3.527ms@OSR_H</option>
+              <option value="6">6 3.473/6.940ms@OSR_H</option>
+              <option value="7">7 6.887/13.767ms@OSR_H</option>
+            </select>   
+
+            <label for="dig_filt_z">DIG_FILT_Z:</label>
+            <select name="dig_filt_z" id="dig_filt_z">
+              <option value="0">0 0.113/0.220ms@OSR_H</option>
+              <option value="1">1 0.167/0.327ms@OSR_H</option>
+              <option value="2">2 0.273/0.540ms@OSR_H</option>
+              <option value="3">3 0.487/0.967ms@OSR_H</option>
+              <option value="4">4 0.913/1.820ms@OSR_H</option>
+              <option value="5">5 1.767/3.527ms@OSR_H</option>
+              <option value="6">6 3.473/6.940ms@OSR_H</option>
+              <option value="7">7 6.887/13.767ms@OSR_H</option>
+            </select>   
+
+            <label for="dig_filt_t">DIG_FILT_T:</label>
+            <select name="dig_filt_t" id="dig_filt_t">
+              <option value="0">0 0.113/0.220ms@OSR_T</option>
+              <option value="1">1 0.167/0.327ms@OSR_T</option>
+              <option value="2">2 0.273/0.540ms@OSR_T</option>
+              <option value="3">3 0.487/0.967ms@OSR_T</option>
+              <option value="4">4 0.913/1.820ms@OSR_T</option>
+              <option value="5">5 1.767/3.527ms@OSR_T</option>
+              <option value="6">6 3.473/6.940ms@OSR_T</option>
+              <option value="7">7 6.887/13.767ms@OSR_T</option>
+            </select>   
+
+            <label for="woc_mode">WOC Mode:</label>
+            <select name="woc_mode" id="woc_mode">
+              <option value="0">0 Difference than 1st</option>
+              <option value="1">1 Difference than previous</option>
+              <option value="2">2 Absolute mode</option>
+              <option value="3">3 Not used</option>
+            </select>   
+
+            <label class="switch">
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </label>
 
             <button>Start</button>
 
