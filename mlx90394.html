@@ -85,18 +85,26 @@
           <fieldset class="config_field">
             <legend>Message Config</legend>
 
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
             <label for="messageprefixid">Prefix:</label>
             <input type="text" id="messageprefixid" value="pwm:" size="10">
+            </div>
 
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
             <label for="messageseparatorid">Separator:</label>
             <input type="text" id="messageseparatorid" value="," size="10">
+            </div>
           </fieldset>
 
           <fieldset class="config_field">
             <legend>Sampling Config</legend>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
             <label for="sampleSize">Sample size:</label>
             <input type="text" id="sampleSize" value="300" size="10">
-    
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
             <label for="sampleFreq">Sample freq:</label>
             <select name="sampleFreq" id="sampleFreq">
               <option value="1">1 Hz</option>
@@ -105,6 +113,7 @@
               <option selected value="10">10 Hz</option>
               <option value="20">20 Hz</option>
             </select>        
+            </div>
           </fieldset>
 
           <fieldset class="config_field">
@@ -239,11 +248,6 @@
               <option value="2">2 Absolute mode</option>
               <option value="3">3 Not used</option>
             </select>   
-
-            <label class="switch">
-              <input type="checkbox">
-              <span class="slider round"></span>
-            </label>
 
             <button>Start</button>
 
