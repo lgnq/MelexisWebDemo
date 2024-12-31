@@ -269,9 +269,21 @@ async function readLoop() {
         document.getElementById("abiProtocol").value  = (parseInt(config, 16) >>5 ) & 0x1;
         document.getElementById("abiConfig").value    = (parseInt(config, 16) >>14 ) & 0x3;
 
-        document.getElementById("analog_version").innerHTML="0x" + data[1].toString(16).toUpperCase();
-        document.getElementById("digital_version").innerHTML="0x" + data[2].toString(16).toUpperCase();
+        // document.getElementById("analog_version").innerHTML="0x" + data[1].toString(16).toUpperCase();
+        // document.getElementById("digital_version").innerHTML="0x" + data[2].toString(16).toUpperCase();
         document.getElementById("zero_position").value="0x" + data[3].toString(16).toUpperCase();
+      }
+
+      if (value.substr(0, "aversion:".length) == "aversion:") {
+        data = value.substr("aversion:".length).trim().split(separator);
+
+        document.getElementById("analog_version").innerHTML="0x" + data[0].toString(16).toUpperCase();
+      }
+
+      if (value.substr(0, "dversion:".length) == "dversion:") {
+        data = value.substr("dversion:".length).trim().split(separator);
+
+        document.getElementById("digital_version").innerHTML="0x" + data[0].toString(16).toUpperCase();
       }
     }
 
