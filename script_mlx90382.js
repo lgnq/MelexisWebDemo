@@ -262,8 +262,7 @@ async function readLoop() {
         if (trace_z.y.length > size)
           trace_z.y.pop();
       }
-
-      if (value.substr(0, "config:".length) == "config:") {
+      else if (value.substr(0, "config:".length) == "config:") {
         data = value.substr("config:".length).trim().split(separator);
 
         let config = data[0];
@@ -271,22 +270,21 @@ async function readLoop() {
         document.getElementById("gpioConfig").value   = (parseInt(config, 16) >>9 ) & 0x3;
         document.getElementById("abiProtocol").value  = (parseInt(config, 16) >>5 ) & 0x1;
         document.getElementById("abiConfig").value    = (parseInt(config, 16) >>14 ) & 0x3;
-
-        // document.getElementById("analog_version").innerHTML="0x" + data[1].toString(16).toUpperCase();
-        // document.getElementById("digital_version").innerHTML="0x" + data[2].toString(16).toUpperCase();
-        document.getElementById("zero_position").value="0x" + data[3].toString(16).toUpperCase();
       }
-
-      if (value.substr(0, "aversion:".length) == "aversion:") {
+      else if (value.substr(0, "aversion:".length) == "aversion:") {
         data = value.substr("aversion:".length).trim().split(separator);
 
         document.getElementById("analog_version").innerHTML="0x" + data[0].toString(16).toUpperCase();
       }
-
-      if (value.substr(0, "dversion:".length) == "dversion:") {
+      else if (value.substr(0, "dversion:".length) == "dversion:") {
         data = value.substr("dversion:".length).trim().split(separator);
 
         document.getElementById("digital_version").innerHTML="0x" + data[0].toString(16).toUpperCase();
+      }
+      else if (value.substr(0, "zeroposition:".length) == "zeroposition:") {
+        data = value.substr("zeroposition:".length).trim().split(separator);
+
+        document.getElementById("zero_position").innerHTML="0x" + data[0].toString(16).toUpperCase();
       }
     }
 
