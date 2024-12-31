@@ -369,6 +369,9 @@ async function changeBaudRate() {
 
 async function clickClear() {
   reset();
+
+  document.getElementById("analog_version").innerHTML = "";
+  document.getElementById("digital_version").innerHTML = "";
 }
 
 async function clickAutoscroll() {
