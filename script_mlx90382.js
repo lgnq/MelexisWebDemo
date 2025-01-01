@@ -248,7 +248,7 @@ async function readLoop() {
         y = data[1];
         z = data[2];
         t = data[3];
-        speed = data[4]
+        speed = data[4];
     
         for (let i = 0; i < plots.length; i++)
         {
