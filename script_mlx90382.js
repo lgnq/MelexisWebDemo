@@ -156,6 +156,7 @@ const sampleSize    = document.getElementById('sampleSize');
 const sampleFreq    = document.getElementById('sampleFreq');
 const butStart      = document.getElementById('butStart');
 const butInfo       = document.getElementById('butInfo');
+const butReset      = document.getElementById('butReset');
 
 
 async function disconnect() {
@@ -245,10 +246,10 @@ async function readLoop() {
         data = value.substr(prefix.length).trim().split(separator).map(x=>+x);
 
         x = data[0];
-        y = data[1];
-        z = data[2];
-        t = data[3];
-        speed = data[4];
+        // y = data[1];
+        // z = data[2];
+        t = data[2];
+        speed = data[1];
     
         for (let i = 0; i < plots.length; i++)
         {
@@ -359,6 +360,14 @@ async function clickInfo() {
   writer.releaseLock();
 }
 
+async function clickReset() {
+  const writer = outputStream.getWriter();
+
+  writer.write("mlx90382_ctrl_soft_reset\r");
+
+  writer.releaseLock();
+}
+
 function saveSetting(setting, value) {
     window.localStorage.setItem(setting, JSON.stringify(value));
 }
@@ -434,6 +443,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   myInput.addEventListener('keydown', writeCmd);
   butStart.addEventListener('click', clickStart);
   butInfo.addEventListener('click', clickInfo);
+  butReset.addEventListener('click', clickReset);
 
   if ('serial' in navigator) {
     console.log("webserial is supported!")
