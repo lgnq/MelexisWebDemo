@@ -157,7 +157,7 @@ const sampleFreq    = document.getElementById('sampleFreq');
 const butStart      = document.getElementById('butStart');
 const butInfo       = document.getElementById('butInfo');
 const butReset      = document.getElementById('butReset');
-
+const zeroposition  = document.getElementById('zero_position');
 
 async function disconnect() {
   if (reader) {
@@ -368,6 +368,18 @@ async function clickReset() {
   writer.releaseLock();
 }
 
+function set_zero_position(event) {
+  // Write to output stream
+  const writer = outputStream.getWriter();
+
+  if (event.keyCode === 13) {
+    writer.write("mlx90382_ctrl_set_zeroposition " + zeroposition.value + '\r');
+    zeroposition.value = ''
+  }
+
+  writer.releaseLock();
+}
+
 function saveSetting(setting, value) {
     window.localStorage.setItem(setting, JSON.stringify(value));
 }
@@ -444,6 +456,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   butStart.addEventListener('click', clickStart);
   butInfo.addEventListener('click', clickInfo);
   butReset.addEventListener('click', clickReset);
+  zeroposition.addEventListener('keydown', set_zero_position);
 
   if ('serial' in navigator) {
     console.log("webserial is supported!")
