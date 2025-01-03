@@ -343,11 +343,21 @@ async function clickConnect() {
 }
 
 async function clickStart() {
-  // Write to output stream
   const writer = outputStream.getWriter();
     
-  writer.write("mlx90382_start_mesurement\r");
-  
+  console.log(butStart.innerHTML);
+
+  if (butStart.innerHTML === "Start")
+  {
+    writer.write("mlx90382_measurement_onoff on\r");
+    butStart.innerHTML = "Stop";
+  }
+  else if (butStart.innerHTML === "Stop")
+  {
+    writer.write("mlx90382_measurement_onoff off\r");
+    butStart.innerHTML = "Start";
+  }
+
   writer.releaseLock();
 }
 
