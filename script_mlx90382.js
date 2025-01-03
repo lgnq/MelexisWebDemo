@@ -183,8 +183,6 @@ function toggleUIConnected(connected) {
   }
 
   butConnect.textContent = lbl;
-  
-  // updateTheme()
 }
 
 function logData(line) {
@@ -477,41 +475,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   initBaudRate();
   loadAllSettings();
 });  
-
-// var temperature = function(p)
-// {
-//   var h = 0;
-//   var t0 = 0;
-
-//   p.setup = function() 
-//   {
-//     p.createCanvas((log.offsetWidth), (log.offsetHeight));
-
-//     p.textSize(20);
-//   }
-
-//   p.draw = function() 
-//   {
-//     p.background(0xF0, 0xF0, 0xF0)
-
-//     h = p.map(t, -10, 100, 60, 300);
-//     p.fill('#ff6000');
-//     p.noStroke();
-//     p.rect(192, 300, 16, t0);
-//     if (t0 >= -h) {
-//       t0--;
-//     }
-
-//     p.fill('limegreen');
-//     p.text("temperature is " + t + " °", 50, 50);
-//   }
-
-//   p.windowResized = function() 
-//   {
-//     p.setup();
-//   }
-// }
-// var mytemperature = new p5(temperature, 'temperature');
 
 var meter = function(p)
 {
