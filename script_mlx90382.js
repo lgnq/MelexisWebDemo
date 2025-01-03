@@ -107,7 +107,7 @@ let trace_x = {
   // x: [0],
   y: [0],
   mode: 'lines',
-  name: 'angle',
+  name: 'lin_phase',
   // fill: 'tozeroy',
   line: {
     color: 'rgb(0, 53, 75)',
@@ -120,7 +120,7 @@ let trace_y = {
   // x: [0],
   y: [0],
   mode: 'lines',
-  name: 'y',
+  name: 'driftc_phase',
   line: {
     color: 'rgb(101, 187, 169)',
     width: 1
@@ -284,11 +284,11 @@ async function readLoop() {
       if (value.substr(0, prefix.length) == prefix) {
         data = value.substr(prefix.length).trim().split(separator).map(x=>+x);
 
-        x = data[0];
-        // y = data[1];
+        x = data[0];  //lin_phase
+        y = data[1];  //driftc_phase
         // z = data[2];
-        t = data[2];
-        speed = data[1];
+        t = data[3];
+        speed = data[2];
     
         // for (let i = 0; i < plots.length; i++)
         // {
@@ -590,15 +590,19 @@ var meter = function(p)
     p.pop();
   
     p.push();
-    p.translate(0, 0);
-    p.noStroke();
+    p.resetMatrix();
 
-    p.rotate(90);
+    p.noStroke();
+    p.textSize(14);
+
     p.fill(255, 100, 150);
-    p.text("angle is " + x, 140, 120, 200, 200);
+    p.text("LIN_PHASE： " + x + "°", 10, 10, 300, 200);
     
+    p.fill(150, 100, 255);
+    p.text("DRIFTC_PHASE： " + y + "°", 10, 30, 300, 200);
+
     p.fill('limegreen');
-    p.text("temperature is " + t + " °", 140, 150, 250, 200);
+    p.text("Temperature： " + t + "°", 10, 50, 300, 200);
     p.pop();
   }
 
@@ -648,6 +652,17 @@ var speed_meter = function(p)
       p.point(0, 160);
       p.rotate(6);
     }
+    p.pop();
+    
+    p.push();
+    p.resetMatrix();
+
+    p.noStroke();
+    p.textSize(14);
+
+    p.fill(255, 100, 150);
+    p.text("SPEED： " + speed, 10, 10, 300, 200);
+    
     p.pop();    
   }
 
