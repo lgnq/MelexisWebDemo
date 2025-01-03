@@ -77,7 +77,7 @@ let layout_xyz = {
   // margin: { t: 5, b: 5, l: 5, r: 5 },
 
   title: {
-    text: 'plot all the data',
+    text: 'plot angle',
     font: {
         // family: 'Arial, monospace',
         family: 'Arial, sans-serif', // Set the font family to Arial
@@ -94,7 +94,7 @@ let layout_xyz = {
   },
 
   yaxis: {
-    title: 'value',
+    title: 'angle',
     showline: false
   },  
 
@@ -107,7 +107,7 @@ let trace_x = {
   // x: [0],
   y: [0],
   mode: 'lines',
-  name: 'x',
+  name: 'angle',
   // fill: 'tozeroy',
   line: {
     color: 'rgb(0, 53, 75)',
