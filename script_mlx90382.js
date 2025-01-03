@@ -132,7 +132,7 @@ let trace_z = {
   // x: [0],
   y: [0],
   mode: 'lines',
-  name: 'z',
+  name: 'sc_phase',
   line: {
     color: 'rgb(219, 65, 64)',
     width: 1
@@ -286,9 +286,9 @@ async function readLoop() {
 
         x = data[0];  //lin_phase
         y = data[1];  //driftc_phase
-        // z = data[2];
-        t = data[3];
-        speed = data[2];
+        z = data[2];  //sc_phase
+        speed = data[3];
+        t = data[4];
     
         // for (let i = 0; i < plots.length; i++)
         // {
@@ -555,10 +555,10 @@ var meter = function(p)
     // p.arc(0, 0, 280, 280, 0, minuteAngle);
     p.arc(0, 0, 280, 280, 0, y);
   
-    // p.stroke(150, 255, 100);
+    p.stroke(150, 255, 100);
     // let secondAngle = p.map(sc, 0, 60, 0, 360);
     // p.arc(0, 0, 260, 260, 0, secondAngle);
-    // p.arc(0, 0, 260, 260, 0, z);
+    p.arc(0, 0, 260, 260, 0, z);
 
     p.push();
     p.rotate(x);
@@ -572,11 +572,11 @@ var meter = function(p)
     p.line(0, 0, 75, 0);
     p.pop();
   
-    // p.push();
-    // p.rotate(z);
-    // p.stroke(150, 255, 100);
-    // p.line(0, 0, 50, 0);
-    // p.pop();
+    p.push();
+    p.rotate(z);
+    p.stroke(150, 255, 100);
+    p.line(0, 0, 50, 0);
+    p.pop();
 
     // Tick markers around perimeter of clock
     p.push();
@@ -601,8 +601,11 @@ var meter = function(p)
     p.fill(150, 100, 255);
     p.text("DRIFTC_PHASE： " + y + "°", 10, 30, 300, 200);
 
+    p.fill(150, 255, 100);
+    p.text("SC_PHASE： " + z + "°", 10, 50, 300, 200);
+
     p.fill('limegreen');
-    p.text("Temperature： " + t + "°", 10, 50, 300, 200);
+    p.text("Temperature： " + t + "°", 10, 70, 300, 200);
     p.pop();
   }
 
