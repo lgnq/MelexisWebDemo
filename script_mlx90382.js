@@ -531,11 +531,7 @@ var meter = function(p)
     p.background(0xF0, 0xF0, 0xF0)
     p.translate(p.width/2, p.height/2);
     p.rotate(-90);
-  
-    // let degree = parseInt(x);
-    // let mn = parseInt((x-degree)*60);
-    // let sc = ((x-degree)*60 - parseInt((x-degree)*60))*60;
-  
+    
     p.strokeWeight(8);
     p.stroke(255, 100, 150);
     p.noFill();
@@ -553,8 +549,6 @@ var meter = function(p)
     // p.arc(0, 0, 260, 260, 0, secondAngle);
     p.arc(0, 0, 260, 260, 0, z);
 
-    p.arc(0, 0, 240, 240, 0, speed);
-  
     p.push();
     p.rotate(x);
     p.stroke(255, 100, 150);
@@ -571,12 +565,6 @@ var meter = function(p)
     p.rotate(z);
     p.stroke(150, 255, 100);
     p.line(0, 0, 50, 0);
-    p.pop();
-
-    p.push();
-    p.rotate(speed);
-    p.stroke(150, 255, 100);
-    p.line(0, 0, 25, 0);
     p.pop();
 
     // Tick markers around perimeter of clock
@@ -609,3 +597,52 @@ var meter = function(p)
   }
 }
 var meter_obj = new p5(meter, 'meter');
+
+var speed_meter = function(p)
+{
+  p.setup = function() 
+  {
+    p.createCanvas((log.offsetWidth), (log.offsetHeight));
+    p.angleMode(p.DEGREES);
+
+    p.textSize(20);
+  }
+
+  p.draw = function() 
+  {
+    p.background(0xF0, 0xF0, 0xF0)
+    p.translate(p.width/2, p.height/2);
+    p.rotate(-90);
+  
+    p.strokeWeight(8);
+    p.stroke(255, 100, 150);
+    p.noFill();
+  
+    // let secondAngle = p.map(sc, 0, 60, 0, 360);
+    // p.arc(0, 0, 300, 300, 0, degree);  //degree
+    p.arc(0, 0, 300, 300, 0, speed); 
+
+    p.push();
+    p.rotate(speed);
+    p.stroke(255, 100, 150);
+    p.line(0, 0, 100, 0);
+    p.pop();
+
+    // Tick markers around perimeter of clock
+    p.push();
+    p.stroke(255, 255, 255);
+    p.strokeWeight(4);
+    for (let ticks = 0; ticks < 60; ticks += 1) 
+    {
+      p.point(0, 160);
+      p.rotate(6);
+    }
+    p.pop();    
+  }
+
+  p.windowResized = function() 
+  {
+      p.setup();
+  }
+}
+var speed_meter_obj = new p5(speed_meter, 'speed_meter');
