@@ -555,10 +555,10 @@ var meter = function(p)
     // p.arc(0, 0, 280, 280, 0, minuteAngle);
     p.arc(0, 0, 280, 280, 0, y);
   
-    p.stroke(150, 255, 100);
+    // p.stroke(150, 255, 100);
     // let secondAngle = p.map(sc, 0, 60, 0, 360);
     // p.arc(0, 0, 260, 260, 0, secondAngle);
-    p.arc(0, 0, 260, 260, 0, z);
+    // p.arc(0, 0, 260, 260, 0, z);
 
     p.push();
     p.rotate(x);
@@ -572,11 +572,11 @@ var meter = function(p)
     p.line(0, 0, 75, 0);
     p.pop();
   
-    p.push();
-    p.rotate(z);
-    p.stroke(150, 255, 100);
-    p.line(0, 0, 50, 0);
-    p.pop();
+    // p.push();
+    // p.rotate(z);
+    // p.stroke(150, 255, 100);
+    // p.line(0, 0, 50, 0);
+    // p.pop();
 
     // Tick markers around perimeter of clock
     p.push();
@@ -591,6 +591,8 @@ var meter = function(p)
   
     p.push();
     p.translate(0, 0);
+    p.noStroke();
+
     p.rotate(90);
     p.fill(255, 100, 150);
     p.text("angle is " + x, 140, 120, 200, 200);
@@ -598,8 +600,6 @@ var meter = function(p)
     p.fill('limegreen');
     p.text("temperature is " + t + " °", 140, 150, 250, 200);
     p.pop();
-
-    // p.stroke(255);
   }
 
   p.windowResized = function() 
