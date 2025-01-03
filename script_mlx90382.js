@@ -48,7 +48,7 @@ let separator;
 
 let data = [0, 0, 0];
 
-let plots = [];
+// let plots = [];
 
 let x = 0;
 let y = 0;
@@ -140,6 +140,50 @@ let trace_z = {
 };
 
 let data_xyz = [trace_x, trace_y, trace_z];
+
+let layout_speed = {
+  autosize: true,
+  // margin: { t: 5, b: 5, l: 5, r: 5 },
+
+  title: {
+    text: 'plot speed',
+    font: {
+        // family: 'Arial, monospace',
+        family: 'Arial, sans-serif', // Set the font family to Arial
+        size: 20
+    },
+    yref: 'paper',
+    automargin: true,
+  },
+  
+  xaxis: {
+    title: 'time',
+    showgrid: false,
+    zeroline: false
+  },
+
+  yaxis: {
+    title: 'speed',
+    showline: false
+  },  
+
+  plot_bgcolor: 'rgba(255, 255, 255, 0)', // 设置图表背景透明
+  paper_bgcolor: 'rgba(255, 255, 255, 0)', // 设置画布背景透明  
+};
+
+let trace_speed = {
+  // type: 'scattergl',
+  // x: [0],
+  y: [0],
+  mode: 'lines',
+  name: 'speed',
+  line: {
+    color: 'rgb(219, 65, 64)',
+    width: 1
+  }
+};
+
+let data_speed = [trace_speed];
 
 const log           = document.getElementById('log');
 const joystick      = document.getElementById('joystick');
@@ -246,17 +290,23 @@ async function readLoop() {
         t = data[2];
         speed = data[1];
     
-        for (let i = 0; i < plots.length; i++)
-        {
-          Plotly.extendTraces(plots[i], {y:[[x], [y], [z]]}, [0, 1, 2], size);
-        }
-    
+        // for (let i = 0; i < plots.length; i++)
+        // {
+        //   Plotly.extendTraces(plots[i], {y:[[x], [y], [z]]}, [0, 1, 2], size);
+        // }
+
+        Plotly.extendTraces(plot, {y:[[x], [y], [z]]}, [0, 1, 2], size);
+        Plotly.extendTraces(plot_speed, {y:[[speed]]}, [0], size);
+
         if (trace_x.y.length > size)
           trace_x.y.pop();
         if (trace_y.y.length > size)
           trace_y.y.pop();
         if (trace_z.y.length > size)
           trace_z.y.pop();
+
+        if (trace_speed.y.length > size)
+          trace_speed.y.pop();
       }
       else if (value.substr(0, "config:".length) == "config:") {
         data = value.substr("config:".length).trim().split(separator);
@@ -470,7 +520,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.log("webserial is not supported!")
 
   Plotly.newPlot('plot', data_xyz, layout_xyz, config);
-  plots.push('plot');    
+  Plotly.newPlot('plot_speed', data_speed, layout_speed, config);
+  // plots.push('plot');    
 
   initBaudRate();
   loadAllSettings();
