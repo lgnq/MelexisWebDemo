@@ -443,6 +443,15 @@ async function changeBaudRate() {
     saveSetting('baudrate', baudRate.value);
 }
 
+async function changeSampleFreq() {
+  // Write to output stream
+  const writer = outputStream.getWriter();
+
+  writer.write("mlx90382_ctrl_set_sample_freq " + sampleFreq.value + '\r');
+
+  writer.releaseLock();
+}
+
 async function clickClear() {
   reset();
 
@@ -512,6 +521,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   butInfo.addEventListener('click', clickInfo);
   butReset.addEventListener('click', clickReset);
   zeroposition.addEventListener('keydown', set_zero_position);
+  sampleFreq.addEventListener('change', changeSampleFreq);
 
   if ('serial' in navigator) {
     console.log("webserial is supported!")
