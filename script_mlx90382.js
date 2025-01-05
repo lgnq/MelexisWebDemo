@@ -429,8 +429,8 @@ function set_zero_position(event) {
   const writer = outputStream.getWriter();
 
   if (event.keyCode === 13) {
-    writer.write("mlx90382_ctrl_set_zeroposition " + zeroposition.value + '\r');
-    zeroposition.value = ''
+    writer.write("mlx90382_ops_ctrl 265 " + zeroposition.value + '\r'); //RT_SENSOR_CTRL_USER_CMD_SET_ZEROPOSITION = 265
+    // zeroposition.value = ''
   }
 
   writer.releaseLock();
