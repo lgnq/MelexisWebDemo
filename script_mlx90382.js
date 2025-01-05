@@ -199,6 +199,7 @@ const butStart      = document.getElementById('butStart');
 const butInfo       = document.getElementById('butInfo');
 const butReset      = document.getElementById('butReset');
 const zeroposition  = document.getElementById('zero_position');
+const sensingMode  = document.getElementById('sensingMode');
 
 async function disconnect() {
   if (reader) {
@@ -410,7 +411,7 @@ async function clickInfo() {
   // Write to output stream
   const writer = outputStream.getWriter();
 
-  writer.write("mlx90382_ctrl_get_info\r");
+  writer.write("mlx90382_ops_ctrl 258\r");
 
   writer.releaseLock();
 }
@@ -418,7 +419,7 @@ async function clickInfo() {
 async function clickReset() {
   const writer = outputStream.getWriter();
 
-  writer.write("mlx90382_ctrl_soft_reset\r");
+  writer.write("mlx90382_ops_ctrl 257\r");
 
   writer.releaseLock();
 }
@@ -448,6 +449,15 @@ async function changeSampleFreq() {
   const writer = outputStream.getWriter();
 
   writer.write("mlx90382_ctrl_set_sample_freq " + sampleFreq.value + '\r');
+
+  writer.releaseLock();
+}
+
+async function changeSensingMode() {
+  // Write to output stream
+  const writer = outputStream.getWriter();
+
+  writer.write("mlx90382_ops_ctrl 266 " + sensingMode.value + '\r');
 
   writer.releaseLock();
 }
@@ -522,6 +532,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   butReset.addEventListener('click', clickReset);
   zeroposition.addEventListener('keydown', set_zero_position);
   sampleFreq.addEventListener('change', changeSampleFreq);
+  sensingMode.addEventListener('change', changeSensingMode);
 
   if ('serial' in navigator) {
     console.log("webserial is supported!")
