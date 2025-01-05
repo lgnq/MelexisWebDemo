@@ -94,7 +94,7 @@ let layout_xyz = {
   },
 
   yaxis: {
-    title: 'angle',
+    title: 'angle °',
     showline: false
   },  
 
