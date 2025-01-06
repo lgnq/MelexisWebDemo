@@ -221,15 +221,18 @@ body.sidebar-hidden .main-layout .sidebar {
 }
 
 .main-layout .content-wrapper {
-  padding: 0 1rem;
+  /* padding: 0 1rem; */
+  padding: 0 10px 0 10px;
   overflow-x: hidden;
   width: 100%;
 }
 
 .content-wrapper .video-list {
   display: grid; 
-  gap: 1rem;
-  padding: 1.25rem 0 4rem;
+  /* gap: 1rem; */
+  gap: 10px;
+  /* padding: 1.25rem 0 4rem; */
+  padding: 1.25rem 0 1rem;
   grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
 }
 
