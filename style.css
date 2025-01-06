@@ -147,7 +147,8 @@ body {
 .main-layout .sidebar {
   width: 580px;
   overflow: hidden;
-  padding: 0 0.7rem 0;
+  /* padding: 0 0.7rem 0; */
+  padding: 0 0 0 10px;
   background: var(--white-color);
 }
 
