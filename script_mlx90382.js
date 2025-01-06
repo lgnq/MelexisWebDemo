@@ -565,37 +565,43 @@ var meter = function(p)
     p.rotate(-90);
     
     p.strokeWeight(8);
-    p.stroke(255, 100, 150);
+    p.stroke(0, 53, 75);
+    // p.stroke(255, 100, 150);
     p.noFill();
     // let secondAngle = p.map(sc, 0, 60, 0, 360);
     // p.arc(0, 0, 300, 300, 0, degree);  //degree
     p.arc(0, 0, 300, 300, 0, x); 
 
-    p.stroke(150, 100, 255);
+    p.stroke(101, 187, 169);
+    // p.stroke(150, 100, 255);
     // let minuteAngle = p.map(mn, 0, 60, 0, 360);
     // p.arc(0, 0, 280, 280, 0, minuteAngle);
     p.arc(0, 0, 280, 280, 0, y);
   
-    p.stroke(150, 255, 100);
+    p.stroke(219, 65, 64);
+    // p.stroke(150, 255, 100);
     // let secondAngle = p.map(sc, 0, 60, 0, 360);
     // p.arc(0, 0, 260, 260, 0, secondAngle);
     p.arc(0, 0, 260, 260, 0, z);
 
     p.push();
     p.rotate(x);
-    p.stroke(255, 100, 150);
+    p.stroke(0, 53, 75);
+    // p.stroke(255, 100, 150);
     p.line(0, 0, 100, 0);
     p.pop();
   
     p.push();
     p.rotate(y);
-    p.stroke(150, 100, 255);
+    p.stroke(101, 187, 169);
+    // p.stroke(150, 100, 255);
     p.line(0, 0, 75, 0);
     p.pop();
   
     p.push();
     p.rotate(z);
-    p.stroke(150, 255, 100);
+    p.stroke(219, 65, 64);
+    // p.stroke(150, 255, 100);
     p.line(0, 0, 50, 0);
     p.pop();
 
@@ -616,13 +622,16 @@ var meter = function(p)
     p.noStroke();
     p.textSize(14);
 
-    p.fill(255, 100, 150);
+    p.fill(0, 53, 75);
+    // p.fill(255, 100, 150);
     p.text("LIN_PHASE： " + x + "°", 10, 10, 300, 200);
     
-    p.fill(150, 100, 255);
+    p.fill(101, 187, 169);
+    // p.fill(150, 100, 255);
     p.text("DRIFTC_PHASE： " + y + "°", 10, 30, 300, 200);
 
-    p.fill(150, 255, 100);
+    p.fill(219, 65, 64);
+    // p.fill(150, 255, 100);
     p.text("SC_PHASE： " + z + "°", 10, 50, 300, 200);
 
     p.fill('limegreen');
@@ -654,7 +663,8 @@ var speed_meter = function(p)
     p.rotate(-90);
   
     p.strokeWeight(8);
-    p.stroke(255, 100, 150);
+    p.stroke(219, 65, 64);
+    // p.stroke(255, 100, 150);
     p.noFill();
   
     // let secondAngle = p.map(sc, 0, 60, 0, 360);
@@ -663,7 +673,8 @@ var speed_meter = function(p)
 
     p.push();
     p.rotate(speed);
-    p.stroke(255, 100, 150);
+    p.stroke(219, 65, 64);
+    // p.stroke(255, 100, 150);
     p.line(0, 0, 100, 0);
     p.pop();
 
@@ -684,7 +695,8 @@ var speed_meter = function(p)
     p.noStroke();
     p.textSize(14);
 
-    p.fill(255, 100, 150);
+    p.fill(219, 65, 64);
+    // p.fill(255, 100, 150);
     p.text("SPEED： " + speed, 10, 10, 300, 200);
     
     p.pop();    
