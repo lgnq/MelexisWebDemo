@@ -332,6 +332,22 @@ async function clickStart() {
   writer.releaseLock();
 }
 
+async function clickInfo() {
+  const writer = outputStream.getWriter();
+
+  writer.write("mlx90394_ops_ctrl 258\r");
+
+  writer.releaseLock();
+}
+
+async function clickReset() {
+  const writer = outputStream.getWriter();
+
+  writer.write("mlx90394_ops_ctrl 257\r");
+
+  writer.releaseLock();
+}
+
 function saveSetting(setting, value) {
     window.localStorage.setItem(setting, JSON.stringify(value));
 }
@@ -408,6 +424,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   baudRate.addEventListener('change', changeBaudRate);
   myInput.addEventListener('keydown', writeCmd);
   butStart.addEventListener('click', clickStart);
+  butInfo.addEventListener('click', clickInfo);
+  butReset.addEventListener('click', clickReset);  
 
   if ('serial' in navigator) {
     console.log("webserial is supported!")
