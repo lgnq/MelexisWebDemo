@@ -241,24 +241,34 @@ async function readLoop() {
     if (value) {
       if (value.substr(0, prefix.length) == prefix) {
         data = value.substr(prefix.length).trim().split(separator).map(x=>+x);
+
+        x = data[0];
+        y = data[1];
+        z = data[2];
+    
+        for (let i = 0; i < plots.length; i++)
+        {
+          Plotly.extendTraces(plots[i], {y:[[x], [y], [z]]}, [0, 1, 2], size);
+        }
+    
+        if (trace_x.y.length > size)
+          trace_x.y.pop();
+        if (trace_y.y.length > size)
+          trace_y.y.pop();
+        if (trace_z.y.length > size)
+          trace_z.y.pop();
+      }
+      else if (value.substr(0, "cid:".length) == "cid:") {
+        data = value.substr("cid:".length).trim().split(separator);
+
+        document.getElementById("companyid").innerHTML="0x" + data[0].toString(16).toUpperCase();
+      }
+      else if (value.substr(0, "did:".length) == "did:") {
+        data = value.substr("did:".length).trim().split(separator);
+
+        document.getElementById("deviceid").innerHTML="0x" + data[0].toString(16).toUpperCase();
       }
     }
-
-    x = data[0];
-    y = data[1];
-    z = data[2];
-
-    for (let i = 0; i < plots.length; i++)
-    {
-      Plotly.extendTraces(plots[i], {y:[[x], [y], [z]]}, [0, 1, 2], size);
-    }
-
-    if (trace_x.y.length > size)
-      trace_x.y.pop();
-    if (trace_y.y.length > size)
-      trace_y.y.pop();
-    if (trace_z.y.length > size)
-      trace_z.y.pop();
 
     if (done) {
       console.log('[readLoop] DONE', done);
