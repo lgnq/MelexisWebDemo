@@ -368,6 +368,9 @@ async function changeBaudRate() {
 
 async function clickClear() {
   reset();
+
+  document.getElementById("companyid").innerHTML = "";
+  document.getElementById("deviceid").innerHTML = "";
 }
 
 async function clickAutoscroll() {
