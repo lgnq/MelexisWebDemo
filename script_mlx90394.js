@@ -421,6 +421,11 @@ async function clickClear() {
 
   document.getElementById("companyid").innerHTML = "";
   document.getElementById("deviceid").innerHTML = "";
+  
+  document.getElementById("mlx90394_x_check").checked = false;
+  document.getElementById("mlx90394_y_check").checked = false;
+  document.getElementById("mlx90394_z_check").checked = false;
+  document.getElementById("mlx90394_t_check").checked = false;
 }
 
 async function clickAutoscroll() {
