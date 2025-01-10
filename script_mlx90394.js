@@ -152,6 +152,9 @@ const showTimestamp = document.getElementById('showTimestamp');
 const myInput       = document.getElementById('myInput');
 const sampleSize    = document.getElementById('sampleSize');
 const sampleFreq    = document.getElementById('sampleFreq');
+const butStart      = document.getElementById('butStart');
+const butInfo       = document.getElementById('butInfo');
+const butReset      = document.getElementById('butReset');
 
 async function disconnect() {
   if (reader) {
@@ -310,6 +313,25 @@ async function clickConnect() {
     toggleUIConnected(true);    
 }
 
+async function clickStart() {
+  const writer = outputStream.getWriter();
+    
+  console.log(butStart.innerHTML);
+
+  if (butStart.innerHTML === "Start")
+  {
+    writer.write("mlx90394_measurement_onoff on\r");
+    butStart.innerHTML = "Stop";
+  }
+  else if (butStart.innerHTML === "Stop")
+  {
+    writer.write("mlx90394_measurement_onoff off\r");
+    butStart.innerHTML = "Start";
+  }
+
+  writer.releaseLock();
+}
+
 function saveSetting(setting, value) {
     window.localStorage.setItem(setting, JSON.stringify(value));
 }
@@ -385,6 +407,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   showTimestamp.addEventListener('click', clickTimestamp);
   baudRate.addEventListener('change', changeBaudRate);
   myInput.addEventListener('keydown', writeCmd);
+  butStart.addEventListener('click', clickStart);
 
   if ('serial' in navigator) {
     console.log("webserial is supported!")
