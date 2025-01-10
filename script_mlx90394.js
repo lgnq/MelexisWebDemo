@@ -341,10 +341,32 @@ async function readLoop() {
       else if (value.substr(0, "mode:".length) == "mode:") {
         data = value.substr("mode:".length).trim().split(separator);
 
-        if (data[0] == 1)
-        {
-          document.getElementById("application_mode").value=data[0];
-        }
+        document.getElementById("application_mode").value=data[0];
+      }
+      else if (value.substr(0, "range:".length) == "range:") {
+        data = value.substr("range:".length).trim().split(separator);
+
+        document.getElementById("range_config").value=data[0];
+      }
+      else if (value.substr(0, "digfltxy:".length) == "digfltxy:") {
+        data = value.substr("digfltxy:".length).trim().split(separator);
+
+        document.getElementById("dig_filt_xy").value=data[0];
+      }
+      else if (value.substr(0, "digfltz:".length) == "digfltz:") {
+        data = value.substr("digfltz:".length).trim().split(separator);
+
+        document.getElementById("dig_filt_z").value=data[0];
+      }
+      else if (value.substr(0, "digflttemp:".length) == "digflttemp:") {
+        data = value.substr("digflttemp:".length).trim().split(separator);
+
+        document.getElementById("dig_filt_t").value=data[0];
+      }
+      else if (value.substr(0, "wocmode:".length) == "wocmode:") {
+        data = value.substr("wocmode:".length).trim().split(separator);
+
+        document.getElementById("woc_mode").value=data[0];
       }
     }
 
