@@ -268,6 +268,56 @@ async function readLoop() {
 
         document.getElementById("deviceid").innerHTML="0x" + data[0].toString(16).toUpperCase();
       }
+      else if (value.substr(0, "xonoff:".length) == "xonoff:") {
+        data = value.substr("xonoff:".length).trim().split(separator);
+
+        if (data[0] == 1)
+        {
+          document.getElementById("mlx90394_x_check").checked=true;
+        }
+        else
+          document.getElementById("mlx90394_x_check").checked=false;
+      }
+      else if (value.substr(0, "xonoff:".length) == "xonoff:") {
+        data = value.substr("xonoff:".length).trim().split(separator);
+
+        if (data[0] == 1)
+        {
+          document.getElementById("mlx90394_x_check").checked=true;
+        }
+        else
+          document.getElementById("mlx90394_x_check").checked=false;
+      }
+      else if (value.substr(0, "yonoff:".length) == "yonoff:") {
+        data = value.substr("yonoff:".length).trim().split(separator);
+
+        if (data[0] == 1)
+        {
+          document.getElementById("mlx90394_y_check").checked=true;
+        }
+        else
+          document.getElementById("mlx90394_y_check").checked=false;
+      }
+      else if (value.substr(0, "zonoff:".length) == "zonoff:") {
+        data = value.substr("zonoff:".length).trim().split(separator);
+
+        if (data[0] == 1)
+        {
+          document.getElementById("mlx90394_z_check").checked=true;
+        }
+        else
+          document.getElementById("mlx90394_z_check").checked=false;
+      }
+      else if (value.substr(0, "tonoff:".length) == "tonoff:") {
+        data = value.substr("tonoff:".length).trim().split(separator);
+
+        if (data[0] == 1)
+        {
+          document.getElementById("mlx90394_t_check").checked=true;
+        }
+        else
+          document.getElementById("mlx90394_t_check").checked=false;
+      }
     }
 
     if (done) {
