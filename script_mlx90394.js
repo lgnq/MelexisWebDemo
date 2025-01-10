@@ -338,6 +338,14 @@ async function readLoop() {
         else
           document.getElementById("mlx90394_osr_temp_0").checked=true;
       }
+      else if (value.substr(0, "mode:".length) == "mode:") {
+        data = value.substr("mode:".length).trim().split(separator);
+
+        if (data[0] == 1)
+        {
+          document.getElementById("application_mode").value=data[0];
+        }
+      }
     }
 
     if (done) {
