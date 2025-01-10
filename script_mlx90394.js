@@ -318,6 +318,26 @@ async function readLoop() {
         else
           document.getElementById("mlx90394_t_check").checked=false;
       }
+      else if (value.substr(0, "osrhall:".length) == "osrhall:") {
+        data = value.substr("osrhall:".length).trim().split(separator);
+
+        if (data[0] == 1)
+        {
+          document.getElementById("mlx90394_osr_hall_1").checked=true;
+        }
+        else
+          document.getElementById("mlx90394_osr_hall_0").checked=true;
+      }
+      else if (value.substr(0, "osrtemp:".length) == "osrtemp:") {
+        data = value.substr("osrtemp:".length).trim().split(separator);
+
+        if (data[0] == 1)
+        {
+          document.getElementById("mlx90394_osr_temp_1").checked=true;
+        }
+        else
+          document.getElementById("mlx90394_osr_temp_0").checked=true;
+      }
     }
 
     if (done) {
