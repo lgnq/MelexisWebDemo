@@ -547,6 +547,7 @@ async function clickInfo() {
 async function clickReset() {
   const writer = outputStream.getWriter();
 
+  //RT_SENSOR_CTRL_USER_CMD_RESET 257
   writer.write("mlx90394_ops_ctrl 257\r");
 
   writer.releaseLock();
