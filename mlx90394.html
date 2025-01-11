@@ -202,7 +202,7 @@
             </select>   
 
             <label for="dig_filt_xy">DIG_FILT_XY:</label>
-            <select name="dig_filt_xy" id="dig_filt_xy">
+            <select name="dig_filt_xy" id="dig_filt_xy" onchange="filt_xy_onchange(this)">
               <option value="0">0 0.113/0.220ms@OSR_H</option>
               <option value="1">1 0.167/0.327ms@OSR_H</option>
               <option value="2">2 0.273/0.540ms@OSR_H</option>
@@ -214,7 +214,7 @@
             </select>   
 
             <label for="dig_filt_z">DIG_FILT_Z:</label>
-            <select name="dig_filt_z" id="dig_filt_z">
+            <select name="dig_filt_z" id="dig_filt_z" onchange="filt_z_onchange(this)">
               <option value="0">0 0.113/0.220ms@OSR_H</option>
               <option value="1">1 0.167/0.327ms@OSR_H</option>
               <option value="2">2 0.273/0.540ms@OSR_H</option>
@@ -226,7 +226,7 @@
             </select>   
 
             <label for="dig_filt_t">DIG_FILT_T:</label>
-            <select name="dig_filt_t" id="dig_filt_t">
+            <select name="dig_filt_t" id="dig_filt_t" onchange="filt_t_onchange(this)">
               <option value="0">0 0.113/0.220ms@OSR_T</option>
               <option value="1">1 0.167/0.327ms@OSR_T</option>
               <option value="2">2 0.273/0.540ms@OSR_T</option>
@@ -238,7 +238,7 @@
             </select>   
 
             <label for="woc_mode">WOC Mode:</label>
-            <select name="woc_mode" id="woc_mode">
+            <select name="woc_mode" id="woc_mode" onchange="woc_mode_onchange(this)">
               <option value="0">0 Difference than 1st</option>
               <option value="1">1 Difference than previous</option>
               <option value="2">2 Absolute mode</option>

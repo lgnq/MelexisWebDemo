@@ -428,6 +428,50 @@ async function range_onchange(element) {
   writer.releaseLock();
 }
 
+async function filt_xy_onchange(element) {
+  var selectIndex = element.selectedIndex;
+
+  const writer = outputStream.getWriter();
+
+  //RT_SENSOR_CTRL_USER_CMD_SET_FILT_XY 265
+  writer.write("mlx90394_ops_ctrl 265 " + selectIndex + "\r");
+
+  writer.releaseLock();
+}
+
+async function filt_z_onchange(element) {
+  var selectIndex = element.selectedIndex;
+
+  const writer = outputStream.getWriter();
+
+  //RT_SENSOR_CTRL_USER_CMD_SET_FILT_Z 266
+  writer.write("mlx90394_ops_ctrl 266 " + selectIndex + "\r");
+
+  writer.releaseLock();
+}
+
+async function filt_t_onchange(element) {
+  var selectIndex = element.selectedIndex;
+
+  const writer = outputStream.getWriter();
+
+  //RT_SENSOR_CTRL_USER_CMD_SET_FILT_T 267
+  writer.write("mlx90394_ops_ctrl 267 " + selectIndex + "\r");
+
+  writer.releaseLock();
+}
+
+async function woc_mode_onchange(element) {
+  var selectIndex = element.selectedIndex;
+
+  const writer = outputStream.getWriter();
+
+  //RT_SENSOR_CTRL_USER_CMD_SET_WOC_MODE 268
+  writer.write("mlx90394_ops_ctrl 268 " + selectIndex + "\r");
+
+  writer.releaseLock();
+}
+
 async function connect() {
   // - Request a port and open a connection.
   port = await navigator.serial.requestPort();
