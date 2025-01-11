@@ -406,6 +406,18 @@ async function checkbox_fun(element) {
   writer.releaseLock();
 }
 
+async function mode_onchange(element) {
+  var checkBox = element;
+  var selectIndex = element.selectedIndex;
+
+  const writer = outputStream.getWriter();
+
+  //RT_SENSOR_CTRL_USER_CMD_SET_MODE 263
+  writer.write("mlx90394_ops_ctrl 263 " + selectIndex + "\r");
+
+  writer.releaseLock();
+}
+
 async function connect() {
   // - Request a port and open a connection.
   port = await navigator.serial.requestPort();
