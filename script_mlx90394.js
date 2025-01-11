@@ -570,6 +570,13 @@ async function clickClear() {
   document.getElementById("mlx90394_y_check").checked = false;
   document.getElementById("mlx90394_z_check").checked = false;
   document.getElementById("mlx90394_t_check").checked = false;
+
+  document.getElementById("application_mode").value = 0;
+  document.getElementById("range_config").value = 0;
+  document.getElementById("dig_filt_xy").value = 0;
+  document.getElementById("dig_filt_z").value = 0;
+  document.getElementById("dig_filt_t").value = 0;
+  document.getElementById("woc_mode").value = 0;
 }
 
 async function clickAutoscroll() {
