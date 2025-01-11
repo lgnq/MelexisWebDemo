@@ -407,13 +407,23 @@ async function checkbox_fun(element) {
 }
 
 async function mode_onchange(element) {
-  var checkBox = element;
   var selectIndex = element.selectedIndex;
 
   const writer = outputStream.getWriter();
 
   //RT_SENSOR_CTRL_USER_CMD_SET_MODE 263
   writer.write("mlx90394_ops_ctrl 263 " + selectIndex + "\r");
+
+  writer.releaseLock();
+}
+
+async function range_onchange(element) {
+  var selectIndex = element.selectedIndex;
+
+  const writer = outputStream.getWriter();
+
+  //RT_SENSOR_CTRL_USER_CMD_SET_RANGE 264
+  writer.write("mlx90394_ops_ctrl 264 " + selectIndex + "\r");
 
   writer.releaseLock();
 }
