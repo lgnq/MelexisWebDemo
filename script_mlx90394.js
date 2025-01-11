@@ -378,19 +378,29 @@ async function readLoop() {
   }
 }
 
-async function checkbox_x(element)
-{
+async function checkbox_fun(element) {
   var checkBox = element;
   const writer = outputStream.getWriter();
 
-  // If the checkbox is checked, display the output text
-  if (checkBox.checked == true)
-  {
-    writer.write("mlx90394_ops_ctrl 259 1\r");  
+  if (checkBox.checked == true) {
+    if (checkBox.id === "mlx90394_x_check")
+      writer.write("mlx90394_ops_ctrl 259 1\r");
+    else if (checkBox.id === "mlx90394_y_check")  
+      writer.write("mlx90394_ops_ctrl 260 1\r");
+    else if (checkBox.id === "mlx90394_z_check")  
+      writer.write("mlx90394_ops_ctrl 261 1\r");
+    else if (checkBox.id === "mlx90394_t_check")  
+      writer.write("mlx90394_ops_ctrl 262 1\r");
   } 
-  else 
-  {
-    writer.write("mlx90394_ops_ctrl 259 0\r");  
+  else {
+    if (checkBox.id === "mlx90394_x_check")
+      writer.write("mlx90394_ops_ctrl 259 0\r");
+    else if (checkBox.id === "mlx90394_y_check")  
+      writer.write("mlx90394_ops_ctrl 260 0\r");
+    else if (checkBox.id === "mlx90394_z_check")  
+      writer.write("mlx90394_ops_ctrl 261 0\r");
+    else if (checkBox.id === "mlx90394_t_check")  
+      writer.write("mlx90394_ops_ctrl 262 0\r");
   }
 
   writer.releaseLock();
