@@ -472,6 +472,24 @@ async function woc_mode_onchange(element) {
   writer.releaseLock();
 }
 
+async function osr_hall_onclick(element) {
+  const writer = outputStream.getWriter();
+
+  //RT_SENSOR_CTRL_USER_CMD_SET_OSR_HALL 269
+  writer.write("mlx90394_ops_ctrl 269 " + element.value + "\r");
+
+  writer.releaseLock();
+}
+
+async function osr_temp_onclick(element) {
+  const writer = outputStream.getWriter();
+
+  //RT_SENSOR_CTRL_USER_CMD_SET_OSR_TEMP 270
+  writer.write("mlx90394_ops_ctrl 270 " + element.value + "\r");
+
+  writer.releaseLock();
+}
+
 async function connect() {
   // - Request a port and open a connection.
   port = await navigator.serial.requestPort();
