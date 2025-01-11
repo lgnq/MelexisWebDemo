@@ -378,6 +378,24 @@ async function readLoop() {
   }
 }
 
+async function checkbox_x(element)
+{
+  var checkBox = element;
+  const writer = outputStream.getWriter();
+
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true)
+  {
+    writer.write("mlx90394_ops_ctrl 259 1\r");  
+  } 
+  else 
+  {
+    writer.write("mlx90394_ops_ctrl 259 0\r");  
+  }
+
+  writer.releaseLock();
+}
+
 async function connect() {
   // - Request a port and open a connection.
   port = await navigator.serial.requestPort();
