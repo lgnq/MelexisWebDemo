@@ -59,6 +59,13 @@ let sensitivity = 0.15;
 let alpha = 0;
 let beta  = 0;
 
+let displacement = 0;
+let heading = 0;
+
+let angle_xy = 0;
+let angle_xz = 0;
+let angle_yz = 0;
+
 let size = 300;
 let freq = 10;
 
@@ -247,6 +254,33 @@ async function readLoop() {
         x = data[0] * sensitivity;
         y = data[1] * sensitivity;
         z = data[2] * sensitivity;
+
+        displacement = Math.atan(Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2)) / z);
+        heading      = Math.atan2(y, x);
+    
+        angle_xy = Math.atan2(y, x);
+    
+        if (angle_xy < 0)
+          angle_xy += 2*Math.PI;
+      
+        angle_xy = (angle_xy / Math.PI) * 180;  
+    
+        angle_xz = Math.atan2(z, x);
+    
+        if (angle_xz < 0)
+          angle_xz += 2*Math.PI;
+      
+        angle_xz = (angle_xz / Math.PI) * 180;  
+        
+        angle_yz = Math.atan2(z, y);
+    
+        if (angle_yz < 0)
+          angle_yz += 2*Math.PI;
+      
+        angle_yz = (angle_yz / Math.PI) * 180;  
+        
+        alpha = angle_xz.toFixed(3);
+        beta  = angle_yz.toFixed(3);
 
         for (let i = 0; i < plots.length; i++)
         {
