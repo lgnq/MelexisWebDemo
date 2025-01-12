@@ -54,6 +54,8 @@ let x = 0;
 let y = 0;
 let z = 0;
 
+let sensitivity = 0.15;
+
 let alpha = 0;
 let beta  = 0;
 
@@ -242,10 +244,10 @@ async function readLoop() {
       if (value.substr(0, prefix.length) == prefix) {
         data = value.substr(prefix.length).trim().split(separator).map(x=>+x);
 
-        x = data[0];
-        y = data[1];
-        z = data[2];
-    
+        x = data[0] * sensitivity;
+        y = data[1] * sensitivity;
+        z = data[2] * sensitivity;
+
         for (let i = 0; i < plots.length; i++)
         {
           Plotly.extendTraces(plots[i], {y:[[x], [y], [z]]}, [0, 1, 2], size);
@@ -347,6 +349,23 @@ async function readLoop() {
         data = value.substr("range:".length).trim().split(separator);
 
         document.getElementById("range_config").value=data[0];
+
+        if (data[0] == 0)
+        {
+          sensitivity = 1.5;
+        }
+        else if (data[0] == 1)
+        {
+          sensitivity = 1.5;
+        }
+        else if (data[0] == 2)
+        {
+          sensitivity = 0.15;
+        }
+        else if (data[0] == 3)
+        {
+          sensitivity = 1.5;
+        }
       }
       else if (value.substr(0, "digfltxy:".length) == "digfltxy:") {
         data = value.substr("digfltxy:".length).trim().split(separator);
@@ -419,6 +438,23 @@ async function mode_onchange(element) {
 
 async function range_onchange(element) {
   var selectIndex = element.selectedIndex;
+
+  if (selectIndex == 0)
+  {
+    sensitivity = 1.5;
+  }
+  else if (selectIndex == 1)
+  {
+    sensitivity = 1.5;
+  }
+  else if (selectIndex == 2)
+  {
+    sensitivity = 0.15;
+  }
+  else if (selectIndex == 3)
+  {
+    sensitivity = 1.5;
+  }
 
   const writer = outputStream.getWriter();
 
