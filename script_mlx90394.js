@@ -54,7 +54,7 @@ let x = 0;
 let y = 0;
 let z = 0;
 
-let sensitivity = 0.15;
+let sensitivity = 1.5;
 
 let alpha = 0;
 let beta  = 0;
@@ -101,7 +101,7 @@ let layout_xyz = {
   },
 
   yaxis: {
-    title: 'value',
+    title: 'Magnetic flux(uT)',
     showline: false
   },  
 
