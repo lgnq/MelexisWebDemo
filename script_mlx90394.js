@@ -151,6 +151,63 @@ let trace_z = {
 
 let data_xyz = [trace_x, trace_y, trace_z];
 
+let layout_ab = {
+  autosize: true,
+  // margin: { t: 5, b: 5, l: 5, r: 5 },
+
+  title: {
+    text: 'plot alpha&beta',
+    font: {
+        // family: 'Arial, monospace',
+        family: 'Arial, sans-serif', // Set the font family to Arial
+        size: 20
+    },
+    yref: 'paper',
+    automargin: true,
+  },
+  
+  xaxis: {
+    title: 'time',
+    showgrid: false,
+    zeroline: false
+  },
+
+  yaxis: {
+    title: 'angle',
+    showline: false
+  },  
+
+  plot_bgcolor: 'rgba(255, 255, 255, 0)', // 设置图表背景透明
+  paper_bgcolor: 'rgba(255, 255, 255, 0)', // 设置画布背景透明  
+};
+
+let trace_a = {
+  // type: 'scattergl',
+  // x: [0],
+  y: [0],
+  mode: 'lines',
+  name: 'alpha',
+  // fill: 'tozeroy',
+  line: {
+    color: 'rgb(0, 53, 75)',
+    width: 1
+  }
+};
+
+let trace_b = {
+  // type: 'line',
+  // x: [0],
+  y: [0],
+  mode: 'lines',
+  name: 'beta',
+  line: {
+    color: 'rgb(101, 187, 169)',
+    width: 1
+  }
+};
+
+let data_ab = [trace_a, trace_b];
+
 const log           = document.getElementById('log');
 const joystick      = document.getElementById('joystick');
 const butConnect    = document.getElementById('butConnect');
@@ -286,6 +343,8 @@ async function readLoop() {
         {
           Plotly.extendTraces(plots[i], {y:[[x], [y], [z]]}, [0, 1, 2], size);
         }
+
+        Plotly.extendTraces(plot_ab, {y:[[alpha], [beta]]}, [0, 1], size);
     
         if (trace_x.y.length > size)
           trace_x.y.pop();
@@ -293,6 +352,11 @@ async function readLoop() {
           trace_y.y.pop();
         if (trace_z.y.length > size)
           trace_z.y.pop();
+
+        if (trace_a.y.length > size)
+          trace_a.y.pop();
+        if (trace_b.y.length > size)
+          trace_b.y.pop();
       }
       else if (value.substr(0, "cid:".length) == "cid:") {
         data = value.substr("cid:".length).trim().split(separator);
@@ -743,6 +807,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   Plotly.newPlot('plot', data_xyz, layout_xyz, config);
   plots.push('plot');    
+
+  Plotly.newPlot('plot_ab', data_ab, layout_ab, config);
 
   initBaudRate();
   loadAllSettings();
