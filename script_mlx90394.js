@@ -872,3 +872,66 @@ var j = function(p)
 }
 
 var myp5 = new p5(j, 'joystick');
+
+var ab_meter = function(p)
+{
+  p.setup = function() 
+  {
+    p.createCanvas((log.offsetWidth), (log.offsetHeight));
+    p.angleMode(p.DEGREES);
+
+    p.textSize(20);
+  }
+
+  p.draw = function() 
+  {
+    p.background(0xF0, 0xF0, 0xF0)
+    p.translate(p.width/2, p.height/2);
+    p.rotate(-90);
+  
+    p.strokeWeight(8);
+    p.stroke(219, 65, 64);
+    // p.stroke(255, 100, 150);
+    p.noFill();
+  
+    // let secondAngle = p.map(sc, 0, 60, 0, 360);
+    // p.arc(0, 0, 300, 300, 0, degree);  //degree
+    p.arc(0, 0, 300, 300, 0, alpha); 
+
+    p.push();
+    p.rotate(alpha);
+    p.stroke(219, 65, 64);
+    // p.stroke(255, 100, 150);
+    p.line(0, 0, 100, 0);
+    p.pop();
+
+    // Tick markers around perimeter of clock
+    p.push();
+    p.stroke(255, 255, 255);
+    p.strokeWeight(4);
+    for (let ticks = 0; ticks < 60; ticks += 1) 
+    {
+      p.point(0, 160);
+      p.rotate(6);
+    }
+    p.pop();
+    
+    p.push();
+    p.resetMatrix();
+
+    p.noStroke();
+    p.textSize(14);
+
+    p.fill(219, 65, 64);
+    // p.fill(255, 100, 150);
+    p.text("Alpha： " + alpha, 10, 10, 300, 200);
+    
+    p.pop();    
+  }
+
+  p.windowResized = function() 
+  {
+      p.setup();
+  }
+}
+var ab_meter_obj = new p5(ab_meter, 'alphabeta');
