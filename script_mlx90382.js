@@ -448,7 +448,7 @@ async function changeSampleFreq() {
   // Write to output stream
   const writer = outputStream.getWriter();
 
-  writer.write("mlx90382_ctrl_set_sample_freq " + sampleFreq.value + '\r');
+  writer.write("mlx90382_set_sample_freq " + sampleFreq.value + '\r');
 
   writer.releaseLock();
 }
