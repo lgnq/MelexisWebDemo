@@ -216,7 +216,6 @@ const autoscroll    = document.getElementById('autoscroll');
 const showTimestamp = document.getElementById('showTimestamp');
 const myInput       = document.getElementById('myInput');
 const sampleSize    = document.getElementById('sampleSize');
-const sampleFreq    = document.getElementById('sampleFreq');
 const butStart      = document.getElementById('butStart');
 const butInfo       = document.getElementById('butInfo');
 const butReset      = document.getElementById('butReset');
