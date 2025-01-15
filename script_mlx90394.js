@@ -521,6 +521,10 @@ async function checkbox_fun(element) {
   writer.releaseLock();
 }
 
+async function size_onchange(element) {
+  size = element.value;
+}
+
 async function freq_onchange(element) {
   const writer = outputStream.getWriter();
 
@@ -815,6 +819,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   plots.push('plot');    
 
   Plotly.newPlot('plot_ab', data_ab, layout_ab, config);
+
+  size = document.getElementById("sampleSize").value;
 
   initBaudRate();
   loadAllSettings();
