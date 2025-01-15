@@ -524,11 +524,9 @@ async function checkbox_fun(element) {
 }
 
 async function freq_onchange(element) {
-  var selectIndex = element.selectedIndex;
-
   const writer = outputStream.getWriter();
 
-  writer.write("mlx90394_set_sample_freq " + selectIndex + "\r");
+  writer.write("mlx90394_set_sample_freq " + element.value + "\r");
 
   writer.releaseLock();
 }
