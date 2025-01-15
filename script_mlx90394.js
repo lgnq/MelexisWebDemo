@@ -932,7 +932,7 @@ var ab_meter = function(p)
 
     p.fill(219, 65, 64);
     // p.fill(255, 100, 150);
-    p.text("Alpha： " + alpha, 10, 10, 300, 200);
+    p.text("Alpha： " + alpha + "°", 10, 10, 300, 200);
     
     p.pop();    
   }
