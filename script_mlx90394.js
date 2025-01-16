@@ -213,7 +213,6 @@ const baudRate      = document.getElementById('baudRate');
 const autoscroll    = document.getElementById('autoscroll');
 const showTimestamp = document.getElementById('showTimestamp');
 const myInput       = document.getElementById('myInput');
-const sampleSize    = document.getElementById('sampleSize');
 const butStart      = document.getElementById('butStart');
 
 async function disconnect() {
