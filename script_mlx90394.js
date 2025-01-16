@@ -208,9 +208,7 @@ let trace_b = {
 let data_ab = [trace_a, trace_b];
 
 const log           = document.getElementById('log');
-const joystick      = document.getElementById('joystick');
 const butConnect    = document.getElementById('butConnect');
-const butClear      = document.getElementById('butClear');
 const baudRate      = document.getElementById('baudRate');
 const autoscroll    = document.getElementById('autoscroll');
 const showTimestamp = document.getElementById('showTimestamp');
@@ -800,7 +798,6 @@ function loadAllSettings() {
 document.addEventListener('DOMContentLoaded', async () => {
   butConnect.addEventListener('click', clickConnect);
   baudRate.addEventListener('change', changeBaudRate);
-  butClear.addEventListener('click', clickClear);
   autoscroll.addEventListener('click', clickAutoscroll);
   showTimestamp.addEventListener('click', clickTimestamp);
   baudRate.addEventListener('change', changeBaudRate);
