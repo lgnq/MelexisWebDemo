@@ -215,7 +215,6 @@ const showTimestamp = document.getElementById('showTimestamp');
 const myInput       = document.getElementById('myInput');
 const sampleSize    = document.getElementById('sampleSize');
 const butStart      = document.getElementById('butStart');
-const butInfo       = document.getElementById('butInfo');
 
 async function disconnect() {
   if (reader) {
@@ -801,8 +800,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   showTimestamp.addEventListener('click', clickTimestamp);
   baudRate.addEventListener('change', changeBaudRate);
   myInput.addEventListener('keydown', writeCmd);
-  butStart.addEventListener('click', clickStart);
-  butInfo.addEventListener('click', clickInfo);
 
   if ('serial' in navigator) {
     console.log("webserial is supported!")
