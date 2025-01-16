@@ -216,7 +216,6 @@ const myInput       = document.getElementById('myInput');
 const sampleSize    = document.getElementById('sampleSize');
 const butStart      = document.getElementById('butStart');
 const butInfo       = document.getElementById('butInfo');
-const butReset      = document.getElementById('butReset');
 
 async function disconnect() {
   if (reader) {
@@ -804,7 +803,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   myInput.addEventListener('keydown', writeCmd);
   butStart.addEventListener('click', clickStart);
   butInfo.addEventListener('click', clickInfo);
-  butReset.addEventListener('click', clickReset);  
 
   if ('serial' in navigator) {
     console.log("webserial is supported!")
