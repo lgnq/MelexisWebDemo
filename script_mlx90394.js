@@ -83,7 +83,7 @@ let layout_xyz = {
   // margin: { t: 5, b: 5, l: 5, r: 5 },
 
   title: {
-    text: 'plot all the data',
+    text: 'XYZ',
     font: {
         // family: 'Arial, monospace',
         family: 'Arial, sans-serif', // Set the font family to Arial
@@ -106,9 +106,6 @@ let layout_xyz = {
 
   plot_bgcolor: 'rgba(255, 255, 255, 0)', // 设置图表背景透明
   paper_bgcolor: 'rgba(255, 255, 255, 0)', // 设置画布背景透明  
-  // plot_bgcolor: 'rgba(178, 196, 203, 0)', // 设置图表背景透明
-  // paper_bgcolor: 'rgba(178, 196, 203, 0.8)', // 设置画布背景透明  
-
 };
 
 let trace_x = {
@@ -155,7 +152,7 @@ let layout_ab = {
   // margin: { t: 5, b: 5, l: 5, r: 5 },
 
   title: {
-    text: 'plot alpha&beta',
+    text: 'Alpha & Beta',
     font: {
         // family: 'Arial, monospace',
         family: 'Arial, sans-serif', // Set the font family to Arial
