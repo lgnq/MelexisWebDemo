@@ -898,11 +898,24 @@ var ab_meter = function(p)
     // p.arc(0, 0, 300, 300, 0, degree);  //degree
     p.arc(0, 0, 300, 300, 0, alpha); 
 
+    p.stroke(101, 187, 169);
+    // p.stroke(150, 100, 255);
+    // let minuteAngle = p.map(mn, 0, 60, 0, 360);
+    // p.arc(0, 0, 280, 280, 0, minuteAngle);
+    p.arc(0, 0, 280, 280, 0, beta);
+
     p.push();
     p.rotate(alpha);
     p.stroke(219, 65, 64);
     // p.stroke(255, 100, 150);
     p.line(0, 0, 100, 0);
+    p.pop();
+
+    p.push();
+    p.rotate(beta);
+    p.stroke(101, 187, 169);
+    // p.stroke(150, 100, 255);
+    p.line(0, 0, 75, 0);
     p.pop();
 
     // Tick markers around perimeter of clock
@@ -923,8 +936,10 @@ var ab_meter = function(p)
     p.textSize(14);
 
     p.fill(219, 65, 64);
-    // p.fill(255, 100, 150);
     p.text("Alpha： " + alpha + "°", 10, 10, 300, 200);
+
+    p.fill(101, 187, 169);
+    p.text("Beta： "  + beta  + "°", 10, 30, 300, 200);
     
     p.pop();    
   }
