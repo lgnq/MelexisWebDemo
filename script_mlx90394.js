@@ -185,7 +185,7 @@ let trace_a = {
   name: 'alpha',
   // fill: 'tozeroy',
   line: {
-    color: 'rgb(0, 53, 75)',
+    color: 'rgb(219, 65, 64)',
     width: 1
   }
 };
