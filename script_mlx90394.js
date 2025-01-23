@@ -698,6 +698,9 @@ async function clickInfo() {
   writer.releaseLock();
 }
 
+async function clickShow() {
+}
+
 async function clickReset() {
   const writer = outputStream.getWriter();
 
