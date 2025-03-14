@@ -106,7 +106,7 @@ let trace_x = {
   // x: [0],
   y: [0],
   mode: 'lines',
-  name: 'lin_phase',
+  name: 'phase_lin',
   // fill: 'tozeroy',
   line: {
     color: 'rgb(0, 53, 75)',
@@ -119,7 +119,7 @@ let trace_y = {
   // x: [0],
   y: [0],
   mode: 'lines',
-  name: 'driftc_phase',
+  name: 'phase_driftc',
   line: {
     color: 'rgb(101, 187, 169)',
     width: 1
@@ -131,7 +131,7 @@ let trace_z = {
   // x: [0],
   y: [0],
   mode: 'lines',
-  name: 'sc_phase',
+  name: 'phase_sc',
   line: {
     color: 'rgb(219, 65, 64)',
     width: 1
@@ -623,15 +623,15 @@ var meter = function(p)
 
     p.fill(0, 53, 75);
     // p.fill(255, 100, 150);
-    p.text("LIN_PHASE： " + x + "°", 10, 10, 300, 200);
+    p.text("PHASE_LIN： " + x + "°", 10, 10, 300, 200);
     
     p.fill(101, 187, 169);
     // p.fill(150, 100, 255);
-    p.text("DRIFTC_PHASE： " + y + "°", 10, 30, 300, 200);
+    p.text("PHASE_DRIFTC： " + y + "°", 10, 30, 300, 200);
 
     p.fill(219, 65, 64);
     // p.fill(150, 255, 100);
-    p.text("SC_PHASE： " + z + "°", 10, 50, 300, 200);
+    p.text("PHASE_SC： " + z + "°", 10, 50, 300, 200);
 
     p.fill('limegreen');
     p.text("Temperature： " + t + "°", 10, 70, 300, 200);
