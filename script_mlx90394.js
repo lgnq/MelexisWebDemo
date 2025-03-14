@@ -68,6 +68,9 @@ let angle_yz = 0;
 
 let size = 300;
 
+let formula_alpha;
+let formula_beta;
+
 const maxLogLength  = 50;
 const baudRates     = [1200, 2400, 4800, 9600, 19200, 38400, 57600, 74880, 115200, 230400, 250000, 500000, 1000000, 2000000];
 
@@ -312,14 +315,16 @@ async function readLoop() {
       
         angle_xy = (angle_xy / Math.PI) * 180;  
     
-        angle_xz = Math.atan2(z, x);
+        // angle_xz = Math.atan2(z, x);
+        angle_xz = eval(formula_alpha);
     
         if (angle_xz < 0)
           angle_xz += 2*Math.PI;
       
         angle_xz = (angle_xz / Math.PI) * 180;  
         
-        angle_yz = Math.atan2(z, y);
+        // angle_yz = Math.atan2(z, y);
+        angle_yz = eval(formula_beta);
     
         if (angle_yz < 0)
           angle_yz += 2*Math.PI;
@@ -515,6 +520,18 @@ async function checkbox_fun(element) {
 
 async function size_onchange(element) {
   size = element.value;
+}
+
+async function formula_alpha_onchange(element) {
+  formula_alpha = element.value;
+
+  console.log(eval(formula_alpha));
+}
+
+async function formula_beta_onchange(element) {
+  formula_beta = element.value;
+
+  console.log(eval(formula_beta));
 }
 
 async function freq_onchange(element) {
@@ -812,6 +829,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   Plotly.newPlot('plot_ab', data_ab, layout_ab, config);
 
   size = document.getElementById("sampleSize").value;
+
+  formula_alpha = document.getElementById("formula_alpha").value;
+  formula_beta  = document.getElementById("formula_beta").value;
 
   initBaudRate();
   loadAllSettings();
