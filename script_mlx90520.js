@@ -410,7 +410,7 @@ async function clickInfo() {
   // Write to output stream
   const writer = outputStream.getWriter();
 
-  writer.write("ECHO hello\r");
+  writer.write("INFO all\r");
 
   writer.releaseLock();
 }
