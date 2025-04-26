@@ -196,6 +196,7 @@ const sampleSize    = document.getElementById('sampleSize');
 const sampleFreq    = document.getElementById('sampleFreq');
 const butStart      = document.getElementById('butStart');
 const butInfo       = document.getElementById('butInfo');
+const butSave       = document.getElementById('butSave');
 const butReset      = document.getElementById('butReset');
 const zeroposition  = document.getElementById('zero_position');
 const sensingMode  = document.getElementById('sensingMode');
@@ -415,6 +416,15 @@ async function clickInfo() {
   writer.releaseLock();
 }
 
+async function clickSave() {
+  // Write to output stream
+  const writer = outputStream.getWriter();
+
+  writer.write("SAVE all\r");
+
+  writer.releaseLock();
+}
+
 async function clickReset() {
   const writer = outputStream.getWriter();
 
@@ -528,6 +538,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   myInput.addEventListener('keydown', writeCmd);
   butStart.addEventListener('click', clickStart);
   butInfo.addEventListener('click', clickInfo);
+  butSave.addEventListener('click', clickSave);
   butReset.addEventListener('click', clickReset);
   zeroposition.addEventListener('keydown', set_zero_position);
   sampleFreq.addEventListener('change', changeSampleFreq);
