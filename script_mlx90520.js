@@ -199,7 +199,7 @@ const butInfo       = document.getElementById('butInfo');
 const butSave       = document.getElementById('butSave');
 const butReset      = document.getElementById('butReset');
 const zeroposition  = document.getElementById('zero_position');
-const sensingMode  = document.getElementById('sensingMode');
+const ver_cfg       = document.getElementById('ver_cfg');
 
 async function disconnect() {
   if (reader) {
@@ -327,6 +327,11 @@ async function readLoop() {
         data = value.substr("dversion:".length).trim().split(separator);
 
         document.getElementById("digital_version").innerHTML="MLX" + data[0].toString(16).toUpperCase();
+      }
+      else if (value.substr(0, "ver_cfg:".length) == "ver_cfg:") {
+        data = value.substr("ver_cfg:".length).trim().split(separator);
+
+        document.getElementById("ver_cfg").value = data[0];
       }
       else if (value.substr(0, "zeroposition:".length) == "zeroposition:") {
         data = value.substr("zeroposition:".length).trim().split(separator);
@@ -462,11 +467,11 @@ async function changeSampleFreq() {
   writer.releaseLock();
 }
 
-async function changeSensingMode() {
+async function change_ver_cfg() {
   // Write to output stream
   const writer = outputStream.getWriter();
 
-  writer.write("mlx90382_ops_ctrl 266 " + sensingMode.value + '\r');
+  writer.write("SET_VER_CFG " + ver_cfg.value + '\r');
 
   writer.releaseLock();
 }
@@ -542,7 +547,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   butReset.addEventListener('click', clickReset);
   zeroposition.addEventListener('keydown', set_zero_position);
   sampleFreq.addEventListener('change', changeSampleFreq);
-  sensingMode.addEventListener('change', changeSensingMode);
+  ver_cfg.addEventListener('change', change_ver_cfg);
 
   if ('serial' in navigator) {
     console.log("webserial is supported!")
