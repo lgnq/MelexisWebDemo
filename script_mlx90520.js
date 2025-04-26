@@ -333,6 +333,16 @@ async function readLoop() {
 
         document.getElementById("ver_cfg").value = data[0];
       }
+      else if (value.substr(0, "ver_vdp:".length) == "ver_vdp:") {
+        data = value.substr("ver_vdp:".length).trim().split(separator);
+
+        document.getElementById("ver_vdp").value = data[0];
+      }
+      else if (value.substr(0, "ver_vds:".length) == "ver_vds:") {
+        data = value.substr("ver_vds:".length).trim().split(separator);
+
+        document.getElementById("ver_vds").value = data[0];
+      }
       else if (value.substr(0, "zeroposition:".length) == "zeroposition:") {
         data = value.substr("zeroposition:".length).trim().split(separator);
 
@@ -476,6 +486,24 @@ async function change_ver_cfg() {
   writer.releaseLock();
 }
 
+async function change_ver_vdp() {
+  // Write to output stream
+  const writer = outputStream.getWriter();
+
+  writer.write("SET_VER_VDP " + ver_vdp.value + '\r');
+
+  writer.releaseLock();
+}
+
+async function change_ver_vds() {
+  // Write to output stream
+  const writer = outputStream.getWriter();
+
+  writer.write("SET_VER_VDS " + ver_vds.value + '\r');
+
+  writer.releaseLock();
+}
+
 async function clickClear() {
   reset();
 
@@ -548,6 +576,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   zeroposition.addEventListener('keydown', set_zero_position);
   sampleFreq.addEventListener('change', changeSampleFreq);
   ver_cfg.addEventListener('change', change_ver_cfg);
+  ver_vdp.addEventListener('change', change_ver_vdp);
+  ver_vds.addEventListener('change', change_ver_vds);
 
   if ('serial' in navigator) {
     console.log("webserial is supported!")
