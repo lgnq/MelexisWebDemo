@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - www.codingnepalweb.com -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Melexis Web Demo</title>
+  <!-- Linking Unicons For Icons -->
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="sidebar-hidden">
+  <div class="container">
+    <!-- Header / Navbar -->
+    <header>
+      <nav class="navbar">
+        <div class="nav-section nav-left">
+          <button class="nav-button menu-button">
+            <i class="uil uil-bars"></i>
+          </button>
+          <a href="#" class="nav-logo">
+            <img src="images/logo.png" alt="Logo" class="logo-image">
+            <h2 class="logo-text">MLX90520</h2>
+          </a>
+        </div>
+        
+        <!-- <div class="nav-section nav-center">
+          <form action="#" class="search-form">
+            <input type="search" placeholder="Search" class="search-input" required>
+            <button class="nav-button search-button">
+              <i class="uil uil-search"></i>
+            </button>
+          </form>
+        </div> -->
+        
+        <div class="nav-section nav-right">
+          <button class="nav-button search-button">
+            <i class="uil uil-search"></i>
+          </button>
+          <button class="nav-button theme-button">
+            <i class="uil uil-moon"></i>
+          </button>
+        </div>
+      </nav>
+    </header>
+    
+    <!-- Main Layout -->
+    <main class="main-layout">
+      <div class="screen-overlay"></div>
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="nav-section nav-left">
+          <button class="nav-button menu-button">
+            <i class="uil uil-bars"></i>
+          </button>
+          <a href="#" class="nav-logo">
+            <img src="images/logo.png" alt="Logo" class="logo-image">
+            <h2 class="logo-text">CnTube</h2>
+          </a>
+        </div>
+  
+        <div class="links-container">
+          <fieldset class="config_field">
+            <legend>Sreial Config</legend>
+
+            <select id="baudRate"></select>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+              <button id="butConnect" type="button">Connect</button>
+              <button id="butClear" type="button">Clear</button>
+            </div>
+
+            <label for="myInput">Input:</label>
+            <input type="text" id="myInput">
+
+            <div>
+              <input type="checkbox" id="autoscroll"> Autoscroll
+            </div>
+            <div>
+              <input type="checkbox" id="showTimestamp"> Show Timestamp
+            </div>
+          </fieldset>
+
+          <fieldset class="config_field">
+            <legend>Message Config</legend>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+            <label for="messageprefixid">Prefix:</label>
+            <input type="text" id="messageprefixid" value="data:" size="10">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+            <label for="messageseparatorid">Separator:</label>
+            <input type="text" id="messageseparatorid" value="," size="10">
+            </div>
+          </fieldset>
+
+          <fieldset class="config_field">
+            <legend>Sampling Config</legend>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+            <label for="sampleSize">Sample size:</label>
+            <input type="text" id="sampleSize" value="300" size="10">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+            <label for="sampleFreq">Sample freq:</label>
+            <select name="sampleFreq" id="sampleFreq">
+              <option value="1000">1 Hz</option>
+              <option selected value="100">10 Hz</option>
+              <option value="50">20 Hz</option>
+              <option value="20">50 Hz</option>
+              <option value="10">100 Hz</option>
+              <option value="5">200 Hz</option>
+            </select>        
+            </div>
+          </fieldset>
+
+          <fieldset class="config_field">
+            <legend>Chip Config</legend>
+
+            <label for="Analog Version">Analog Version:</label>
+            <div id="analog_version"></div>
+
+            <label for="Digital Version">Digital Version:</label>
+            <div id="digital_version"></div>
+
+            <label for="zero_position">Zero Position:</label>
+            <input type="text" id="zero_position" value="" size="10">
+
+            <label for="sensingMode">Sensing Mode:</label>
+            <select name="sensingMode" id="sensingMode">
+              <option value="0">000 - 0 - X-Y</option>
+              <option value="1">000 - 1 - X-Zy</option>
+              <option value="2">000 - 2 - Y-Zx</option>
+              <option value="3">100 - 0 - X-Y</option>
+              <option value="4">100 - 1 - X-Zy</option>
+              <option value="5">100 - 2 - Y-Zx</option>              
+              <option value="6">010 - 1 - X-Zy</option>
+              <option value="7">010 - 2 - Y-Zx</option>
+              <option value="8">600 - 0 - X-Y</option>
+            </select>        
+
+            <label for="gpioProtocol">GPIO Protocol:</label>
+            <select name="gpioProtocol" id="gpioProtocol">
+              <option value="0">0 PWM/Differential ABI/UVW</option>
+              <option value="1">1 SSI</option>
+              <option value="2">2 SPI mode</option>
+            </select>        
+
+            <label for="gpioConfig">GPIO Config:</label>
+            <select name="gpioConfig" id="gpioConfig">
+              <option value="0">0 - OFF</option>
+              <option value="1">1 - Open Drain P-MOS</option>
+              <option value="2">2 - Open Drain N-MOS</option>
+              <option value="3">3 - Push Pull</option>
+            </select>        
+
+            <label for="spiMode">SPI Mode:</label>
+            <select name="spiMode" id="spiMode">
+              <option value="0">MODE 0 - CPOL=0/CPHA=0</option>
+              <option value="1">MODE 1 - CPOL=0/CPHA=1</option>
+              <option value="2">MODE 2 - CPOL=1/CPHA=0</option>
+              <option value="3">MODE 3 - CPOL=1/CPHA=1</option>
+            </select>        
+
+            <label for="abiProtocol">ABI Protocol:</label>
+            <select name="abiProtocol" id="abiProtocol">
+              <option value="0">0 - UVW</option>
+              <option value="1">1 - ABI</option>
+            </select>        
+
+            <label for="abiConfig">ABI Config:</label>
+            <select name="abiConfig" id="abiConfig">
+              <option value="0">0 - OFF</option>
+              <option value="1">1 - Open Drain P-MOS</option>
+              <option value="2">2 - Open Drain N-MOS</option>
+              <option value="3">3 - Push Pull</option>
+            </select>        
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+              <button id="butStart" type="button">Start</button>
+              <button id="butInfo" type="button">Info</button>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+              <button id="butReset" type="button">Soft Reset</button>
+            </div>
+          </fieldset>
+
+          <div class="section-separator"></div>
+
+          <div class="link-section">
+            <a href="index.html" class="link-item">
+              <i class="uil uil-home"></i> Homepage
+            </a>
+            <a href="https://www.melexis.com/en/product/MLX90382/Triaxis-Magnetic-High-speed-Encoder" class="link-item">
+              <i class="uil uil-question-circle"></i> About MLX90382
+            </a>
+          </div>
+        </div>
+      </aside>
+  
+      <div class="content-wrapper">        
+        <!-- Video List -->
+        <div class="video-list">
+          <div class="video-card">
+            <div id="plot" class="plot"></div>
+          </div>
+          
+          <div class="video-card">
+            <div id="plot_speed" class="plot"></div>
+          </div>
+
+          <div class="video-card">
+            <div id="meter"></div>     
+          </div>
+
+          <div class="video-card">
+            <div id="speed_meter"></div>     
+          </div>
+          
+          <div class="video-card">
+            <div id="log" class="log"></div>
+          </div>
+
+          <a href="#" class="video-card">
+            <div class="thumbnail-container">
+              <img src="images/MelexisLogoBlue2023.png" alt="Video Thumbnail" class="thumbnail">
+              <p class="duration">v1.0</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Linking custom script -->
+  <script src="https://cdn.plot.ly/plotly-3.0.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.min.js"></script>
+  <script src="script_mlx90382.js"></script>
+</body>
+</html>
