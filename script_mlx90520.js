@@ -326,7 +326,7 @@ async function readLoop() {
       else if (value.substr(0, "dversion:".length) == "dversion:") {
         data = value.substr("dversion:".length).trim().split(separator);
 
-        document.getElementById("digital_version").innerHTML="MLX" + data[0].toString(10).toUpperCase();
+        document.getElementById("digital_version").innerHTML="MLX" + data[0].toString(16).toUpperCase();
       }
       else if (value.substr(0, "zeroposition:".length) == "zeroposition:") {
         data = value.substr("zeroposition:".length).trim().split(separator);
