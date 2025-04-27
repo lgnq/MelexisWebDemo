@@ -203,6 +203,7 @@ const ver_vdp       = document.getElementById('ver_vdp');
 const ver_vds       = document.getElementById('ver_vds');
 const ver_vm        = document.getElementById('ver_vm');
 const fc1_cfg       = document.getElementById('fc1_cfg');
+const fc2_cfg       = document.getElementById('fc2_cfg');
 
 async function disconnect() {
   if (reader) {
@@ -355,6 +356,11 @@ async function readLoop() {
         data = value.substr("fc1_cfg:".length).trim().split(separator);
 
         document.getElementById("fc1_cfg").value = data[0];
+      }
+      else if (value.substr(0, "fc2_cfg:".length) == "fc2_cfg:") {
+        data = value.substr("fc2_cfg:".length).trim().split(separator);
+
+        document.getElementById("fc2_cfg").value = data[0];
       }
     }
 
@@ -520,6 +526,15 @@ async function change_fc1_cfg() {
   writer.releaseLock();
 }
 
+async function change_fc2_cfg() {
+  // Write to output stream
+  const writer = outputStream.getWriter();
+
+  writer.write("SET_FC2_CFG " + fc2_cfg.value + '\r');
+
+  writer.releaseLock();
+}
+
 async function clickClear() {
   reset();
 
@@ -597,6 +612,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   ver_vds.addEventListener('change', change_ver_vds);
   ver_vm.addEventListener('keydown', set_ver_vm);
   fc1_cfg.addEventListener('change', change_fc1_cfg);
+  fc2_cfg.addEventListener('change', change_fc2_cfg);
 
   if ('serial' in navigator) {
     console.log("webserial is supported!")
