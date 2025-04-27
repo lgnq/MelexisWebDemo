@@ -200,6 +200,9 @@ const butSave       = document.getElementById('butSave');
 const butReset      = document.getElementById('butReset');
 const zeroposition  = document.getElementById('zero_position');
 const ver_cfg       = document.getElementById('ver_cfg');
+const ver_vdp       = document.getElementById('ver_vdp');
+const ver_vds       = document.getElementById('ver_vds');
+const ver_vm        = document.getElementById('ver_vm');
 
 async function disconnect() {
   if (reader) {
@@ -342,6 +345,11 @@ async function readLoop() {
         data = value.substr("ver_vds:".length).trim().split(separator);
 
         document.getElementById("ver_vds").value = data[0];
+      }
+      else if (value.substr(0, "ver_vm:".length) == "ver_vm:") {
+        data = value.substr("ver_vm:".length).trim().split(separator);
+
+        document.getElementById("ver_vm").value = data[0];
       }
       else if (value.substr(0, "zeroposition:".length) == "zeroposition:") {
         data = value.substr("zeroposition:".length).trim().split(separator);
@@ -504,6 +512,15 @@ async function change_ver_vds() {
   writer.releaseLock();
 }
 
+async function change_ver_vm() {
+  // Write to output stream
+  const writer = outputStream.getWriter();
+
+  writer.write("SET_VER_VM " + ver_vm.value + '\r');
+
+  writer.releaseLock();
+}
+
 async function clickClear() {
   reset();
 
@@ -578,6 +595,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   ver_cfg.addEventListener('change', change_ver_cfg);
   ver_vdp.addEventListener('change', change_ver_vdp);
   ver_vds.addEventListener('change', change_ver_vds);
+  ver_vm.addEventListener('change', change_ver_vm);
 
   if ('serial' in navigator) {
     console.log("webserial is supported!")
