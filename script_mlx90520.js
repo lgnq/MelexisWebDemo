@@ -350,7 +350,7 @@ async function readLoop() {
       else if (value.substr(0, "ver_vm:".length) == "ver_vm:") {
         data = value.substr("ver_vm:".length).trim().split(separator);
 
-        document.getElementById("ver_vm").value="0x" + data[0].toString(16).toUpperCase();
+        document.getElementById("ver_vm").value=data[0];
       }
       else if (value.substr(0, "fc1_cfg:".length) == "fc1_cfg:") {
         data = value.substr("fc1_cfg:".length).trim().split(separator);
@@ -462,17 +462,6 @@ async function clickReset() {
   writer.releaseLock();
 }
 
-function set_ver_vm(event) {
-  // Write to output stream
-  const writer = outputStream.getWriter();
-
-  if (event.keyCode === 13) {
-    writer.write("SET_VER_VM " + ver_vm.value + '\r');
-  }
-
-  writer.releaseLock();
-}
-
 function saveSetting(setting, value) {
     window.localStorage.setItem(setting, JSON.stringify(value));
 }
@@ -499,7 +488,7 @@ async function change_ver_cfg() {
   writer.releaseLock();
 }
 
-async function change_ver_vdp() {
+async function set_ver_vdp() {
   // Write to output stream
   const writer = outputStream.getWriter();
 
@@ -508,11 +497,22 @@ async function change_ver_vdp() {
   writer.releaseLock();
 }
 
-async function change_ver_vds() {
+async function set_ver_vds() {
   // Write to output stream
   const writer = outputStream.getWriter();
 
   writer.write("SET_VER_VDS " + ver_vds.value + '\r');
+
+  writer.releaseLock();
+}
+
+function set_ver_vm(event) {
+  // Write to output stream
+  const writer = outputStream.getWriter();
+
+  if (event.keyCode === 13) {
+    writer.write("SET_VER_VM " + ver_vm.value + '\r');
+  }
 
   writer.releaseLock();
 }
@@ -541,6 +541,8 @@ async function clickClear() {
   document.getElementById("analog_version").innerHTML = "";
   document.getElementById("digital_version").innerHTML = "";
   
+  document.getElementById("ver_vdp").value = "";
+  document.getElementById("ver_vds").value = "";
   document.getElementById("ver_vm").value = "";
 }
 
@@ -608,8 +610,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   butReset.addEventListener('click', clickReset);
   sampleFreq.addEventListener('change', changeSampleFreq);
   ver_cfg.addEventListener('change', change_ver_cfg);
-  ver_vdp.addEventListener('change', change_ver_vdp);
-  ver_vds.addEventListener('change', change_ver_vds);
+  ver_vdp.addEventListener('keydown', set_ver_vdp);
+  ver_vds.addEventListener('keydown', set_ver_vds);
   ver_vm.addEventListener('keydown', set_ver_vm);
   fc1_cfg.addEventListener('change', change_fc1_cfg);
   fc2_cfg.addEventListener('change', change_fc2_cfg);
