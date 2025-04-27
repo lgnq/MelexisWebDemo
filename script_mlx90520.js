@@ -198,11 +198,11 @@ const butStart      = document.getElementById('butStart');
 const butInfo       = document.getElementById('butInfo');
 const butSave       = document.getElementById('butSave');
 const butReset      = document.getElementById('butReset');
-const zeroposition  = document.getElementById('zero_position');
 const ver_cfg       = document.getElementById('ver_cfg');
 const ver_vdp       = document.getElementById('ver_vdp');
 const ver_vds       = document.getElementById('ver_vds');
 const ver_vm        = document.getElementById('ver_vm');
+const fc1_cfg       = document.getElementById('fc1_cfg');
 
 async function disconnect() {
   if (reader) {
@@ -349,12 +349,12 @@ async function readLoop() {
       else if (value.substr(0, "ver_vm:".length) == "ver_vm:") {
         data = value.substr("ver_vm:".length).trim().split(separator);
 
-        document.getElementById("ver_vm").value = data[0];
+        document.getElementById("ver_vm").value="0x" + data[0].toString(16).toUpperCase();
       }
-      else if (value.substr(0, "zeroposition:".length) == "zeroposition:") {
-        data = value.substr("zeroposition:".length).trim().split(separator);
+      else if (value.substr(0, "fc1_cfg:".length) == "fc1_cfg:") {
+        data = value.substr("fc1_cfg:".length).trim().split(separator);
 
-        document.getElementById("zero_position").innerHTML="0x" + data[0].toString(16).toUpperCase();
+        document.getElementById("fc1_cfg").value = data[0];
       }
     }
 
@@ -456,13 +456,12 @@ async function clickReset() {
   writer.releaseLock();
 }
 
-function set_zero_position(event) {
+function set_ver_vm(event) {
   // Write to output stream
   const writer = outputStream.getWriter();
 
   if (event.keyCode === 13) {
-    writer.write("mlx90382_ops_ctrl 265 " + zeroposition.value + '\r'); //RT_SENSOR_CTRL_USER_CMD_SET_ZEROPOSITION = 265
-    // zeroposition.value = ''
+    writer.write("SET_VER_VM " + ver_vm.value + '\r');
   }
 
   writer.releaseLock();
@@ -512,11 +511,11 @@ async function change_ver_vds() {
   writer.releaseLock();
 }
 
-async function change_ver_vm() {
+async function change_fc1_cfg() {
   // Write to output stream
   const writer = outputStream.getWriter();
 
-  writer.write("SET_VER_VM " + ver_vm.value + '\r');
+  writer.write("SET_FC1_CFG " + fc1_cfg.value + '\r');
 
   writer.releaseLock();
 }
@@ -526,6 +525,8 @@ async function clickClear() {
 
   document.getElementById("analog_version").innerHTML = "";
   document.getElementById("digital_version").innerHTML = "";
+  
+  document.getElementById("ver_vm").value = "";
 }
 
 async function clickAutoscroll() {
@@ -590,12 +591,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   butInfo.addEventListener('click', clickInfo);
   butSave.addEventListener('click', clickSave);
   butReset.addEventListener('click', clickReset);
-  zeroposition.addEventListener('keydown', set_zero_position);
   sampleFreq.addEventListener('change', changeSampleFreq);
   ver_cfg.addEventListener('change', change_ver_cfg);
   ver_vdp.addEventListener('change', change_ver_vdp);
   ver_vds.addEventListener('change', change_ver_vds);
-  ver_vm.addEventListener('change', change_ver_vm);
+  ver_vm.addEventListener('keydown', set_ver_vm);
+  fc1_cfg.addEventListener('change', change_fc1_cfg);
 
   if ('serial' in navigator) {
     console.log("webserial is supported!")
