@@ -118,12 +118,16 @@
 
           <fieldset class="config_field">
             <legend>Chip Config</legend>
-
-            <label for="Analog Version">Analog Version:</label>
-            <div id="analog_version"></div>
-
-            <label for="Digital Version">Digital Version:</label>
-            <div id="digital_version"></div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+              <label for="Analog Version">Analog Ver:</label>
+              <div id="analog_version"></div>
+            </div>
+  
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+              <label for="Digital Version">Digital Ver:</label>
+              <div id="digital_version"></div>
+            </div>
 
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
               <label for="ver_vdp">VER_VDP:</label>
@@ -136,13 +140,13 @@
             </div>
 
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
-              <label for="reserved">RESERVED:</label>
-              <input type="text" id="reserved" value="" size="10">
-            </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
               <label for="ver_vm">VER_VM:</label>
               <input type="text" id="ver_vm" value="" size="10">
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+              <label for="reserved">RESERVED:</label>
+              <input type="text" id="reserved" value="" size="10">
             </div>
 
             <label for="ver_cfg">VER_CFG:</label>
