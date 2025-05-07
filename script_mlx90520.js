@@ -292,8 +292,8 @@ async function readLoop() {
         x = data[0];  //degree
         y = data[1];  //minute
         z = data[2];  //second
-        speed = data[3];
-        t = data[4];
+        t = data[3];
+        speed = data[4];
 
         Plotly.extendTraces(plot, {y:[[x], [y], [z]]}, [0, 1, 2], size);
         Plotly.extendTraces(plot_speed, {y:[[speed]]}, [0], size);
