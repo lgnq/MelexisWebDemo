@@ -286,14 +286,21 @@ async function readLoop() {
     const {value, done} = await reader.read();
       
     if (value) {
-      if (value.substr(0, prefix.length) == prefix) {
+      if (value.substr(0, prefix.length) == prefix) {        
         data = value.substr(prefix.length).trim().split(separator).map(x=>+x);
-
         x = data[0];  //degree
         y = data[1];  //minute
         z = data[2];  //second
         t = data[3];
         speed = data[4];
+
+        // console.log(value.substr(prefix.length).trim());
+        // obj = JSON.parse(value.substr(prefix.length).trim());
+        // x = obj.degree;
+        // y = obj.minute;
+        // z = obj.second;
+        // t = obj.temp;
+        // speed = obj.temp;
 
         Plotly.extendTraces(plot, {y:[[x], [y], [z]]}, [0, 1, 2], size);
         Plotly.extendTraces(plot_speed, {y:[[speed]]}, [0], size);
