@@ -56,9 +56,6 @@ let z = 0;
 let t = 0;
 let speed = 0;
 
-let alpha = 0;
-let beta  = 0;
-
 let size = 300;
 
 const maxLogLength  = 50;
