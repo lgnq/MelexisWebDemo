@@ -53,6 +53,7 @@ let data = [0, 0, 0];
 let x = 0;
 let y = 0;
 let z = 0;
+let second_kalman = 0;
 let t = 0;
 let speed = 0;
 
@@ -135,7 +136,17 @@ let trace_z = {
   }
 };
 
-let data_xyz = [trace_x, trace_y, trace_z];
+let trace_second_kalman = {
+  y: [0],
+  mode: 'lines',
+  name: 'second_kalman',
+  line: {
+    color: 'rgb(234, 8, 241)',
+    width: 1
+  }
+};
+
+let data_xyz = [trace_x, trace_y, trace_z, trace_second_kalman];
 
 let layout_speed = {
   autosize: true,
@@ -288,8 +299,9 @@ async function readLoop() {
         x = data[0];  //degree
         y = data[1];  //minute
         z = data[2];  //second
-        t = data[3];
-        speed = data[4];
+        second_kalman = data[3]
+        t = data[4];
+        speed = data[5];
 
         // console.log(value.substr(prefix.length).trim());
         // obj = JSON.parse(value.substr(prefix.length).trim());
@@ -299,7 +311,7 @@ async function readLoop() {
         // t = obj.temp;
         // speed = obj.temp;
 
-        Plotly.extendTraces(plot, {y:[[x], [y], [z]]}, [0, 1, 2], size);
+        Plotly.extendTraces(plot, {y:[[x], [y], [z], [second_kalman]]}, [0, 1, 2, 3], size);
         Plotly.extendTraces(plot_speed, {y:[[speed]]}, [0], size);
 
         if (trace_x.y.length > size)
@@ -308,6 +320,8 @@ async function readLoop() {
           trace_y.y.pop();
         if (trace_z.y.length > size)
           trace_z.y.pop();
+        if (trace_second_kalman.y.length > size)
+          trace_second_kalman.y.pop();
 
         if (trace_speed.y.length > size)
           trace_speed.y.pop();
