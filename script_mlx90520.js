@@ -55,6 +55,8 @@ let y = 0;
 let z = 0;
 let second_kalman = 0;
 let t = 0;
+let ssia = 0;
+let ssib = 0;
 let speed = 0;
 
 let size = 300;
@@ -301,7 +303,9 @@ async function readLoop() {
         z = data[2];  //second
         second_kalman = data[3]
         t = data[4];
-        speed = data[5];
+        ssia = data[5];
+        ssib = data[6];
+        speed = data[7];
 
         // console.log(value.substr(prefix.length).trim());
         // obj = JSON.parse(value.substr(prefix.length).trim());
@@ -313,6 +317,9 @@ async function readLoop() {
 
         Plotly.extendTraces(plot, {y:[[x], [y], [z], [second_kalman]]}, [0, 1, 2, 3], size);
         Plotly.extendTraces(plot_speed, {y:[[speed]]}, [0], size);
+
+        document.getElementById("ssia").value = ssia;
+        document.getElementById("ssib").value = ssib;
 
         if (trace_x.y.length > size)
           trace_x.y.pop();
