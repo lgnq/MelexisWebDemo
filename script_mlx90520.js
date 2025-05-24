@@ -444,12 +444,12 @@ async function clickStart() {
 
   if (butStart.innerHTML === "Start")
   {
-    writer.write("mlx90382_measurement_onoff on\r");
+    writer.write("START 1\r");
     butStart.innerHTML = "Stop";
   }
   else if (butStart.innerHTML === "Stop")
   {
-    writer.write("mlx90382_measurement_onoff off\r");
+    writer.write("START 0\r");
     butStart.innerHTML = "Start";
   }
 
