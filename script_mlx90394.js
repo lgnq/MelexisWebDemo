@@ -353,6 +353,11 @@ async function readLoop() {
         if (trace_b.y.length > size)
           trace_b.y.pop();
       }
+      else if (value.substr(0, "i2caddr:".length) == "i2caddr:") {
+        data = value.substr("i2caddr:".length).trim().split(separator);
+
+        document.getElementById("i2c_addr").innerHTML="0x" + data[0].toString(16).toUpperCase();
+      }
       else if (value.substr(0, "cid:".length) == "cid:") {
         data = value.substr("cid:".length).trim().split(separator);
 

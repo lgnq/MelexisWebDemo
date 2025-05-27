@@ -120,7 +120,23 @@
 
           <fieldset class="config_field">
             <legend>Chip Config</legend>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+              <label for="i2c_freq">I2C Freq:</label>
+              <select name="i2c_freq" id="i2c_freq" onchange="mode_onchange(this)">
+                <option value="0">100KHz</option>
+                <option value="1">200KHz</option>
+                <option value="2">400KHz</option>
+                <option value="3">800KHz</option>
+                <option value="4">1000KHz</option>
+              </select>   
+            </div>
             
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+              <label for="i2c_addr">I2C Addr:</label>
+              <div id="i2c_addr"></div>
+            </div>
+
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
               <label for="companyid">CID:</label>
               <div id="companyid"></div>
