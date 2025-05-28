@@ -883,8 +883,10 @@ var j = function(p)
 
   p.windowResized = function() 
   {
-      // p.resizeCanvas((joystick_card.offsetWidth, joystick_card.offsetHeight));
-      p.setup();
+      p.resizeCanvas((joystick_card.offsetWidth, joystick_card.offsetHeight));
+      p.redraw();
+      
+      // p.setup();
 
     // if (grid.offsetWidth + 20 > 768)
     // {
