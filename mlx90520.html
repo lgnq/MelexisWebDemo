@@ -117,6 +117,37 @@
           </fieldset>
 
           <fieldset class="config_field">
+            <legend>Motor Config</legend>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+            <label for="steps">steps:</label>
+            <input type="text" id="steps" value="0" size="10">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+            <label for="speed">Speed:</label>
+            <select name="speed" id="speed">
+              <option value="1000">1 Hz</option>
+              <option selected value="100">10 Hz</option>
+              <option value="50">20 Hz</option>
+              <option value="20">50 Hz</option>
+              <option value="10">100 Hz</option>
+              <option value="5">200 Hz</option>
+            </select>        
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+              <button id="butStart" type="button">Start</button>
+              <button id="butInfo" type="button">Info</button>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+              <button id="zero" type="button">Zero</button>
+              <button id="reset" type="button">Reset</button>
+            </div>
+          </fieldset>
+
+          <fieldset class="config_field">
             <legend>Chip Config</legend>
             
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
