@@ -204,6 +204,7 @@ const showTimestamp = document.getElementById('showTimestamp');
 const myInput       = document.getElementById('myInput');
 const sampleSize    = document.getElementById('sampleSize');
 const sampleFreq    = document.getElementById('sampleFreq');
+const speedMotor    = document.getElementById('speedMotor');
 const butStartMotor = document.getElementById('butStartMotor');
 const butInfoMotor  = document.getElementById('butInfoMotor');
 const butStart      = document.getElementById('butStart');
@@ -439,6 +440,15 @@ async function clickConnect() {
     toggleUIConnected(true);    
 }
 
+async function changeMotorSpeed() {
+  // Write to output stream
+  const writer = outputStream.getWriter();
+
+  writer.write("SET_MOTOR_S " + speedMotor.value + '\r');
+
+  writer.releaseLock();
+}
+
 async function clickStartMotor() {
   const writer = outputStream.getWriter();
     
@@ -654,6 +664,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   showTimestamp.addEventListener('click', clickTimestamp);
   baudRate.addEventListener('change', changeBaudRate);
   myInput.addEventListener('keydown', writeCmd);
+  speedMotor.addEventListener('change', changeMotorSpeed);
   butStartMotor.addEventListener('click', clickStartMotor);
   butInfoMotor.addEventListener('click', clickInfoMotor);
   butStart.addEventListener('click', clickStart);
