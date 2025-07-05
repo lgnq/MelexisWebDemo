@@ -205,8 +205,9 @@ const myInput       = document.getElementById('myInput');
 const sampleSize    = document.getElementById('sampleSize');
 const sampleFreq    = document.getElementById('sampleFreq');
 const speedMotor    = document.getElementById('speedMotor');
-const butCCW = document.getElementById('butCCW');
-const butCW  = document.getElementById('butCW');
+const butCCW        = document.getElementById('butCCW');
+const butCW         = document.getElementById('butCW');
+const butStop       = document.getElementById('butStop');
 const butStart      = document.getElementById('butStart');
 const butInfo       = document.getElementById('butInfo');
 const butSave       = document.getElementById('butSave');
@@ -468,6 +469,15 @@ async function clickCW() {
   writer.releaseLock();
 }
 
+async function clickStop() {
+  // Write to output stream
+  const writer = outputStream.getWriter();
+
+  writer.write("MOTOR_STOP 1\r");
+
+  writer.releaseLock();
+}
+
 async function clickStart() {
   const writer = outputStream.getWriter();
     
@@ -658,6 +668,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   speedMotor.addEventListener('change', changeMotorSpeed);
   butCCW.addEventListener('click', clickCCW);
   butCW.addEventListener('click', clickCW);
+  butStop.addEventListener('click', clickStop);
   butStart.addEventListener('click', clickStart);
   butInfo.addEventListener('click', clickInfo);
   butSave.addEventListener('click', clickSave);
