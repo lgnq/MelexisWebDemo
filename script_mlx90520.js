@@ -205,8 +205,8 @@ const myInput       = document.getElementById('myInput');
 const sampleSize    = document.getElementById('sampleSize');
 const sampleFreq    = document.getElementById('sampleFreq');
 const speedMotor    = document.getElementById('speedMotor');
-const butStartMotor = document.getElementById('butStartMotor');
-const butInfoMotor  = document.getElementById('butInfoMotor');
+const butCCW = document.getElementById('butCCW');
+const butCW  = document.getElementById('butCW');
 const butStart      = document.getElementById('butStart');
 const butInfo       = document.getElementById('butInfo');
 const butSave       = document.getElementById('butSave');
@@ -449,30 +449,21 @@ async function changeMotorSpeed() {
   writer.releaseLock();
 }
 
-async function clickStartMotor() {
+async function clickCCW() {
   const writer = outputStream.getWriter();
     
-  console.log(butStartMotor.innerHTML);
+  console.log(butCCW.innerHTML);
 
-  if (butStartMotor.innerHTML === "Start")
-  {
-    writer.write("STARTMOTOR 1\r");
-    butStartMotor.innerHTML = "Stop";
-  }
-  else if (butStartMotor.innerHTML === "Stop")
-  {
-    writer.write("STARTMOTOR 0\r");
-    butStartMotor.innerHTML = "Start";
-  }
+  writer.write("MOTORCCW 1\r");
 
   writer.releaseLock();
 }
 
-async function clickInfoMotor() {
+async function clickCW() {
   // Write to output stream
   const writer = outputStream.getWriter();
 
-  writer.write("INFOMOTOR all\r");
+  writer.write("MOTORCW 1\r");
 
   writer.releaseLock();
 }
@@ -665,8 +656,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   baudRate.addEventListener('change', changeBaudRate);
   myInput.addEventListener('keydown', writeCmd);
   speedMotor.addEventListener('change', changeMotorSpeed);
-  butStartMotor.addEventListener('click', clickStartMotor);
-  butInfoMotor.addEventListener('click', clickInfoMotor);
+  butCCW.addEventListener('click', clickCCW);
+  butCW.addEventListener('click', clickCW);
   butStart.addEventListener('click', clickStart);
   butInfo.addEventListener('click', clickInfo);
   butSave.addEventListener('click', clickSave);
