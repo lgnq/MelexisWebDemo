@@ -454,7 +454,7 @@ async function clickCCW() {
     
   console.log(butCCW.innerHTML);
 
-  writer.write("MOTORCCW 1\r");
+  writer.write("MOTOR_CCW 1\r");
 
   writer.releaseLock();
 }
@@ -463,7 +463,7 @@ async function clickCW() {
   // Write to output stream
   const writer = outputStream.getWriter();
 
-  writer.write("MOTORCW 1\r");
+  writer.write("MOTOR_CW 1\r");
 
   writer.releaseLock();
 }
