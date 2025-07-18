@@ -210,6 +210,8 @@ const speedMotor    = document.getElementById('speedMotor');
 const moveToPos     = document.getElementById('moveToPos');
 const butCCW        = document.getElementById('butCCW');
 const butCW         = document.getElementById('butCW');
+const butHome       = document.getElementById('butHome');
+const butSetZero    = document.getElementById('butSetZero');
 const butStop       = document.getElementById('butStop');
 const butStart      = document.getElementById('butStart');
 const butInfo       = document.getElementById('butInfo');
@@ -488,6 +490,24 @@ async function clickCW() {
   writer.releaseLock();
 }
 
+async function clickButHome() {
+  // Write to output stream
+  const writer = outputStream.getWriter();
+
+  writer.write("MOTOR_HOME 1\r");
+
+  writer.releaseLock();
+}
+
+async function clickButSetZero() {
+  // Write to output stream
+  const writer = outputStream.getWriter();
+
+  writer.write("MOTOR_SET_ZERO 1\r");
+
+  writer.releaseLock();
+}
+
 async function clickStop() {
   // Write to output stream
   const writer = outputStream.getWriter();
@@ -688,6 +708,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   moveToPos.addEventListener('keydown', changeMoveToPos);
   butCCW.addEventListener('click', clickCCW);
   butCW.addEventListener('click', clickCW);
+  butHome.addEventListener('click', clickButHome);
+  butSetZero.addEventListener('click', clickButSetZero);
   butStop.addEventListener('click', clickStop);
   butStart.addEventListener('click', clickStart);
   butInfo.addEventListener('click', clickInfo);
