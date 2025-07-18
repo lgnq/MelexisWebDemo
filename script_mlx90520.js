@@ -58,6 +58,7 @@ let t = 0;
 let ssia = 0;
 let ssib = 0;
 let speed = 0;
+let current_pos = 0;
 
 let size = 300;
 
@@ -312,6 +313,7 @@ async function readLoop() {
         ssia = data[5];
         ssib = data[6];
         speed = data[7];
+        current_pos = data[8];
 
         // console.log(value.substr(prefix.length).trim());
         // obj = JSON.parse(value.substr(prefix.length).trim());
@@ -326,6 +328,8 @@ async function readLoop() {
 
         document.getElementById("ssia").value = ssia;
         document.getElementById("ssib").value = ssib;
+        
+        document.getElementById("currentPos").value = current_pos;
 
         if (trace_x.y.length > size)
           trace_x.y.pop();
