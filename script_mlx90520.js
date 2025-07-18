@@ -204,6 +204,7 @@ const showTimestamp = document.getElementById('showTimestamp');
 const myInput       = document.getElementById('myInput');
 const sampleSize    = document.getElementById('sampleSize');
 const sampleFreq    = document.getElementById('sampleFreq');
+const steps         = document.getElementById('steps');
 const speedMotor    = document.getElementById('speedMotor');
 const moveToPos     = document.getElementById('moveToPos');
 const butCCW        = document.getElementById('butCCW');
@@ -467,7 +468,7 @@ async function clickCCW() {
     
   console.log(butCCW.innerHTML);
 
-  writer.write("MOTOR_CCW " + speedMotor.value + '\r');
+  writer.write("MOTOR_CCW " + speedMotor.value + ',' + steps.value + '\r');
 
   writer.releaseLock();
 }
@@ -476,7 +477,9 @@ async function clickCW() {
   // Write to output stream
   const writer = outputStream.getWriter();
 
-  writer.write("MOTOR_CW " + speedMotor.value + '\r');
+  console.log(steps.value);
+
+  writer.write("MOTOR_CW " + speedMotor.value + ',' + steps.value + '\r');
 
   writer.releaseLock();
 }
