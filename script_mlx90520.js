@@ -205,6 +205,7 @@ const myInput       = document.getElementById('myInput');
 const sampleSize    = document.getElementById('sampleSize');
 const sampleFreq    = document.getElementById('sampleFreq');
 const speedMotor    = document.getElementById('speedMotor');
+const moveToPos     = document.getElementById('moveToPos');
 const butCCW        = document.getElementById('butCCW');
 const butCW         = document.getElementById('butCW');
 const butStop       = document.getElementById('butStop');
@@ -450,6 +451,17 @@ async function changeMotorSpeed() {
   writer.releaseLock();
 }
 
+function changeMoveToPos(event) {
+  // Write to output stream
+  const writer = outputStream.getWriter();
+
+  if (event.keyCode === 13) {
+    writer.write("MOVE_TO " + moveToPos.value + '\r');
+  }
+
+  writer.releaseLock();
+}
+
 async function clickCCW() {
   const writer = outputStream.getWriter();
     
@@ -666,6 +678,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   baudRate.addEventListener('change', changeBaudRate);
   myInput.addEventListener('keydown', writeCmd);
   speedMotor.addEventListener('change', changeMotorSpeed);
+  moveToPos.addEventListener('keydown', changeMoveToPos);
   butCCW.addEventListener('click', clickCCW);
   butCW.addEventListener('click', clickCW);
   butStop.addEventListener('click', clickStop);
