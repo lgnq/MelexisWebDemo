@@ -213,6 +213,7 @@ const butCW         = document.getElementById('butCW');
 const butHome       = document.getElementById('butHome');
 const butSetZero    = document.getElementById('butSetZero');
 const butStop       = document.getElementById('butStop');
+const butCalibrate  = document.getElementById('butCalibrate');
 const butStart      = document.getElementById('butStart');
 const butInfo       = document.getElementById('butInfo');
 const butSave       = document.getElementById('butSave');
@@ -517,6 +518,15 @@ async function clickStop() {
   writer.releaseLock();
 }
 
+async function clickCalibrate() {
+  // Write to output stream
+  const writer = outputStream.getWriter();
+
+  writer.write("MOTOR_CALIBRATE 1\r");
+
+  writer.releaseLock();
+}
+
 async function clickStart() {
   const writer = outputStream.getWriter();
     
@@ -711,6 +721,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   butHome.addEventListener('click', clickButHome);
   butSetZero.addEventListener('click', clickButSetZero);
   butStop.addEventListener('click', clickStop);
+  butCalibrate.addEventListener('click', clickCalibrate);
   butStart.addEventListener('click', clickStart);
   butInfo.addEventListener('click', clickInfo);
   butSave.addEventListener('click', clickSave);
