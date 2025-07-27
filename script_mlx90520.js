@@ -549,7 +549,7 @@ async function clickInfo() {
   // Write to output stream
   const writer = outputStream.getWriter();
 
-  writer.write("INFO all\r");
+  writer.write("INFO\r");
 
   writer.releaseLock();
 }
