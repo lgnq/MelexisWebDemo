@@ -196,7 +196,6 @@ let trace_speed = {
 let data_speed = [trace_speed];
 
 const log           = document.getElementById('log');
-const joystick      = document.getElementById('joystick');
 const butConnect    = document.getElementById('butConnect');
 const butClear      = document.getElementById('butClear');
 const baudRate      = document.getElementById('baudRate');
