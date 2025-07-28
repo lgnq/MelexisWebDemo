@@ -503,7 +503,7 @@ async function clickButSetZero() {
   // Write to output stream
   const writer = outputStream.getWriter();
 
-  writer.write("MOTOR_SET_ZERO 1\r");
+  writer.write("MOTOR_SET_ZERO\n");
 
   writer.releaseLock();
 }
