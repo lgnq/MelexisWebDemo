@@ -558,7 +558,7 @@ async function clickSave() {
   // Write to output stream
   const writer = outputStream.getWriter();
 
-  writer.write("SAVE all\r");
+  writer.write("SAVE\n");
 
   writer.releaseLock();
 }
@@ -566,7 +566,7 @@ async function clickSave() {
 async function clickReset() {
   const writer = outputStream.getWriter();
 
-  writer.write("RESET all\r");
+  writer.write("RESET\n");
 
   writer.releaseLock();
 }
