@@ -512,7 +512,7 @@ async function clickStop() {
   // Write to output stream
   const writer = outputStream.getWriter();
 
-  writer.write("MOTOR_STOP 1\r");
+  writer.write("MOTOR_STOP\n");
 
   writer.releaseLock();
 }
