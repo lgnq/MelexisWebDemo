@@ -494,7 +494,7 @@ async function clickButHome() {
   // Write to output stream
   const writer = outputStream.getWriter();
 
-  writer.write("MOTOR_HOME 1\r");
+  writer.write("MOTOR_HOME\n");
 
   writer.releaseLock();
 }
