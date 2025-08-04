@@ -521,7 +521,7 @@ async function clickCalibrate() {
   // Write to output stream
   const writer = outputStream.getWriter();
 
-  writer.write("MOTOR_CALIBRATE 1\r");
+  writer.write("MOTOR_CALIBRATE\n");
 
   writer.releaseLock();
 }
