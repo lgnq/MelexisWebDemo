@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - www.codingnepalweb.com -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Melexis Web Demo</title>
+  <!-- Linking Unicons For Icons -->
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="sidebar-hidden">
+  <div class="container">
+    <!-- Header / Navbar -->
+    <header>
+      <nav class="navbar">
+        <div class="nav-section nav-left">
+          <button class="nav-button menu-button">
+            <i class="uil uil-bars"></i>
+          </button>
+          <a href="#" class="nav-logo">
+            <img src="images/logo.png" alt="Logo" class="logo-image">
+            <h2 class="logo-text">MLX90396</h2>
+          </a>
+        </div>
+        
+        <div class="nav-section nav-center">
+          <form action="#" class="search-form">
+            <input type="search" placeholder="Search" class="search-input" required>
+            <button class="nav-button search-button">
+              <i class="uil uil-search"></i>
+            </button>
+          </form>
+        </div>
+        
+        <div class="nav-section nav-right">
+          <button class="nav-button search-button">
+            <i class="uil uil-search"></i>
+          </button>
+          <button class="nav-button theme-button">
+            <i class="uil uil-moon"></i>
+          </button>
+          <!-- <img src="images/user.jpg" alt="User Image" class="user-image"> -->
+        </div>
+      </nav>
+    </header>
+    
+    <!-- Main Layout -->
+    <main class="main-layout">
+      <div class="screen-overlay"></div>
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="nav-section nav-left">
+          <button class="nav-button menu-button">
+            <i class="uil uil-bars"></i>
+          </button>
+          <a href="#" class="nav-logo">
+            <img src="images/logo.png" alt="Logo" class="logo-image">
+            <h2 class="logo-text">MLX90396</h2>
+          </a>
+        </div>
+  
+        <div class="links-container">
+          <fieldset class="config_field">
+            <legend>Sreial Config</legend>
+
+            <select id="baudRate"></select>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+              <button id="butConnect" type="button">Connect</button>
+              <button id="butClear" type="button" onclick="clickClear()">Clear</button>
+            </div>
+
+            <label for="myInput">Input:</label>
+            <input type="text" id="myInput">
+
+            <div>
+              <input type="checkbox" id="autoscroll"> Autoscroll
+            </div>
+            <div>
+              <input type="checkbox" id="showTimestamp"> Show Timestamp
+            </div>
+          </fieldset>
+
+          <fieldset class="config_field">
+            <legend>Message Config</legend>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+            <label for="messageprefixid">Prefix:</label>
+            <input type="text" id="messageprefixid" value="data:" size="10">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+            <label for="messageseparatorid">Separator:</label>
+            <input type="text" id="messageseparatorid" value="," size="10">
+            </div>
+          </fieldset>
+
+          <fieldset class="config_field">
+            <legend>Sampling Config</legend>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+            <label for="sampleSize">Sample size:</label>
+            <input type="text" id="sampleSize" value="300" size="10" onchange="size_onchange(this)">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+            <label for="sampleFreq">Sample freq:</label>
+            <select name="sampleFreq" id="sampleFreq" onchange="freq_onchange(this)">
+              <option value="1000">1 Hz</option>
+              <option value="200">5 Hz</option>
+              <option selected value="100">10 Hz</option>
+              <option value="50">20 Hz</option>
+              <option value="20">50 Hz</option>
+              <option value="10">100 Hz</option>
+              <option value="5">200 Hz</option>
+            </select>        
+            </div>
+          </fieldset>
+
+          <fieldset class="config_field">
+            <legend>Chip Config</legend>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+              <label for="i2c_freq">I2C Freq:</label>
+              <select name="i2c_freq" id="i2c_freq" onchange="mode_onchange(this)">
+                <option value="0">100KHz</option>
+                <option value="1">200KHz</option>
+                <option value="2">400KHz</option>
+                <option value="3">800KHz</option>
+                <option value="4">1000KHz</option>
+              </select>   
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+              <label for="i2c_addr">I2C Addr:</label>
+              <div id="i2c_addr"></div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+              <label for="companyid">CID:</label>
+              <div id="companyid"></div>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+              <label for="deviceid">DID:</label>
+              <div id="deviceid"></div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+            <div class="checkbox1">
+              <input type="checkbox" id="mlx90394_x_check" onclick="checkbox_fun(this)">
+              <label for="mlx90394_x_check">X_EN</label>
+            </div>
+  
+            <div class="checkbox2">
+              <input type="checkbox" id="mlx90394_y_check" onclick="checkbox_fun(this)">
+              <label for="mlx90394_y_check">Y_EN</label>
+            </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+            <div class="checkbox3">
+              <input type="checkbox" id="mlx90394_z_check" onclick="checkbox_fun(this)">          
+              <label for="mlx90394_z_check">Z_EN</label>
+            </div>
+  
+            <div class="checkbox4">
+              <input type="checkbox" id="mlx90394_t_check" onclick="checkbox_fun(this)">          
+              <label for="mlx90394_t_check">T_EN</label>          
+            </div>
+            </div>
+
+            <div class="item_radio_0">
+            <input type="radio" id="mlx90394_osr_hall_0" name="mlx90394_osr_hall" onclick="osr_hall_onclick(this)" value="0" />
+            <label for="mlx90394_osr_hall_0">OSR_HALL=0</label>
+            </div>
+  
+            <div class="item_radio_1">
+            <input type="radio" id="mlx90394_osr_hall_1" name="mlx90394_osr_hall" onclick="osr_hall_onclick(this)" value="1" />
+            <label for="mlx90394_osr_hall_1">OSR_HALL=1</label>
+            </div>
+
+            <div class="item_radio_0">
+            <input type="radio" id="mlx90394_osr_temp_0" name="mlx90394_osr_temp" onclick="osr_temp_onclick(this)" value="0" />
+            <label for="mlx90394_osr_temp_0">OSR_TEMP=0</label>
+            </div>
+  
+            <div class="item_radio_1">
+            <input type="radio" id="mlx90394_osr_temp_1" name="mlx90394_osr_temp" onclick="osr_temp_onclick(this)" value="1" />
+            <label for="mlx90394_osr_temp_1">OSR_TEMP=1</label>        
+            </div>
+
+            <label for="application_mode">App Mode:</label>
+            <select name="application_mode" id="application_mode" onchange="mode_onchange(this)">
+              <option value="0">0 Power-down mode</option>
+              <option value="1">1 Single Measurement</option>
+              <option value="2">2 Continuous mode 5Hz</option>
+              <option value="3">3 Continuous mode 10Hz</option>
+              <option value="4">4 Continuous mode 15Hz</option>
+              <option value="5">5 Continuous mode 50Hz</option>              
+              <option value="6">6 Continuous mode 100Hz</option>
+              <option value="7">7 Self-test mode</option>
+              <option value="8">8 Power-down mode</option>
+              <option value="9">9 Single Measurement</option>
+              <option value="10">10 Continuous mode 200Hz</option>
+              <option value="3">11 Continuous mode 500Hz</option>
+              <option value="4">12 Continuous mode 700Hz</option>
+              <option value="5">13 Continuous mode 1KHz</option>              
+              <option value="6">14 Continuous mode 1.4KHz</option>
+              <option value="9">15 Power-down mode</option>
+            </select>   
+            
+            <label for="range_config">Range Config:</label>
+            <select name="range_config" id="range_config" onchange="range_onchange(this)">
+              <option value="0">0 50mT(L Current H Range)</option>
+              <option value="1">1 50mT(L Noise H Range)</option>
+              <option value="2">2 5mT (L Noise H Sensitivity)</option>
+              <option value="3">0 50mT(L Current H Range)</option>
+            </select>   
+
+            <label for="dig_filt_xy">DIG_FILT_XY:</label>
+            <select name="dig_filt_xy" id="dig_filt_xy" onchange="filt_xy_onchange(this)">
+              <option value="0">0 0.113/0.220ms@OSR_H</option>
+              <option value="1">1 0.167/0.327ms@OSR_H</option>
+              <option value="2">2 0.273/0.540ms@OSR_H</option>
+              <option value="3">3 0.487/0.967ms@OSR_H</option>
+              <option value="4">4 0.913/1.820ms@OSR_H</option>
+              <option value="5">5 1.767/3.527ms@OSR_H</option>
+              <option value="6">6 3.473/6.940ms@OSR_H</option>
+              <option value="7">7 6.887/13.767ms@OSR_H</option>
+            </select>   
+
+            <label for="dig_filt_z">DIG_FILT_Z:</label>
+            <select name="dig_filt_z" id="dig_filt_z" onchange="filt_z_onchange(this)">
+              <option value="0">0 0.113/0.220ms@OSR_H</option>
+              <option value="1">1 0.167/0.327ms@OSR_H</option>
+              <option value="2">2 0.273/0.540ms@OSR_H</option>
+              <option value="3">3 0.487/0.967ms@OSR_H</option>
+              <option value="4">4 0.913/1.820ms@OSR_H</option>
+              <option value="5">5 1.767/3.527ms@OSR_H</option>
+              <option value="6">6 3.473/6.940ms@OSR_H</option>
+              <option value="7">7 6.887/13.767ms@OSR_H</option>
+            </select>   
+
+            <label for="dig_filt_t">DIG_FILT_T:</label>
+            <select name="dig_filt_t" id="dig_filt_t" onchange="filt_t_onchange(this)">
+              <option value="0">0 0.113/0.220ms@OSR_T</option>
+              <option value="1">1 0.167/0.327ms@OSR_T</option>
+              <option value="2">2 0.273/0.540ms@OSR_T</option>
+              <option value="3">3 0.487/0.967ms@OSR_T</option>
+              <option value="4">4 0.913/1.820ms@OSR_T</option>
+              <option value="5">5 1.767/3.527ms@OSR_T</option>
+              <option value="6">6 3.473/6.940ms@OSR_T</option>
+              <option value="7">7 6.887/13.767ms@OSR_T</option>
+            </select>   
+
+            <label for="woc_mode">WOC Mode:</label>
+            <select name="woc_mode" id="woc_mode" onchange="woc_mode_onchange(this)">
+              <option value="0">0 Difference than 1st</option>
+              <option value="1">1 Difference than previous</option>
+              <option value="2">2 Absolute mode</option>
+              <option value="3">3 Not used</option>
+            </select>   
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+              <button id="butStart" type="button" onclick="clickStart()">Start</button>
+              <button id="butInfo" type="button" onclick="clickInfo()">Info</button>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+              <button id="butShow" type="button" onclick="clickShow()">Show Config</button>
+              <button id="butReset" type="button" onclick="clickReset()">Soft Reset</button>
+            </div>
+
+          </fieldset>
+
+          <div class="section-separator"></div>
+
+          <div class="link-section">
+            <a href="index.html" class="link-item">
+              <i class="uil uil-home"></i> Homepage
+            </a>
+            <a href="#" class="link-item">
+              <i class="uil uil-question-circle"></i> Help
+            </a>
+          </div>
+        </div>
+      </aside>
+  
+      <div class="content-wrapper">        
+        <div class="video-list">
+          <div class="video-card">
+            <div id="plot"></div>
+          </div>
+
+          <div class="video-card">
+            <div id="plot_ab""></div>
+
+            <label for="formula_alpha">Formula Alpha:</label>
+            <input type="text" id="formula_alpha" value="Math.atan2(z, x)" onchange="formula_alpha_onchange(this)">
+
+            <label for="formula_beta">Formula Beta:</label>
+            <input type="text" id="formula_beta" value="Math.atan2(z, y)" onchange="formula_beta_onchange(this)">
+          </div>
+          
+          <div class="video-card">
+            <div id="joystick"></div>     
+          </div>
+
+          <div class="video-card">
+            <div id="alphabeta"></div>     
+          </div>
+          
+          <div class="video-card">
+            <div id="log" class="log"></div>
+          </div>
+
+          <a href="#" class="video-card">
+            <div class="thumbnail-container">
+              <img src="images/MelexisLogoBlue2023.png" alt="Video Thumbnail" class="thumbnail">
+              <p class="duration">v1.0</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Linking custom script -->
+  <script src="https://cdn.plot.ly/plotly-3.0.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.min.js"></script>
+  <script src="script_mlx90394.js"></script>
+</body>
+</html>
