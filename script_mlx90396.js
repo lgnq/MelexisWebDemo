@@ -542,7 +542,7 @@ async function formula_beta_onchange(element) {
 async function freq_onchange(element) {
   const writer = outputStream.getWriter();
 
-  writer.write("mlx90394_set_sample_freq " + element.value + "\r");
+  writer.write("mlx90396_set_sample_freq " + element.value + "\r");
 
   writer.releaseLock();
 }
@@ -700,12 +700,12 @@ async function clickStart() {
 
   if (butStart.innerHTML === "Start")
   {
-    writer.write("mlx90394_measurement_onoff on\r");
+    writer.write("mlx90396_measurement_onoff on\r");
     butStart.innerHTML = "Stop";
   }
   else if (butStart.innerHTML === "Stop")
   {
-    writer.write("mlx90394_measurement_onoff off\r");
+    writer.write("mlx90396_measurement_onoff off\r");
     butStart.innerHTML = "Start";
   }
 
@@ -715,7 +715,7 @@ async function clickStart() {
 async function clickInfo() {
   const writer = outputStream.getWriter();
 
-  writer.write("mlx90394_ops_ctrl 258\r");
+  writer.write("mlx90396_ops_ctrl 258\r");
 
   writer.releaseLock();
 }

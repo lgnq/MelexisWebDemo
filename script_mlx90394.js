@@ -845,6 +845,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 var j = function(p)
 {
   let width = 400;
+  let c;
 
   /** The maximum stick deflection angle, in radians */
   const MAX_DEFLECT = Math.PI / 8;
@@ -852,7 +853,8 @@ var j = function(p)
   p.setup = function() 
   {
     // p.createCanvas((joystick_card.offsetWidth), (joystick_card.offsetHeight), p.WEBGL);
-    p.createCanvas((log.offsetWidth), (log.offsetHeight), p.WEBGL);
+    c = p.createCanvas((log.offsetWidth), (log.offsetHeight), p.WEBGL);
+    console.log(c.id());
   }
 
   p.draw = function() 
@@ -883,10 +885,12 @@ var j = function(p)
 
   p.windowResized = function() 
   {
-      p.resizeCanvas((joystick_card.offsetWidth, joystick_card.offsetHeight));
-      p.redraw();
+      // p.resizeCanvas((joystick_card.offsetWidth, joystick_card.offsetHeight));
+      // p.redraw();
+
+      p.remove(c);
       
-      // p.setup();
+      p.setup();
 
     // if (grid.offsetWidth + 20 > 768)
     // {
