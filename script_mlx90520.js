@@ -59,6 +59,8 @@ let ssia = 0;
 let ssib = 0;
 let speed = 0;
 let current_pos = 0;
+let reference_pos = 0;
+let sensor_pos = 0;
 
 let size = 300;
 
@@ -195,6 +197,58 @@ let trace_speed = {
 
 let data_speed = [trace_speed];
 
+let layout_error = {
+  autosize: true,
+  // margin: { t: 5, b: 5, l: 5, r: 5 },
+
+  title: {
+    text: 'plot error',
+    font: {
+        // family: 'Arial, monospace',
+        family: 'Arial, sans-serif', // Set the font family to Arial
+        size: 20
+    },
+    yref: 'paper',
+    automargin: true,
+  },
+  
+  xaxis: {
+    title: 'time',
+    showgrid: false,
+    zeroline: false
+  },
+
+  yaxis: {
+    title: 'speed',
+    showline: false
+  },  
+
+  plot_bgcolor: 'rgba(255, 255, 255, 0)', // 设置图表背景透明
+  paper_bgcolor: 'rgba(255, 255, 255, 0)', // 设置画布背景透明  
+};
+
+let trace_error = {
+  y: [0],
+  mode: 'lines',
+  name: 'reference pos',
+  line: {
+    color: 'rgb(219, 65, 64)',
+    width: 1
+  }
+};
+
+let trace_sensor_pos = {
+  y: [0],
+  mode: 'lines',
+  name: 'sensor pos',
+  line: {
+    color: 'rgb(101, 187, 169)',
+    width: 1
+  }
+};
+
+let data_error = [trace_error, trace_sensor_pos];
+
 const log           = document.getElementById('log');
 const butConnect    = document.getElementById('butConnect');
 const butClear      = document.getElementById('butClear');
@@ -307,6 +361,7 @@ async function readLoop() {
     if (value) {
       if (value.substr(0, prefix.length) == prefix) {        
         data = value.substr(prefix.length).trim().split(separator).map(x=>+x);
+
         x = data[0];  //degree
         y = data[1];  //minute
         z = data[2];  //second
@@ -316,6 +371,8 @@ async function readLoop() {
         ssib = data[6];
         speed = data[7];
         current_pos = data[8];
+        sensor_pos = data[9];
+        reference_pos = current_pos*document.getElementById("stepAngle").value/document.getElementById("microstepping").value;
 
         // console.log(value.substr(prefix.length).trim());
         // obj = JSON.parse(value.substr(prefix.length).trim());
@@ -327,6 +384,7 @@ async function readLoop() {
 
         Plotly.extendTraces(plot, {y:[[x], [y], [z], [second_kalman]]}, [0, 1, 2, 3], size);
         Plotly.extendTraces(plot_speed, {y:[[speed]]}, [0], size);
+        Plotly.extendTraces(plot_error, {y:[[reference_pos], [sensor_pos]]}, [0, 1], size);
 
         document.getElementById("ssia").value = ssia;
         document.getElementById("ssib").value = ssib;
@@ -344,6 +402,12 @@ async function readLoop() {
 
         if (trace_speed.y.length > size)
           trace_speed.y.pop();
+
+        if (trace_error.y.length > size)
+          trace_error.y.pop();
+
+        if (trace_sensor_pos.y.length > size)
+          trace_sensor_pos.y.pop();
       }
       else if (value.substr(0, "config:".length) == "config:") {
         data = value.substr("config:".length).trim().split(separator);
@@ -741,6 +805,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   Plotly.newPlot('plot', data_xyz, layout_xyz, config);
   Plotly.newPlot('plot_speed', data_speed, layout_speed, config);
+  Plotly.newPlot('plot_error', data_error, layout_error, config);
   // plots.push('plot');    
 
   initBaudRate();
