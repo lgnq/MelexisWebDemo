@@ -330,7 +330,7 @@ async function readLoop() {
       else if (value.substr(0, "zeroposition:".length) == "zeroposition:") {
         data = value.substr("zeroposition:".length).trim().split(separator);
 
-        document.getElementById("zero_position").innerHTML="0x" + data[0].toString(16).toUpperCase();
+        document.getElementById("zero_position").value="0x" + data[0].toString(16).toUpperCase();
       }
     }
 
