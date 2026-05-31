@@ -312,6 +312,7 @@ async function readLoop() {
         data = value.substr("config:".length).trim().split(separator);
 
         let config = data[0];
+        document.getElementById("sensingMode").value = (parseInt(config, 16) ) & 0x3;
         document.getElementById("gpioProtocol").value = (parseInt(config, 16) >>3 ) & 0x3;
         document.getElementById("gpioConfig").value   = (parseInt(config, 16) >>9 ) & 0x3;
         document.getElementById("abiProtocol").value  = (parseInt(config, 16) >>5 ) & 0x1;
