@@ -239,6 +239,14 @@ const diag_temp_hi  = document.getElementById("diag_temp_hi");
 const diag_mem      = document.getElementById("diag_mem");
 const diag_amp_adc  = document.getElementById("diag_amp_adc");
 
+const sc_x1  = document.getElementById("sc_x1");
+const sc_x2  = document.getElementById("sc_x2");
+const sc_y1  = document.getElementById("sc_y1");
+const sc_y2  = document.getElementById("sc_y2");
+const sc_ye  = document.getElementById("sc_ye");
+const sc_hl  = document.getElementById("sc_hl");
+
+
 async function disconnect() {
   if (reader) {
     await reader.cancel();
@@ -372,6 +380,36 @@ async function readLoop() {
 
         document.getElementById("zero_position").value="0x" + data[0].toString(16).toUpperCase();
       }
+      else if (value.substr(0, "sc_x1:".length) == "sc_x1:") {
+        data = value.substr("sc_x1:".length).trim().split(separator);
+
+        sc_x1.value = "0x" + data[0].toString(16).toUpperCase();
+      }      
+      else if (value.substr(0, "sc_x2:".length) == "sc_x2:") {
+        data = value.substr("sc_x2:".length).trim().split(separator);
+
+        sc_x2.value = "0x" + data[0].toString(16).toUpperCase();
+      }            
+      else if (value.substr(0, "sc_y1:".length) == "sc_y1:") {
+        data = value.substr("sc_y1:".length).trim().split(separator);
+
+        sc_y1.value = "0x" + data[0].toString(16).toUpperCase();
+      }      
+      else if (value.substr(0, "sc_y2:".length) == "sc_y2:") {
+        data = value.substr("sc_y2:".length).trim().split(separator);
+
+        sc_y2.value = "0x" + data[0].toString(16).toUpperCase();
+      }            
+      else if (value.substr(0, "sc_ye:".length) == "sc_ye:") {
+        data = value.substr("sc_ye:".length).trim().split(separator);
+
+        sc_ye.value = "0x" + data[0].toString(16).toUpperCase();
+      }      
+      else if (value.substr(0, "sc_hl:".length) == "sc_hl:") {
+        data = value.substr("sc_hl:".length).trim().split(separator);
+
+        sc_hl.value = "0x" + data[0].toString(16).toUpperCase();
+      }                        
       else if (value.substr(0, "de_sr:".length) == "de_sr:") {
         data = value.substr("de_sr:".length).trim().split(separator);
 

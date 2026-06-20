@@ -125,9 +125,6 @@
             <label for="Digital Version">Digital Version:</label>
             <div id="digital_version"></div>
 
-            <label for="zero_position">Zero Position:</label>
-            <input type="text" id="zero_position" value="" size="10">
-
             <label for="sensingMode">Sensing Mode:</label>
             <select name="sensingMode" id="sensingMode">
               <option value="0">000 - 0 - X-Y</option>
@@ -177,6 +174,39 @@
               <option value="2">2 - Open Drain N-MOS</option>
               <option value="3">3 - Push Pull</option>
             </select>
+            
+            <label for="zero_position">Zero Position:</label>
+            <input type="text" id="zero_position" value="" size="10">
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+            <label for="sc_x1">SC_X1:</label>
+            <input type="text" id="sc_x1" value="" size="10">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+            <label for="sc_x2">SC_X2:</label>
+            <input type="text" id="sc_x2" value="" size="10">
+            </div>            
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+            <label for="sc_y1">SC_Y1:</label>
+            <input type="text" id="sc_y1" value="" size="10">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+            <label for="sc_y2">SC_Y2:</label>
+            <input type="text" id="sc_y2" value="" size="10">
+            </div>            
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+            <label for="sc_ye">SC_YE:</label>
+            <input type="text" id="sc_ye" value="" size="10">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
+            <label for="sc_hl">SC_HL:</label>
+            <input type="text" id="sc_hl" value="" size="10">
+            </div>                        
             
             <div>
               <input type="checkbox" id="de_sr"> SR Monitor
