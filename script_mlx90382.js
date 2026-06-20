@@ -200,7 +200,12 @@ const butReset      = document.getElementById('butReset');
 const zeroposition  = document.getElementById('zero_position');
 const sensingMode  = document.getElementById('sensingMode');
 const gpioProtocol = document.getElementById('gpioProtocol');
+
+const de_aroc      = document.getElementById('de_aroc');
 const de_sr        = document.getElementById('de_sr');
+const de_die       = document.getElementById('de_die');
+const de_intp      = document.getElementById('de_intp');
+const de_scxy      = document.getElementById('de_scxy');
 
 const er_aroc      = document.getElementById("er_aroc");
 const er_dst       = document.getElementById("er_dsp");
@@ -410,17 +415,16 @@ async function readLoop() {
 
         sc_hl.value = "0x" + data[0].toString(16).toUpperCase();
       }                        
-      else if (value.substr(0, "de_sr:".length) == "de_sr:") {
-        data = value.substr("de_sr:".length).trim().split(separator);
+      else if (value.substr(0, "ram_0xbe:".length) == "ram_0xbe:") {
+        data = value.substr("ram_0xbe:".length).trim().split(separator);
 
-        let de_sr_val = data[0];
+        let ram_0xbe = parseInt(data[0], 16);
 
-        document.getElementById("de_sr").checked = ((parseInt(de_sr_val, 16) >> 1) & 0x7 == 3) ? false : true;          
-
-        // if ((parseInt(de_sr_val, 16) >> 1) & 0x7 == 3)
-        //   document.getElementById("de_sr").checked = false;          
-        // else
-        //   document.getElementById("de_sr").checked = true;
+        de_aroc.checked = (ram_0xbe & 0x1) ? true : false;          
+        de_sr.checked   = (((ram_0xbe >> 1) & 0x7) == 3) ? false : true;          
+        de_die.checked  = ((ram_0xbe >> 4) & 0x1) ? true : false;          
+        de_intp.checked = ((ram_0xbe >> 5) & 0x1) ? true : false;          
+        de_scxy.checked = ((ram_0xbe >> 6) & 0x1) ? true : false;          
       }
       else if (value.substr(0, "diag1:".length) == "diag1:") {
         data = value.substr("diag1:".length).trim().split(separator);
@@ -616,7 +620,43 @@ async function clickClear() {
   document.getElementById("digital_version").innerHTML = "";
 }
 
+async function click_de_aroc() {
+  // Write to output stream
+  const writer = outputStream.getWriter();
+
+  writer.write("mlx90382_ops_ctrl 267 " + gpioProtocol.value + '\r');
+
+  writer.releaseLock();  
+}
+
 async function click_de_sr() {
+  // Write to output stream
+  const writer = outputStream.getWriter();
+
+  writer.write("mlx90382_ops_ctrl 267 " + gpioProtocol.value + '\r');
+
+  writer.releaseLock();  
+}
+
+async function click_de_die() {
+  // Write to output stream
+  const writer = outputStream.getWriter();
+
+  writer.write("mlx90382_ops_ctrl 267 " + gpioProtocol.value + '\r');
+
+  writer.releaseLock();  
+}
+
+async function click_de_intp() {
+  // Write to output stream
+  const writer = outputStream.getWriter();
+
+  writer.write("mlx90382_ops_ctrl 267 " + gpioProtocol.value + '\r');
+
+  writer.releaseLock();  
+}
+
+async function click_de_scxy() {
   // Write to output stream
   const writer = outputStream.getWriter();
 
@@ -690,7 +730,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   sampleFreq.addEventListener('change', changeSampleFreq);
   sensingMode.addEventListener('change', changeSensingMode);
   gpioProtocol.addEventListener('change', changeGpioProtocol);
+  de_aroc.addEventListener('click', click_de_aroc);
   de_sr.addEventListener('click', click_de_sr);
+  de_die.addEventListener('click', click_de_die);
+  de_intp.addEventListener('click', click_de_intp);
+  de_scxy.addEventListener('click', click_de_scxy);
 
   if ('serial' in navigator) {
     console.log("webserial is supported!")
