@@ -199,6 +199,45 @@ const butInfo       = document.getElementById('butInfo');
 const butReset      = document.getElementById('butReset');
 const zeroposition  = document.getElementById('zero_position');
 const sensingMode  = document.getElementById('sensingMode');
+const gpioProtocol = document.getElementById('gpioProtocol');
+const de_sr        = document.getElementById('de_sr');
+
+const er_aroc      = document.getElementById("er_aroc");
+const er_dst       = document.getElementById("er_dsp");
+const er_dsp_ta    = document.getElementById("er_dsp_ta");
+const er_dsp_alf   = document.getElementById("er_dsp_alf");
+const er_afe_ref   = document.getElementById("er_afe_ref");
+const er_adc_lin   = document.getElementById("er_adc_lin");
+const er_adc       = document.getElementById("er_adc");
+const er_agc_lo    = document.getElementById("er_agc_lo");
+const er_agc_hi    = document.getElementById("er_agc_hi");
+const er_speed_hi  = document.getElementById("er_speed_hi");
+const er_temp_lo   = document.getElementById("er_temp_lo");
+const er_temp_hi   = document.getElementById("er_temp_hi");
+const er_nvm_sr    = document.getElementById("er_nvm_sr");
+const er_ov_vdda   = document.getElementById("er_ov_vdda");
+const er_ov_vddd   = document.getElementById("er_ov_vddd");
+const er_ov_vaux   = document.getElementById("er_ov_vaux");
+
+const er_nvm_ded   = document.getElementById("er_nvm_ded");
+const er_nvm_crc   = document.getElementById("er_nvm_crc");
+const er_uv_vdd    = document.getElementById("er_uv_vdd");
+const er_uv_vdda   = document.getElementById("er_uv_vdda");
+const er_uv_vaux   = document.getElementById("er_uv_vaux");
+const er_temp_max  = document.getElementById("er_temp_max");
+const er_die       = document.getElementById("er_die");
+const er_intp      = document.getElementById("er_intp");
+const er_scxy      = document.getElementById("er_scxy");
+
+const diag_dsp      = document.getElementById("diag_dsp");
+const diag_agc_lo   = document.getElementById("diag_agc_lo");
+const diag_agc_hi   = document.getElementById("diag_agc_hi");
+const diag_dsp_ta   = document.getElementById("diag_dsp_ta");
+const diag_speed_hi = document.getElementById("diag_speed_hi");
+const diag_temp_lo  = document.getElementById("diag_temp_lo");
+const diag_temp_hi  = document.getElementById("diag_temp_hi");
+const diag_mem      = document.getElementById("diag_mem");
+const diag_amp_adc  = document.getElementById("diag_amp_adc");
 
 async function disconnect() {
   if (reader) {
@@ -333,6 +372,67 @@ async function readLoop() {
 
         document.getElementById("zero_position").value="0x" + data[0].toString(16).toUpperCase();
       }
+      else if (value.substr(0, "de_sr:".length) == "de_sr:") {
+        data = value.substr("de_sr:".length).trim().split(separator);
+
+        let de_sr_val = data[0];
+
+        document.getElementById("de_sr").checked = ((parseInt(de_sr_val, 16) >> 1) & 0x7 == 3) ? false : true;          
+
+        // if ((parseInt(de_sr_val, 16) >> 1) & 0x7 == 3)
+        //   document.getElementById("de_sr").checked = false;          
+        // else
+        //   document.getElementById("de_sr").checked = true;
+      }
+      else if (value.substr(0, "diag1:".length) == "diag1:") {
+        data = value.substr("diag1:".length).trim().split(separator);
+
+        let diag1 = parseInt(data[0], 16);
+        er_aroc.checked      = ((diag1) & 0x1) ? true : false;
+        er_dsp.checked       = ((diag1 >> 1) & 0x1) ? true : false;
+        er_dsp_ta.checked    = ((diag1 >> 2) & 0x1) ? true : false;
+        er_dsp_alf.checked   = ((diag1 >> 3) & 0x1) ? true : false;
+        er_afe_ref.checked   = ((diag1 >> 4) & 0x1) ? true : false;
+        er_adc_lin.checked   = ((diag1 >> 5) & 0x1) ? true : false;
+        er_adc.checked       = ((diag1 >> 6) & 0x1) ? true : false;
+        er_agc_lo.checked    = ((diag1 >> 7) & 0x1) ? true : false;
+        er_agc_hi.checked    = ((diag1 >> 8) & 0x1) ? true : false;
+        er_speed_hi.checked  = ((diag1 >> 9) & 0x1) ? true : false;
+        er_temp_lo.checked   = ((diag1 >> 10) & 0x1) ? true : false;
+        er_temp_hi.checked   = ((diag1 >> 11) & 0x1) ? true : false;
+        er_nvm_sr.checked    = ((diag1 >> 12) & 0x1) ? true : false;
+        er_ov_vdda.checked   = ((diag1 >> 13) & 0x1) ? true : false;
+        er_ov_vddd.checked   = ((diag1 >> 14) & 0x1) ? true : false;
+        er_ov_vaux.checked   = ((diag1 >> 15) & 0x1) ? true : false;
+      }            
+      else if (value.substr(0, "diag2:".length) == "diag2:") {
+        data = value.substr("diag2:".length).trim().split(separator);
+
+        let diag2 = parseInt(data[0], 16);
+        er_nvm_ded.checked   = ((diag2 >> 1) & 0x1) ? true : false;
+        er_nvm_crc.checked   = ((diag2 >> 2) & 0x1) ? true : false;
+        er_uv_vdd.checked    = ((diag2 >> 3) & 0x1) ? true : false;
+        er_uv_vdda.checked   = ((diag2 >> 4) & 0x1) ? true : false;
+        er_uv_vaux.checked   = ((diag2 >> 5) & 0x1) ? true : false;
+        er_temp_max.checked  = ((diag2 >> 6) & 0x1) ? true : false;
+        er_die.checked       = ((diag2 >> 7) & 0x1) ? true : false;
+        er_intp.checked      = ((diag2 >> 8) & 0x1) ? true : false;
+        er_scxy.checked      = ((diag2 >> 9) & 0x1) ? true : false;
+      }                  
+      else if (value.substr(0, "diag3:".length) == "diag3:") {
+        data = value.substr("diag3:".length).trim().split(separator);
+
+        let diag3 = parseInt(data[0], 16);
+        diag_dsp.checked       = ((diag3) & 0x1) ? true : false;
+        diag_agc_lo.checked    = ((diag3 >> 1) & 0x1) ? true : false;
+        diag_agc_hi.checked    = ((diag3 >> 2) & 0x1) ? true : false;
+        diag_dsp_ta.checked    = ((diag3 >> 3) & 0x1) ? true : false;
+        diag_speed_hi.checked  = ((diag3 >> 4) & 0x1) ? true : false;
+        diag_temp_lo.checked   = ((diag3 >> 5) & 0x1) ? true : false;
+        diag_temp_hi.checked   = ((diag3 >> 6) & 0x1) ? true : false;
+        diag_mem.checked       = ((diag3 >> 7) & 0x1) ? true : false;
+        diag_amp_adc.checked   = ((diag3 >> 8) & 0x8) ? true : false;
+      }                        
     }
 
     if (done) {
@@ -462,11 +562,29 @@ async function changeSensingMode() {
   writer.releaseLock();
 }
 
+async function changeGpioProtocol() {
+  // Write to output stream
+  const writer = outputStream.getWriter();
+
+  writer.write("mlx90382_ops_ctrl 267 " + gpioProtocol.value + '\r');
+
+  writer.releaseLock();
+}
+
 async function clickClear() {
   reset();
 
   document.getElementById("analog_version").innerHTML = "";
   document.getElementById("digital_version").innerHTML = "";
+}
+
+async function click_de_sr() {
+  // Write to output stream
+  const writer = outputStream.getWriter();
+
+  writer.write("mlx90382_ops_ctrl 267 " + gpioProtocol.value + '\r');
+
+  writer.releaseLock();  
 }
 
 async function clickAutoscroll() {
@@ -533,6 +651,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   zeroposition.addEventListener('keydown', set_zero_position);
   sampleFreq.addEventListener('change', changeSampleFreq);
   sensingMode.addEventListener('change', changeSensingMode);
+  gpioProtocol.addEventListener('change', changeGpioProtocol);
+  de_sr.addEventListener('click', click_de_sr);
 
   if ('serial' in navigator) {
     console.log("webserial is supported!")

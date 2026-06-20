@@ -176,8 +176,152 @@
               <option value="1">1 - Open Drain P-MOS</option>
               <option value="2">2 - Open Drain N-MOS</option>
               <option value="3">3 - Push Pull</option>
-            </select>        
+            </select>
+            
+            <div>
+              <input type="checkbox" id="de_sr"> SR Monitor
+            </div>
 
+            <div>
+              <input type="checkbox" id="reserved"> Reserved
+            </div>            
+
+            <div>
+              <input type="checkbox" id="er_aroc" disabled> ER_AROC
+            </div>
+
+            <div>
+              <input type="checkbox" id="er_dsp" disabled> ER_DSP
+            </div>                        
+
+            <div>
+              <input type="checkbox" id="er_dsp_ta" disabled> ER_DSP_TA
+            </div>                                    
+            
+            <div>
+              <input type="checkbox" id="er_dsp_alf" disabled> ER_DSP_ALF
+            </div>
+
+            <div>
+              <input type="checkbox" id="er_afe_ref" disabled> ER_AFE_REF
+            </div>
+
+            <div>
+              <input type="checkbox" id="er_adc_lin" disabled> ER_ADC_LIN
+            </div>
+            
+            <div>
+              <input type="checkbox" id="er_adc" disabled> ER_ADC
+            </div>
+            
+            <div>
+              <input type="checkbox" id="er_agc_lo" disabled> ER_AGC_LO
+            </div>
+            
+            <div>
+              <input type="checkbox" id="er_agc_hi" disabled> ER_AGC_HI
+            </div>
+            
+            <div>
+              <input type="checkbox" id="er_speed_hi" disabled> ER_SPEED_HI
+            </div>
+            
+            <div>
+              <input type="checkbox" id="er_temp_lo" disabled> ER_TEMP_LO
+            </div>
+            
+            <div>
+              <input type="checkbox" id="er_temp_hi" disabled> ER_TEMP_HI
+            </div>
+            
+            <div>
+              <input type="checkbox" id="er_nvm_sr" disabled> ER_NVM_SR
+            </div>            
+            
+            <div>
+              <input type="checkbox" id="er_ov_vdda" disabled> ER_OV_VDDA
+            </div>           
+            
+            <div>
+              <input type="checkbox" id="er_ov_vddd" disabled> ER_OV_VDDD
+            </div>           
+
+            <div>
+              <input type="checkbox" id="er_ov_vaux" disabled> ER_OV_VAUZ
+            </div>                
+
+            <div>
+              <input type="checkbox" id="er_nvm_ded" disabled> ER_NVM_DED
+            </div>
+            
+            <div>
+              <input type="checkbox" id="er_nvm_crc" disabled> ER_NVM_CRC
+            </div>
+
+            <div>
+              <input type="checkbox" id="er_uv_vdd" disabled> ER_UV_VDD
+            </div>
+
+            <div>
+              <input type="checkbox" id="er_uv_vdda" disabled> ER_UV_VDDA
+            </div>
+
+            <div>
+              <input type="checkbox" id="er_uv_vaux" disabled> ER_UV_VAUX
+            </div>
+
+            <div>
+              <input type="checkbox" id="er_temp_max" disabled> ER_TEMP_MAX
+            </div>
+
+            <div>
+              <input type="checkbox" id="er_die" disabled> ER_DIE
+            </div>
+
+            <div>
+              <input type="checkbox" id="er_intp" disabled> ER_INTP
+            </div>
+
+            <div>
+              <input type="checkbox" id="er_scxy" disabled> ER_SCXY
+            </div>
+
+            <div>
+              <input type="checkbox" id="diag_dsp" disabled> DIAG_DSP
+            </div>
+
+            <div>
+              <input type="checkbox" id="diag_agc_lo" disabled> DIAG_AGC_LO
+            </div>
+
+            <div>
+              <input type="checkbox" id="diag_agc_hi" disabled> DIAG_AGC_HI
+            </div>
+
+            <div>
+              <input type="checkbox" id="diag_dsp_ta" disabled> DIAG_DSP_TA
+            </div>
+
+            <div>
+              <input type="checkbox" id="diag_speed_hi" disabled> DIAG_SPEED_HI
+            </div>
+
+            <div>
+              <input type="checkbox" id="diag_temp_lo" disabled> DIAG_TEMP_LO
+            </div>
+
+            <div>
+              <input type="checkbox" id="diag_temp_hi" disabled> DIAG_TEMP_HI
+            </div>
+
+            <div>
+              <input type="checkbox" id="diag_mem" disabled> DIAG_MEM
+            </div>
+            
+            <div>
+              <input type="checkbox" id="diag_amp_adc" disabled> DIAG_AMP_ADC
+            </div>   
+            
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
               <button id="butStart" type="button">Start</button>
               <button id="butInfo" type="button">Info</button>
@@ -185,6 +329,7 @@
 
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
               <button id="butReset" type="button">Soft Reset</button>
+              <button id="butNvram" type="button">Program NVM</button>
             </div>
           </fieldset>
 
