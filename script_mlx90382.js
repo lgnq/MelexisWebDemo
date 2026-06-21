@@ -251,6 +251,15 @@ const sc_y2  = document.getElementById("sc_y2");
 const sc_ye  = document.getElementById("sc_ye");
 const sc_hl  = document.getElementById("sc_hl");
 
+const faddr0  = document.getElementById("faddr0");
+const faddr1  = document.getElementById("faddr1");
+const faddr2  = document.getElementById("faddr2");
+const faddr3  = document.getElementById("faddr3");
+
+const frfs    = document.getElementById("frfs");
+const frfsen  = document.getElementById("frfsen");
+const frcrcen = document.getElementById("frcrcen");
+const frinv   = document.getElementById("frinv");
 
 async function disconnect() {
   if (reader) {
@@ -415,6 +424,26 @@ async function readLoop() {
 
         sc_hl.value = "0x" + data[0].toString(16).toUpperCase();
       }                        
+      else if (value.substr(0, "faddr0:".length) == "faddr0:") {
+        data = value.substr("faddr0:".length).trim().split(separator);
+
+        faddr0.value = "0x" + data[0].toString(16).toUpperCase();
+      }
+      else if (value.substr(0, "faddr1:".length) == "faddr1:") {
+        data = value.substr("faddr1:".length).trim().split(separator);
+
+        faddr1.value = "0x" + data[0].toString(16).toUpperCase();
+      }
+      else if (value.substr(0, "faddr2:".length) == "faddr2:") {
+        data = value.substr("faddr2:".length).trim().split(separator);
+
+        faddr2.value = "0x" + data[0].toString(16).toUpperCase();
+      }
+      else if (value.substr(0, "faddr3:".length) == "faddr3:") {
+        data = value.substr("faddr3:".length).trim().split(separator);
+
+        faddr3.value = "0x" + data[0].toString(16).toUpperCase();
+      }                  
       else if (value.substr(0, "ram_0xbe:".length) == "ram_0xbe:") {
         data = value.substr("ram_0xbe:".length).trim().split(separator);
 
