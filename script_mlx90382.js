@@ -197,6 +197,7 @@ const sampleFreq    = document.getElementById('sampleFreq');
 const butStart      = document.getElementById('butStart');
 const butInfo       = document.getElementById('butInfo');
 const butReset      = document.getElementById('butReset');
+const butNvram      = document.getElementById('butNvram');
 const zeroposition  = document.getElementById('zero_position');
 const sensingMode  = document.getElementById('sensingMode');
 const gpioProtocol = document.getElementById('gpioProtocol');
@@ -595,6 +596,14 @@ async function clickReset() {
   writer.releaseLock();
 }
 
+async function clickNvram() {
+  const writer = outputStream.getWriter();
+
+  writer.write("mlx90382_ops_ctrl 257\r");
+
+  writer.releaseLock();
+}
+
 function set_zero_position(event) {
   // Write to output stream
   const writer = outputStream.getWriter();
@@ -865,6 +874,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   butStart.addEventListener('click', clickStart);
   butInfo.addEventListener('click', clickInfo);
   butReset.addEventListener('click', clickReset);
+  butNvram.addEventListener('click', clickNvram);
   zeroposition.addEventListener('keydown', set_zero_position);
   sampleFreq.addEventListener('change', changeSampleFreq);
   sensingMode.addEventListener('change', changeSensingMode);
