@@ -607,6 +607,116 @@ function set_zero_position(event) {
   writer.releaseLock();
 }
 
+function set_sc_x1(event) {
+  const writer = outputStream.getWriter();
+
+  if (event.keyCode === 13) {
+    writer.write("mlx90382_ops_ctrl 265 " + sc_x1.value + '\r');
+  }
+
+  writer.releaseLock();
+}
+
+function set_sc_x2(event) {
+  const writer = outputStream.getWriter();
+
+  if (event.keyCode === 13) {
+    writer.write("mlx90382_ops_ctrl 265 " + sc_x2.value + '\r');
+  }
+
+  writer.releaseLock();
+}
+
+function set_sc_y1(event) {
+  const writer = outputStream.getWriter();
+
+  if (event.keyCode === 13) {
+    writer.write("mlx90382_ops_ctrl 265 " + sc_y1.value + '\r');
+  }
+
+  writer.releaseLock();
+}
+
+function set_sc_y2(event) {
+  const writer = outputStream.getWriter();
+
+  if (event.keyCode === 13) {
+    writer.write("mlx90382_ops_ctrl 265 " + sc_y2.value + '\r');
+  }
+
+  writer.releaseLock();
+}
+
+function set_sc_ye(event) {
+  const writer = outputStream.getWriter();
+
+  if (event.keyCode === 13) {
+    writer.write("mlx90382_ops_ctrl 265 " + sc_ye.value + '\r');
+  }
+
+  writer.releaseLock();
+}
+
+function set_sc_hl(event) {
+  const writer = outputStream.getWriter();
+
+  if (event.keyCode === 13) {
+    writer.write("mlx90382_ops_ctrl 265 " + sc_hl.value + '\r');
+  }
+
+  writer.releaseLock();
+}
+
+function set_faddr0(event) {
+  const writer = outputStream.getWriter();
+
+  if (event.keyCode === 13) {
+    writer.write("mlx90382_ops_ctrl 265 " + faddr0.value + '\r');
+  }
+
+  writer.releaseLock();
+}
+
+function set_faddr1(event) {
+  const writer = outputStream.getWriter();
+
+  if (event.keyCode === 13) {
+    writer.write("mlx90382_ops_ctrl 265 " + faddr1.value + '\r');
+  }
+
+  writer.releaseLock();
+}
+
+function set_faddr2(event) {
+  const writer = outputStream.getWriter();
+
+  if (event.keyCode === 13) {
+    writer.write("mlx90382_ops_ctrl 265 " + faddr2.value + '\r');
+  }
+
+  writer.releaseLock();
+}
+
+function set_faddr3(event) {
+  const writer = outputStream.getWriter();
+
+  if (event.keyCode === 13) {
+    writer.write("mlx90382_ops_ctrl 265 " + faddr3.value + '\r');
+  }
+
+  writer.releaseLock();
+}
+
+function set_frfs(event) {
+  const writer = outputStream.getWriter();
+
+  if (event.keyCode === 13) {
+    writer.write("mlx90382_ops_ctrl 265 " + frfs.value + '\r');
+  }
+
+  writer.releaseLock();
+}
+
 function saveSetting(setting, value) {
     window.localStorage.setItem(setting, JSON.stringify(value));
 }
@@ -764,6 +874,20 @@ document.addEventListener('DOMContentLoaded', async () => {
   de_die.addEventListener('click', click_de_die);
   de_intp.addEventListener('click', click_de_intp);
   de_scxy.addEventListener('click', click_de_scxy);
+
+  sc_x1.addEventListener('keydown', set_sc_x1);  
+  sc_x2.addEventListener('keydown', set_sc_x2);  
+  sc_y1.addEventListener('keydown', set_sc_y1);  
+  sc_y2.addEventListener('keydown', set_sc_y2);  
+  sc_ye.addEventListener('keydown', set_sc_ye);  
+  sc_hl.addEventListener('keydown', set_sc_hl); 
+  
+  faddr0.addEventListener('keydown', set_faddr0);  
+  faddr1.addEventListener('keydown', set_faddr1);  
+  faddr2.addEventListener('keydown', set_faddr2);  
+  faddr3.addEventListener('keydown', set_faddr3);  
+
+  frfs.addEventListener('keydown', set_frfs);  
 
   if ('serial' in navigator) {
     console.log("webserial is supported!")
