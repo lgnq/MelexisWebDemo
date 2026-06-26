@@ -262,6 +262,8 @@ const frfsen  = document.getElementById("frfsen");
 const frcrcen = document.getElementById("frcrcen");
 const frinv   = document.getElementById("frinv");
 
+const spi_mode   = document.getElementById("spiMode");
+
 async function disconnect() {
   if (reader) {
     await reader.cancel();
@@ -504,7 +506,19 @@ async function readLoop() {
         diag_temp_hi.checked   = ((diag3 >> 6) & 0x1) ? true : false;
         diag_mem.checked       = ((diag3 >> 7) & 0x1) ? true : false;
         diag_amp_adc.checked   = ((diag3 >> 8) & 0x8) ? true : false;
-      }                        
+      }
+      else if (value.substr(0, "spi_conf:".length) == "spi_conf:") {
+        data = value.substr("spi_conf:".length).trim().split(separator);
+
+        let spi_conf = parseInt(data[0], 16);
+
+        frfs.value             = ((spi_conf) & 0xF);
+        frfsen.checked         = ((spi_conf >> 4) & 0x1) ? true : false;
+        frcrcen.checked        = ((spi_conf >> 5) & 0x1) ? true : false;
+        frinv.value            = ((spi_conf >> 6) & 0xF);
+
+        spi_mode.value        = ((spi_conf >> 10) & 0x3);
+      }                              
     }
 
     if (done) {
