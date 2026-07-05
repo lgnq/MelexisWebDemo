@@ -109,7 +109,7 @@ let trace_x = {
   name: 'angle',
   // fill: 'tozeroy',
   line: {
-    color: 'rgb(0, 53, 75)',
+    color: 'rgb(219, 65, 64)',
     width: 1
   }
 };
@@ -290,11 +290,6 @@ async function readLoop() {
         t = data[2];
         speed = data[3];
     
-        // for (let i = 0; i < plots.length; i++)
-        // {
-        //   Plotly.extendTraces(plots[i], {y:[[x], [y], [z]]}, [0, 1, 2], size);
-        // }
-
         Plotly.extendTraces(plot, {y:[[x], [y]]}, [0, 1], size);
         Plotly.extendTraces(plot_speed, {y:[[speed]]}, [0], size);
 
@@ -564,29 +559,26 @@ var meter = function(p)
     p.rotate(-90);
     
     p.strokeWeight(8);
-    p.stroke(0, 53, 75);
-    // p.stroke(255, 100, 150);
+    p.fill(219, 65, 64);
     p.noFill();
+
+    p.stroke(219, 65, 64);
     // let secondAngle = p.map(sc, 0, 60, 0, 360);
     // p.arc(0, 0, 300, 300, 0, degree);  //degree
     p.arc(0, 0, 300, 300, 0, x); 
 
     p.stroke(101, 187, 169);
-    // p.stroke(150, 100, 255);
     // let minuteAngle = p.map(mn, 0, 60, 0, 360);
     // p.arc(0, 0, 280, 280, 0, minuteAngle);
     p.arc(0, 0, 280, 280, 0, y);
   
-    p.stroke(219, 65, 64);
-    // p.stroke(150, 255, 100);
-    // let secondAngle = p.map(sc, 0, 60, 0, 360);
-    // p.arc(0, 0, 260, 260, 0, secondAngle);
-    p.arc(0, 0, 260, 260, 0, z);
+    // p.stroke(219, 65, 64);
+    // // let secondAngle = p.map(sc, 0, 60, 0, 360);
+    // p.arc(0, 0, 260, 260, 0, z);
 
     p.push();
     p.rotate(x);
-    p.stroke(0, 53, 75);
-    // p.stroke(255, 100, 150);
+    p.stroke(219, 65, 64);
     p.line(0, 0, 100, 0);
     p.pop();
   
@@ -597,12 +589,11 @@ var meter = function(p)
     p.line(0, 0, 75, 0);
     p.pop();
   
-    p.push();
-    p.rotate(z);
-    p.stroke(219, 65, 64);
-    // p.stroke(150, 255, 100);
-    p.line(0, 0, 50, 0);
-    p.pop();
+    // p.push();
+    // p.rotate(z);
+    // p.stroke(219, 65, 64);
+    // p.line(0, 0, 50, 0);
+    // p.pop();
 
     // Tick markers around perimeter of clock
     p.push();
@@ -621,19 +612,18 @@ var meter = function(p)
     p.noStroke();
     p.textSize(14);
 
-    p.fill(0, 53, 75);
-    // p.fill(255, 100, 150);
-    p.text("PHASE_LIN： " + x + "°", 10, 10, 300, 200);
+    p.fill(219, 65, 64);
+    // p.fill(0, 53, 75);
+    p.text("ANGLE： " + x + "°", 10, 10, 300, 200);
     
     p.fill(101, 187, 169);
-    // p.fill(150, 100, 255);
-    p.text("PHASE_DRIFTC： " + y + "°", 10, 30, 300, 200);
+    p.text("ANGLE_DBZ： " + y + "°", 10, 30, 300, 200);
 
-    p.fill(219, 65, 64);
-    // p.fill(150, 255, 100);
-    p.text("PHASE_SC： " + z + "°", 10, 50, 300, 200);
+    // p.fill(219, 65, 64);
+    // p.text("PHASE_SC： " + z + "°", 10, 50, 300, 200);
 
-    p.fill('limegreen');
+    // p.fill('limegreen');
+    p.fill(0, 53, 75);
     p.text("Temperature： " + t + "°", 10, 70, 300, 200);
     p.pop();
   }
@@ -696,7 +686,7 @@ var speed_meter = function(p)
 
     p.fill(219, 65, 64);
     // p.fill(255, 100, 150);
-    p.text("SPEED： " + speed, 10, 10, 300, 200);
+    p.text("MEAS COUNT： " + speed, 10, 10, 300, 200);
     
     p.pop();    
   }
