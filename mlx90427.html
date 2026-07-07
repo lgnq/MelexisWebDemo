@@ -176,7 +176,7 @@
               <option value="1">1 - Open Drain P-MOS</option>
               <option value="2">2 - Open Drain N-MOS</option>
               <option value="3">3 - Push Pull</option>
-            </select>        
+            </select>
 
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
               <button id="butStart" type="button">Start</button>
@@ -186,6 +186,74 @@
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px">
               <button id="butReset" type="button">Soft Reset</button>
             </div>
+          </fieldset>
+
+          <fieldset class="config_field">
+            <legend>NVRAM 0x100C Config</legend>
+
+            <div>
+              <input type="checkbox" id="diag_global_en"> DIAG_GLOBAL_EN
+            </div>
+            
+            <div>
+              <input type="checkbox" id="diag_adc_err_en"> DIAG_ADC_ERR_EN 
+            </div>            
+
+            <div>
+              <input type="checkbox" id="diag_sys_adc_time_en"> DIAG_SYS_ADC_TIME_EN
+            </div>
+            
+            <div>
+              <input type="checkbox" id="diag_sys_aps_time_en"> DIAG_SYS_APS_TIME_EN 
+            </div>                        
+
+            <div>
+              <input type="checkbox" id="diag_dsp_ovf_aps_en"> DIAG_DSP_OVF_APS_EN
+            </div>
+            
+            <div>
+              <input type="checkbox" id="diag_ov_vdd_5v_en"> DIAG_OV_VDD_5V_EN 
+            </div>                        
+          </fieldset>
+
+          <fieldset class="config_field">
+            <legend>NVRAM 0x100E Config</legend>
+
+            <div>
+              <input type="checkbox" id="diag_sys_adc_time_en"> DIAG_SYS_ADC_TIME_EN
+            </div>
+            
+            <div>
+              <input type="checkbox" id="diag_sys_aps_time_en"> DIAG_SYS_APS_TIME_EN 
+            </div>                        
+
+            <div>
+              <input type="checkbox" id="diag_dsp_ovf_aps_en"> DIAG_DSP_OVF_APS_EN
+            </div>
+            
+            <div>
+              <input type="checkbox" id="diag_ov_vdd_5v_en"> DIAG_OV_VDD_5V_EN 
+            </div>                        
+          </fieldset>
+
+          <fieldset class="config_field">
+            <legend>NVRAM 0x1010 Config</legend>
+
+            <div>
+              <input type="checkbox" id="diag_sys_adc_time_en"> DIAG_SYS_ADC_TIME_EN
+            </div>
+            
+            <div>
+              <input type="checkbox" id="diag_sys_aps_time_en"> DIAG_SYS_APS_TIME_EN 
+            </div>                        
+
+            <div>
+              <input type="checkbox" id="diag_dsp_ovf_aps_en"> DIAG_DSP_OVF_APS_EN
+            </div>
+            
+            <div>
+              <input type="checkbox" id="diag_ov_vdd_5v_en"> DIAG_OV_VDD_5V_EN 
+            </div>                        
           </fieldset>
 
           <div class="section-separator"></div>
