@@ -795,7 +795,10 @@ async function click_de_sr() {
   // Write to output stream
   const writer = outputStream.getWriter();
 
-  writer.write("mlx90382_ops_ctrl 267 " + gpioProtocol.value + '\r');
+  if (de_sr.checked)
+    writer.write("mlx90382_ops_ctrl 268 " + 1 + '\r');
+  else
+    writer.write("mlx90382_ops_ctrl 268 " + 0 + '\r');
 
   writer.releaseLock();  
 }
@@ -804,7 +807,10 @@ async function click_de_die() {
   // Write to output stream
   const writer = outputStream.getWriter();
 
-  writer.write("mlx90382_ops_ctrl 267 " + gpioProtocol.value + '\r');
+  if (de_die.checked)
+    writer.write("mlx90382_ops_ctrl 269 " + 1 + '\r');
+  else
+    writer.write("mlx90382_ops_ctrl 269 " + 0 + '\r');
 
   writer.releaseLock();  
 }
