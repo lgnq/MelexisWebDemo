@@ -476,15 +476,16 @@ async function clickTimestamp() {
   saveSetting('timestamp', showTimestamp.checked);
 }
 
-function writeCmd(event) {
+async function writeCmd(event) {
   // Write to output stream
   const writer = outputStream.getWriter();
 
   if (event.keyCode === 13) {
     console.log(myInput.value);
-    
-    writer.write(myInput.value + '\r');
-    myInput.value = ''
+
+    await writer.write(myInput.value + '\r');
+
+    myInput.value = '';
   }
 
   writer.releaseLock();
