@@ -1,4 +1,20 @@
-const RT_SENSOR_CTRL_USER_CMD_SET_ZEROPOSITION = 265;
+const RT_SENSOR_CTRL_USER_CMD_SOFT_RESET        = 257;
+const RT_SENSOR_CTRL_USER_CMD_INFO              = 258;
+const RT_SENSOR_CTRL_USER_CMD_LIN_PHASE         = 259;
+const RT_SENSOR_CTRL_USER_CMD_DRIFTC_PHASE      = 260;
+const RT_SENSOR_CTRL_USER_CMD_SC_PHASE          = 261;
+const RT_SENSOR_CTRL_USER_CMD_SPEED             = 262;
+const RT_SENSOR_CTRL_USER_CMD_TEMP              = 263;
+const RT_SENSOR_CTRL_USER_CMD_GET_ZEROPOSITION  = 264;
+const RT_SENSOR_CTRL_USER_CMD_SET_ZEROPOSITION  = 265;
+const RT_SENSOR_CTRL_USER_CMD_SET_SENSING_MODE  = 266;
+const RT_SENSOR_CTRL_USER_CMD_SET_GPIO_IF       = 267;
+const RT_SENSOR_CTRL_USER_CMD_SET_DE_SR         = 268;
+const RT_SENSOR_CTRL_USER_CMD_SET_DE_DIE        = 269;
+const RT_SENSOR_CTRL_USER_CMD_SET_FADDR0        = 270;
+const RT_SENSOR_CTRL_USER_CMD_SET_FADDR1        = 271;
+const RT_SENSOR_CTRL_USER_CMD_SET_FADDR2        = 272;
+const RT_SENSOR_CTRL_USER_CMD_SET_FADDR3        = 273;
 
 const menuButtons = document.querySelectorAll(".menu-button");
 const screenOverlay = document.querySelector(".main-layout .screen-overlay");
@@ -596,10 +612,9 @@ async function clickStart() {
 }
 
 async function clickInfo() {
-  // Write to output stream
   const writer = outputStream.getWriter();
 
-  writer.write("mlx90382_ops_ctrl 258\r");
+  writer.write("mlx90382_ops_ctrl " + RT_SENSOR_CTRL_USER_CMD_INFO + "\r");
 
   writer.releaseLock();
 }
@@ -696,7 +711,7 @@ function set_faddr0(event) {
   const writer = outputStream.getWriter();
 
   if (event.keyCode === 13) {
-    writer.write("mlx90382_ops_ctrl 265 " + faddr0.value + '\r');
+    writer.write("mlx90382_ops_ctrl " + RT_SENSOR_CTRL_USER_CMD_SET_FADDR0 + " " + parseInt(faddr0.value, 16) + '\r');
   }
 
   writer.releaseLock();
@@ -706,7 +721,7 @@ function set_faddr1(event) {
   const writer = outputStream.getWriter();
 
   if (event.keyCode === 13) {
-    writer.write("mlx90382_ops_ctrl 265 " + faddr1.value + '\r');
+    writer.write("mlx90382_ops_ctrl " + RT_SENSOR_CTRL_USER_CMD_SET_FADDR1 + " " + parseInt(faddr1.value, 16) + '\r');
   }
 
   writer.releaseLock();
@@ -716,7 +731,7 @@ function set_faddr2(event) {
   const writer = outputStream.getWriter();
 
   if (event.keyCode === 13) {
-    writer.write("mlx90382_ops_ctrl 265 " + faddr2.value + '\r');
+    writer.write("mlx90382_ops_ctrl " + RT_SENSOR_CTRL_USER_CMD_SET_FADDR2 + " " + parseInt(faddr2.value, 16) + '\r');
   }
 
   writer.releaseLock();
@@ -726,7 +741,7 @@ function set_faddr3(event) {
   const writer = outputStream.getWriter();
 
   if (event.keyCode === 13) {
-    writer.write("mlx90382_ops_ctrl 265 " + faddr3.value + '\r');
+    writer.write("mlx90382_ops_ctrl " + RT_SENSOR_CTRL_USER_CMD_SET_FADDR3 + " " + parseInt(faddr3.value, 16) + '\r');
   }
 
   writer.releaseLock();
@@ -798,9 +813,9 @@ async function click_de_sr() {
   const writer = outputStream.getWriter();
 
   if (de_sr.checked)
-    writer.write("mlx90382_ops_ctrl 268 " + 1 + '\r');
+    writer.write("mlx90382_ops_ctrl " + RT_SENSOR_CTRL_USER_CMD_SET_DE_SR + " " + 1 + '\r');
   else
-    writer.write("mlx90382_ops_ctrl 268 " + 0 + '\r');
+    writer.write("mlx90382_ops_ctrl " + RT_SENSOR_CTRL_USER_CMD_SET_DE_SR + " " + 0 + '\r');
 
   writer.releaseLock();  
 }
@@ -810,9 +825,9 @@ async function click_de_die() {
   const writer = outputStream.getWriter();
 
   if (de_die.checked)
-    writer.write("mlx90382_ops_ctrl 269 " + 1 + '\r');
+    writer.write("mlx90382_ops_ctrl " + RT_SENSOR_CTRL_USER_CMD_SET_DE_DIE + " " + 1 + '\r');
   else
-    writer.write("mlx90382_ops_ctrl 269 " + 0 + '\r');
+    writer.write("mlx90382_ops_ctrl " + RT_SENSOR_CTRL_USER_CMD_SET_DE_DIE + " " + 0 + '\r');
 
   writer.releaseLock();  
 }
