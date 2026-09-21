@@ -1,3 +1,5 @@
+const RT_SENSOR_CTRL_USER_CMD_SET_ZEROPOSITION = 265;
+
 const menuButtons = document.querySelectorAll(".menu-button");
 const screenOverlay = document.querySelector(".main-layout .screen-overlay");
 const themeButton = document.querySelector(".navbar .theme-button i");
@@ -623,7 +625,7 @@ function set_zero_position(event) {
   const writer = outputStream.getWriter();
 
   if (event.keyCode === 13) {
-    writer.write("mlx90382_ops_ctrl 265 " + parseInt(zeroposition.value, 16) + '\r'); //RT_SENSOR_CTRL_USER_CMD_SET_ZEROPOSITION = 265
+    writer.write("mlx90382_ops_ctrl " + RT_SENSOR_CTRL_USER_CMD_SET_ZEROPOSITION + " " + parseInt(zeroposition.value, 16) + '\r');
     // zeroposition.value = ''
   }
 
