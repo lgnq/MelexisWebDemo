@@ -15,6 +15,8 @@ const RT_SENSOR_CTRL_USER_CMD_SET_FADDR0        = 270;
 const RT_SENSOR_CTRL_USER_CMD_SET_FADDR1        = 271;
 const RT_SENSOR_CTRL_USER_CMD_SET_FADDR2        = 272;
 const RT_SENSOR_CTRL_USER_CMD_SET_FADDR3        = 273;
+const RT_SENSOR_CTRL_USER_CMD_SET_FRFS          = 274;
+const RT_SENSOR_CTRL_USER_CMD_SET_FRFSEN        = 275;
 
 const menuButtons = document.querySelectorAll(".menu-button");
 const screenOverlay = document.querySelector(".main-layout .screen-overlay");
@@ -751,7 +753,7 @@ function set_frfs(event) {
   const writer = outputStream.getWriter();
 
   if (event.keyCode === 13) {
-    writer.write("mlx90382_ops_ctrl 265 " + frfs.value + '\r');
+    writer.write("mlx90382_ops_ctrl " + RT_SENSOR_CTRL_USER_CMD_SET_FRFS + " " + frfs.value + '\r');
   }
 
   writer.releaseLock();
