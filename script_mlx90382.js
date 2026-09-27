@@ -17,6 +17,8 @@ const RT_SENSOR_CTRL_USER_CMD_SET_FADDR2        = 272;
 const RT_SENSOR_CTRL_USER_CMD_SET_FADDR3        = 273;
 const RT_SENSOR_CTRL_USER_CMD_SET_FRFS          = 274;
 const RT_SENSOR_CTRL_USER_CMD_SET_FRFSEN        = 275;
+const RT_SENSOR_CTRL_USER_CMD_SET_FRCRCEN       = 276;
+const RT_SENSOR_CTRL_USER_CMD_SET_FRINV         = 277;
 
 const menuButtons = document.querySelectorAll(".menu-button");
 const screenOverlay = document.querySelector(".main-layout .screen-overlay");
@@ -759,6 +761,38 @@ function set_frfs(event) {
   writer.releaseLock();
 }
 
+function set_frinv(event) {
+  const writer = outputStream.getWriter();
+
+  if (event.keyCode === 13) {
+    writer.write("mlx90382_ops_ctrl " + RT_SENSOR_CTRL_USER_CMD_SET_FRINV + " " + frinv.value + '\r');
+  }
+
+  writer.releaseLock();
+}
+
+async function click_frfsen() {
+  const writer = outputStream.getWriter();
+
+  if (frfsen.checked)
+    writer.write("mlx90382_ops_ctrl " + RT_SENSOR_CTRL_USER_CMD_SET_FRFSEN + " " + 1 + '\r');
+  else
+    writer.write("mlx90382_ops_ctrl " + RT_SENSOR_CTRL_USER_CMD_SET_FRFSEN + " " + 0 + '\r');
+
+  writer.releaseLock();  
+}
+
+async function click_frcrcen() {
+  const writer = outputStream.getWriter();
+
+  if (frcrcen.checked)
+    writer.write("mlx90382_ops_ctrl " + RT_SENSOR_CTRL_USER_CMD_SET_FRCRCEN + " " + 1 + '\r');
+  else
+    writer.write("mlx90382_ops_ctrl " + RT_SENSOR_CTRL_USER_CMD_SET_FRCRCEN + " " + 0 + '\r');
+
+  writer.releaseLock();  
+}
+
 function saveSetting(setting, value) {
     window.localStorage.setItem(setting, JSON.stringify(value));
 }
@@ -937,6 +971,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   faddr3.addEventListener('keydown', set_faddr3);  
 
   frfs.addEventListener('keydown', set_frfs);  
+  frinv.addEventListener('keydown', set_frinv);  
+
+  frfsen.addEventListener('click', click_frfsen);
+  frcrcen.addEventListener('click', click_frcrcen);
 
   if ('serial' in navigator) {
     console.log("webserial is supported!")
